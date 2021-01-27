@@ -4,6 +4,7 @@
 ;(function () {
   'use strict';
 
+
   var content, searchResults;
   var highlightOpts = { element: 'span', className: 'search-highlight' };
   var searchDelay = 0;
@@ -64,12 +65,15 @@
     var searchInput = $('#input-search')[0];
 
     unhighlight();
-    searchResults.addClass('visible');
+    $(".search-results").show();
 
     // ESC clears the field
-    if (event.keyCode === 27) searchInput.value = '';
+    if (event.keyCode === 27){
+      searchInput.value = '';
+      $(".search-results").hide();
+    } 
 
-    if (searchInput.value) {
+    if (!searchInput.value == false) {
       var results = index.search(searchInput.value).filter(function(r) {
         return r.score > 0.0001;
       });
@@ -78,7 +82,7 @@
         searchResults.empty();
         $.each(results, function (index, result) {
           var elem = document.getElementById(result.ref);
-          searchResults.append("<li><a href='#" + result.ref + "'>" + $(elem).text() + "</a></li>");
+          searchResults.append("<li><a href='#" + result.ref + "'>" + $(elem).html() + "</a></li>");
         });
         highlight.call(searchInput);
       } else {
@@ -87,7 +91,7 @@
       }
     } else {
       unhighlight();
-      searchResults.removeClass('visible');
+      $(".search-results").hide();
     }
   }
 

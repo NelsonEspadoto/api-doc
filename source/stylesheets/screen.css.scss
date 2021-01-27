@@ -75,7 +75,7 @@ html, body {
   .logo {
     display: block;
     max-width: 100%;
-    margin-bottom: $logo-margin;
+    margin: 10px auto;
   }
 
   &>.search {
@@ -101,6 +101,7 @@ html, body {
       color: $nav-text;
       @extend %icon-search;
     }
+    
   }
 
   .search-results {
@@ -630,4 +631,83 @@ html, body {
 
 .copy-clipboard:hover {
   opacity: 0.8;
+}
+
+
+.tag{
+  padding: 5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 3px;
+  font-size: 10px;
+
+  &--get{
+    color:#3eb63e;
+  }
+
+  &--post{
+    color:#f5a623;
+  }
+}
+
+.search__box{
+  position: fixed;
+  top: 0;
+  background: #fff;
+  z-index: 99999;
+  width: 41%;
+  height: 50px;
+
+  .search{
+    width: 90%;
+    margin: auto;
+    margin-top: 10px;
+    display: flex;
+    height: 31px;
+    border: solid #cacaca 2px;
+    border-radius: 2px;
+    text-align: center;
+
+    &:focus{
+      border: solid #43a0d6 2px;
+      outline: none !important;
+    }
+
+
+  }
+  &:before {
+    position: absolute;
+    top: 10px;
+    left: 25px;
+    color: #fff;
+    background: #43a0d6;
+    padding: 11px;
+    @extend %icon-search;
+  }
+}
+
+.search-results{
+  background-color: #fff;
+  list-style: none;
+  margin-top: -30px;
+  display: flex;
+  flex-direction: column;
+  margin: auto 25px;
+  border-top: 0;
+  -webkit-box-shadow: 0px 1px 6px 0px rgba(41, 50, 50, 0.48);
+  -moz-box-shadow:    0px 1px 6px 0px rgba(41, 50, 50, 0.48);
+  box-shadow:         0px 1px 6px 0px rgba(41, 50, 50, 0.48);
+
+  li{
+    padding: 5px;
+
+    a {
+      color: #333;
+      text-decoration: none;
+    }
+
+  }
+}
+.content{
+  top: 50px;
 }
