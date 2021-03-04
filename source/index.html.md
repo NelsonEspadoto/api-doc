@@ -2,9 +2,10 @@
 title: Tray Developers
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - ruby
-  - python
-  - javascript
+  - shell
+  - php
+  - csharp
+  - java
 
 # toc_footers:
 #   - developers@tray.com.br
@@ -13,7 +14,29 @@ language_tabs: # must be one of https://git.io/vQNgJ
 includes:
   - introdution
   - autorizacao
-  # - authentication
+  - produtos
+  - pedidos
+  - integracao-frete
+  - sistema-notificacao
+  - scripts-externos
+  - clientes
+  - produtos-vendidos
+  - cupom
+  - caracteristicas
+  - variacao-produtos
+  - marca-produto
+  - kit
+  - informacao-adicional
+  - nota-fiscal
+  - status-pedido
+  - newsletter
+  - parceiros
+  - palavra-chave
+  - etiqueta-mercado-livre
+  - informacoes-pagamento
+  - informacoes-loja
+  - carrinho-compra
+  - lista-preco-b2b
   - kittens
   - errors
 

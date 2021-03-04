@@ -23,7 +23,7 @@ OBS: Todas as solicitações serão analisadas, onde poderão ser aprovadas ou r
 
 ## Dúvidas e Suporte
 
-Para dívidas relacionadas ao consumo das APIs disponibilizadas pedimos que abra um chamado diretamente através da nossa [central de atendimento](https://atendimento.tray.com.br/hc/pt-br/requests/new).
+Para dúvidas relacionadas ao consumo das APIs disponibilizadas pedimos que abra um chamado diretamente através da nossa [central de atendimento](https://atendimento.tray.com.br/hc/pt-br/requests/new).
 
 ## Ambiente de Teste
 

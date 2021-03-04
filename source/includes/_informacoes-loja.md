@@ -1,0 +1,1 @@
+# APIs de Informações da Loja
