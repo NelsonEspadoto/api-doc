@@ -930,48 +930,298 @@ Requisição para alterar os dados de um produto. Deverá enviar o JSON com os d
 ### Método PUT
 `https://{api_address}/products/:id`
 
+### Parâmetros enviados
+
+<pre>
+{
+    "Product": {
+        "ean": "9999",
+        "name": "Produto Teste API",
+        "ncm": "99999999",
+        "description": "Descrição do Produto de Teste da API",
+        "description_small": "Produto de Teste da API",
+        "price": 0.01,
+        "cost_price": 0.01,
+        "promotional_price": 0.01,
+        "start_promotion": "2019-03-01",
+        "end_promotion": "2019-09-01",
+        "brand": "marca",
+        "model": "Modelo",
+        "weight": 1000,
+        "length": 10,
+        "width": 10,
+        "availability": "",
+        "height": 10,
+        "stock": 100,
+        "category_id": "2",
+        "available": 1,
+        "warranty":"",
+        "reference": "111",
+        "picture_source_1": "http://bancodeimagens/imagem1.jpg",
+        "picture_source_2": "http://bancodeimagens/imagem2.jpg",
+        "picture_source_3": "http://bancodeimagens/imagem3.jpg",
+        "picture_source_4": "http://bancodeimagens/imagem4.jpg",
+        "picture_source_5": "http://bancodeimagens/imagem5.jpg",
+        "picture_source_6": "http://bancodeimagens/imagem6.jpg",
+        "metatag": [
+            {
+                "type": "keywords",
+                "content": "Key1, Key2, Key3",
+                "local": 1
+            }
+        ],
+        "related_categories": [],
+        "release_date": ""
+    }
+}
+</pre>
+
 Campo|Tipo|Descrição
 -----|----|---------
-access_token	String	Chave de acesso
-:id	Number	Código do produto
-Product	JSON	Dados do produto
-ean	String	Código EAN do produto
-name	String	Nome do produto
-ncm	String	Código NCM do produto
-description	String	Descrição do produto
-description_small	String	Descrição resumida do produto
-price	Decimal	Preço do produto
-cost_price	Decimal	Preço de custo do produto
-promotional_price	Decimal	Preço promocional do produto
-start_promotion	Date	Data de início da promoção do produto (Formato: aaaa-mm-dd)
-end_promotion	Date	Data de termino da promoção do produto (Formato: aaaa-mm-dd)
-brand	String	Marca do produto
-model	String	Modelo do produto
-weight	Number	Peso do produto
-length	Number	Comprimento do produto
-width	Number	Largura do produto
-height	Number	Altura do produto
-stock	Number	Estoque do produto
-category_id	Number	Código da categoria principal do produto
-availability	Number	prazo de disponibilidade do produto
-available	Number	Produto disponível (Veja Tabela A)
-warranty	String	Tempo de garantia do produto
-reference	String	Referência do produto
-picture_source_1	String	"Imagem principal do produto (Informar a URL para cadastro)
-*vide especificações de como fazer o envio da imagem no rodapé."
-picture_source_2	String	"Imagem do produto - imagem 2 (Informar a URL para cadastro) 
-*vide especificações de como fazer o envio da imagem no rodapé"
-picture_source_3	String	"Imagem do produto - imagem 3 (Informar a URL para cadastro)
-*vide especificações de como fazer o envio da imagem no rodapé"
-picture_source_4	String	"Imagem do produto - imagem 4 (Informar a URL para cadastro)
-*vide especificações de como fazer o envio da imagem no rodapé"
-picture_source_5	String	"Imagem do produto - imagem 5 (Informar a URL para cadastro)
-*vide especificações de como fazer o envio da imagem no rodapé"
-picture_source_6	String	"Imagem do produto - imagem 6 (Informar a URL para cadastro)
-*vide especificações de como fazer o envio da imagem no rodapé."
-metatag	Object[]	Metatags
-type	String	Tipo da metatag (Informar o valor keywords)
-content	String	Dados da metatag
-local	Number	Local da metatag (Informar p valor 1)
-related_categories	Number[]	Categorias adicionais do produto (separados por vírgula)
-release_date	Date	Data de lançamento do produto (Formato: aaaa-mm-dd)
+access_token	|String|	Chave de acesso
+:id	|Number|	Código do produto
+Product	|JSON|	Dados do produto
+ean	|String|	Código EAN do produto
+name	|String|	Nome do produto
+ncm	|String|	Código NCM do produto
+description	|String|	Descrição do produto
+description_small	|String|	Descrição resumida do produto
+price	|Decimal|	Preço do produto
+cost_price	|Decimal|	Preço de custo do produto
+promotional_price	|Decimal|	Preço promocional do produto
+start_promotion	|Date|	Data de início da promoção do produto (Formato: aaaa-mm-dd)
+end_promotion	|Date|	Data de termino da promoção do produto (Formato: aaaa-mm-dd)
+brand	|String|	Marca do produto
+model	|String|	Modelo do produto
+weight	|Number|	Peso do produto
+length	|Number|	Comprimento do produto
+width	|Number|	Largura do produto
+height	|Number|	Altura do produto
+stock	|Number|	Estoque do produto
+category_id	|Number|	Código da categoria principal do produto
+availability	|Number|	prazo de disponibilidade do produto
+available	|Number|	Produto disponível (Veja Tabela A)
+warranty	|String|	Tempo de garantia do produto
+reference	|String|	Referência do produto
+picture_source_1	|String|	"Imagem principal do produto (Informar a URL para cadastro) *vide especificações de como fazer o envio da imagem no rodapé."
+picture_source_2	|String|	"Imagem do produto - imagem 2 (Informar a URL para cadastro) *vide especificações de como fazer o envio da imagem no rodapé"
+picture_source_3	|String|	"Imagem do produto - imagem 3 (Informar a URL para cadastro) *vide especificações de como fazer o envio da imagem no rodapé"
+picture_source_4	|String|	"Imagem do produto - imagem 4 (Informar a URL para cadastro) *vide especificações de como fazer o envio da imagem no rodapé"
+picture_source_5	|String|	"Imagem do produto - imagem 5 (Informar a URL para cadastro) *vide especificações de como fazer o envio da imagem no rodapé"
+picture_source_6	|String|	"Imagem do produto - imagem 6 (Informar a URL para cadastro) *vide especificações de como fazer o envio da imagem no rodapé."
+metatag	|Object|	Metatags
+type	|String|	Tipo da metatag (Informar o valor keywords)
+content	|String|	Dados da metatag
+local	|Number|	Local da metatag (Informar p valor 1)
+related_categories	|Number|	Categorias adicionais do produto (separados por vírgula)
+release_date	|Date|	Data de lançamento do produto (Formato: aaaa-mm-dd)
+
+### Retorno em caso de sucesso (status code 200 ou 201)
+
+> Retorno com Sucesso:
+
+<pre>
+{
+  "message":"Saved",
+  "id":"123",
+  "code":200
+}
+</pre>
+
+Campo|Tipo|Descrição
+-----|----|---------
+message|String|Mensagem de retorno
+:id|Number|Código do produto
+code|Number|Código do retorno(200)
+
+## Tabelas Auxiliares de Produtos
+
+### Tabela A - Disponibilidade do produto (campo available)
+Valor|Descrição
+-----|---------
+0|Produto indisponível
+1|Produto disponível
+
+## EXCLUSÃO DE PRODUTO#delete
+
+Requisição para excluir um Produto ou um Kit
+
+> Código de Exemplo:
+
+```shell
+curl --location -g --request DELETE 'https://{api_address}/products//?access_token={token}'
+```
+
+```php
+<?php
+require_once 'HTTP/Request2.php';
+$request = new HTTP_Request2();
+$request->setUrl('https://{api_address}/products//?access_token={token}');
+$request->setMethod(HTTP_Request2::METHOD_DELETE);
+$request->setConfig(array(
+  'follow_redirects' => TRUE
+));
+try {
+  $response = $request->send();
+  if ($response->getStatus() == 200) {
+    echo $response->getBody();
+  }
+  else {
+    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    $response->getReasonPhrase();
+  }
+}
+catch(HTTP_Request2_Exception $e) {
+  echo 'Error: ' . $e->getMessage();
+}
+```
+
+```csharp
+var client = new RestClient("https://{api_address}/products//?access_token={token}");
+client.Timeout = -1;
+var request = new RestRequest(Method.DELETE);
+IRestResponse response = client.Execute(request);
+Console.WriteLine(response.Content);
+```
+
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("text/plain");
+RequestBody body = RequestBody.create(mediaType, "");
+Request request = new Request.Builder()
+  .url("https://{api_address}/products//?access_token={token}")
+  .method("DELETE", body)
+  .build();
+Response response = client.newCall(request).execute();
+```
+
+### Método DELETE
+`https://{api_address}/products/:id/?access_token={token}`
+
+### Parâmetros enviados
+
+Campo|Tipo|Descrição
+-----|----|---------
+access_token	|String|	Chave de acesso
+id	|Number|	Código do produto
+
+### Retorno em caso de sucesso (status code 200 ou 201)
+
+> Retorno com Sucesso:
+
+<pre>
+{
+  "message":"Deleted",
+  "id":"123",
+  "code":200
+}
+</pre>
+
+Campo|Tipo|Descrição
+-----|----|---------
+message|String|Mensagem de retorno
+:id|Number|Código do produto
+code|Number|Código do retorno(200)
+
+## EXCLUSÃO DO KIT#delete
+
+### Método DELETE
+`https://{api_address}/products/product_parent_id/?access_token={token}`
+
+### Parâmetros enviados
+
+Campo|Tipo|Descrição
+-----|----|---------
+access_token	|String|	Chave de acesso
+
+### Retorno em caso de sucesso (status code 200 ou 201)
+
+> Retorno com Sucesso:
+
+<pre>
+{
+  "message":"Deleted",
+  "id":"123",
+  "code":200
+}
+</pre>
+
+Campo|Tipo|Descrição
+-----|----|---------
+message|String|Mensagem de retorno
+:id|Number|Código do produto is_kit=1
+code|Number|Código do retorno(200)
+
+## Especificações para o envio das imagens na API
+
+Via API é possível enviar somente até 6 imagens, utilizando os campos citados acima do picture_source. Hoje, nossa plataforma recebe a url da imagem enviada na requisição, efetua o download e processa para a nossa cdn.
+
+Dessa forma, para que a nossa plataforma possa realizar o processamento da imagem no envio via API, é necessário se atentar a especificações abaixo:
+
+- A imagem deve ser uma url externa;
+- A url ao inserir em qualquer navegador, precisa ser visualizada de forma pública;
+- Deverá possuir uma extensão no final da url;
+- A imagem deverá possuir uma dessas extensões JPG, JPEG e PNG;
+- O tamanho deverá ser de até 350 Kb;
+- E dimensão até 2000x2000 pixels;
+- A imagem não poderá possuir uma extensão renomeada;
+- E o nome do conteúdo da url, não pode haver espaços e nem caractere especial;
+ 
+
+Gestão no envio das imagens
+Precisamos que seja realizado do lado ERP, uma gestão no envio dessas imagens, contemplando no fluxo da rotina do ERP, as seguintes situações:
+
+Cadastro de um novo produto:
+
+- Realizar o envio somente das imagens do novo produto que está sendo cadastrado e não realizar o envio das novas imagens + imagens que já foram refletidas de outros produtos
+
+Atualização de imagem:
+
+- Realizar o envio somente das imagens que sofrerão alteração e não realizar o envio das imagens que vão ser alteradas + todas as outras imagens que já constam na loja
+
+**Não realizar o envio de imagens repetidas com a mesma url.**
+
+**E não realizar o envio de imagens repetidas só alterando o nome da url.**
+
+### PONTO DE ATENÇÃO
+
+Para excluir uma imagem, hoje não disponibilizamos um endpoint específico para fazer uso do protocolo Delet, dessa forma, para excluir uma imagem via API, você deverá enviar um PUT, passando o campo vazio com espaço "", segue exemplo abaixo:
+
+"picture_source_1": " ",<br/>
+"picture_source_2": " ",<br/>
+"picture_source_3": " ",<br/>
+"picture_source_4": " ",<br/>
+"picture_source_5": " ",<br/>
+"picture_source_6": " "
+
+> Exemplo 1:
+
+<pre>
+{
+    "Product": {
+        "picture_source_2": "http://imagem/imagem2.jpg"
+    }
+}
+</pre>
+
+Caso o produto possua 6 imagens cadastradas e você deseje alterar apenas uma imagem, você deverá passar o campo somente daquela imagem. Conforme **exemplo 1** ao lado:
+
+> Exemplo 2:
+
+<pre>
+{
+    "Product": {
+        "picture_source_1": " ",
+        "picture_source_2": "http://imagem/imagem2.jpg",
+        "picture_source_3": " ",
+        "picture_source_4": " ",
+        "picture_source_5": " ",
+        "picture_source_6": " "
+    }
+}
+</pre>
+
+Pois caso passe dessa forma, **exemplo 2** ao lado, as demais imagens serão deletadas e mesmo passando a imagem na posição dois, ela será considerado como posição 1, devido as outras terem sido excluídas.
+
+*Caso as imagens não tenham sido refletidas e no log do produto não conste nenhum reject, informando que houve falha, recomendamos que realize novamente o envio das imagens, através do PUT.*
