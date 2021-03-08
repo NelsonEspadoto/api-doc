@@ -1049,14 +1049,14 @@ Requisição para excluir um Produto ou um Kit
 > Código de Exemplo:
 
 ```shell
-curl --location -g --request DELETE 'https://{api_address}/products//?access_token={token}'
+curl --location -g --request DELETE 'https://{api_address}/products/:id/?access_token={token}'
 ```
 
 ```php
 <?php
 require_once 'HTTP/Request2.php';
 $request = new HTTP_Request2();
-$request->setUrl('https://{api_address}/products//?access_token={token}');
+$request->setUrl('https://{api_address}/products/:id/?access_token={token}');
 $request->setMethod(HTTP_Request2::METHOD_DELETE);
 $request->setConfig(array(
   'follow_redirects' => TRUE
@@ -1077,7 +1077,7 @@ catch(HTTP_Request2_Exception $e) {
 ```
 
 ```csharp
-var client = new RestClient("https://{api_address}/products//?access_token={token}");
+var client = new RestClient("https://{api_address}/products/:id/?access_token={token}");
 client.Timeout = -1;
 var request = new RestRequest(Method.DELETE);
 IRestResponse response = client.Execute(request);
@@ -1090,7 +1090,7 @@ OkHttpClient client = new OkHttpClient().newBuilder()
 MediaType mediaType = MediaType.parse("text/plain");
 RequestBody body = RequestBody.create(mediaType, "");
 Request request = new Request.Builder()
-  .url("https://{api_address}/products//?access_token={token}")
+  .url("https://{api_address}/products/:id/?access_token={token}")
   .method("DELETE", body)
   .build();
 Response response = client.newCall(request).execute();
