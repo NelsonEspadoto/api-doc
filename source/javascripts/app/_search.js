@@ -67,12 +67,16 @@
     unhighlight();
     $(".search-results").show();
 
-    // ESC clears the field
-    if (event.keyCode === 27){
+    // ESC clears the field    
+    if (event.keyCode === 27 ){
       searchInput.value = '';
       $(".search-results").hide();
     } 
 
+    document.addEventListener('click', function(){
+      searchInput.value = '';
+      $(".search-results").hide();
+    })
     if (!searchInput.value == false) {
       var results = index.search(searchInput.value).filter(function(r) {
         return r.score > 0.0001;
@@ -87,7 +91,7 @@
         highlight.call(searchInput);
       } else {
         searchResults.html('<li></li>');
-        $('.search-results li').text('No Results Found for "' + searchInput.value + '"');
+        $('.search-results li').text('Nenhum resultado para "' + searchInput.value + '"');
       }
     } else {
       unhighlight();
