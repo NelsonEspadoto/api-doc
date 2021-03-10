@@ -1,0 +1,66 @@
+<blockquote>
+<p>Código de Exemplo:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code>
+</code></pre></div>
+<p>{{access_token}}</p>
+<h3 id='metodo-get'>Método GET</h3>
+<p><code>https://{api_address}/orders/invoices</code></p>
+<h3 id='parametros-enviados'>Parâmetros enviados:</h3>
+<table><thead>
+<tr>
+<th>Campo</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>String</td>
+<td>Chave de acesso</td>
+</tr>
+<tr>
+<td>:id</td>
+<td>Number</td>
+<td>Código do cliente</td>
+</tr>
+</tbody></table>
+<h3 id='retorno-em-caso-de-sucesso-status-code-200-ou-201'>Retorno em caso de sucesso (status code 200 ou 201)</h3>
+<blockquote>
+<p>Retorno de Sucesso:</p>
+</blockquote>
+
+<pre>
+{
+    "message": "Created",
+    "id": "123",
+    "code": 201
+}
+</pre>
+
+<table><thead>
+<tr>
+<th>Campo</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>message</td>
+<td>String</td>
+<td>Mensagem de retorno</td>
+</tr>
+<tr>
+<td>id</td>
+<td>Number</td>
+<td>Código do cliente</td>
+</tr>
+<tr>
+<td>code</td>
+<td>Number</td>
+<td>Código do retorno (201)</td>
+</tr>
+</tbody></table>
