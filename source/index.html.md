@@ -22,19 +22,20 @@ includes:
   # - scripts-externos
   - clientes
   # - cupom
-  # - caracteristicas
+  - caracteristicas
+  # - categorias
   # - variacao-produtos
   # - marca-produto
   # - kit
   # - informacao-adicional
-  # - nota-fiscal
+  - nota-fiscal
   # - status-pedido
   # - newsletter
   # - parceiros
-  # - palavra-chave
-  # - etiqueta-mercado-livre
+  - palavra-chave
+  - etiqueta-mercado-livre
   # - informacoes-pagamento
-  # - informacoes-loja
+  - informacoes-loja
   # - carrinho-compra
   # - lista-preco-b2b
   # - kittens
