@@ -410,6 +410,11 @@ html, body {
       }
     }
 
+    thead tr {
+      background: #43a0d6;
+      color: #fff;
+    }
+
     th {
       padding: 5px 10px;
       border-bottom: 1px solid #ccc;
@@ -418,6 +423,7 @@ html, body {
 
     td {
       padding: 10px;
+      border: solid 1px #dedede;
     }
 
     tr:last-child {
@@ -627,6 +633,9 @@ html, body {
   opacity: 0.4;
   height: 18px;
   width: 18px;
+  padding: 10px;
+  z-index: 9999;
+  background: #fff;
 }
 
 .copy-clipboard:hover {
@@ -647,6 +656,14 @@ html, body {
 
   &--post{
     color:#f5a623;
+  }
+
+  &--put{
+    color: #4a90e2;
+  }
+
+  &--delete{
+    color:#ed4b48;
   }
 }
 
@@ -710,4 +727,15 @@ html, body {
 }
 .content{
   top: 50px;
+}
+
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+background-color: #43a0d6;
+outline: 1px solid slategrey;
 }

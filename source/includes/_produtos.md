@@ -276,7 +276,7 @@ dollar_cost_price|Number|Preço de custo do produto em dollar
 Variant|Object|Variação do produto
 id|Number|Código da variação do produto
 
-## Tabelas Auxiliares de Produtos
+### Tabelas Auxiliares de Produtos
 
 ### Tabela A - Disponibilidade do produto (campo available)
 Valor|Descrição
@@ -342,6 +342,8 @@ Requisição para a consulta de dados de um produto.
 > Código de Exemplo:
 
 ```shell
+
+
 curl --location -g --request GET '{{api_address}}/products/:id?access_token={{access_token}}'
 ```
 
@@ -370,6 +372,8 @@ catch(HTTP_Request2_Exception $e) {
 ```
 
 ```csharp
+
+
 var client = new RestClient("{{api_address}}/products/:id?access_token={{access_token}}");
 client.Timeout = -1;
 var request = new RestRequest(Method.GET);
@@ -693,7 +697,7 @@ available_for_purchase	|String|	Produto disponível para compra
 all_categories	|String|	Todas as categorias do produto
 additionalInfos	|String|	Informações adicionais do produto
 
-## Tabelas Auxiliares de Produtos
+### Tabelas Auxiliares de Produtos
 
 ### Tabela A - Disponibilidade do produto (campo available)
 Valor|Descrição
@@ -759,6 +763,8 @@ Requisição para inclusão de um produto. Deverá enviar o JSON com os dados do
 > Código de Exemplo:
 
 ```shell
+
+
 curl --location -g --request POST '{{api_address}}/products?access_token={{access_token}}' \
 --data-raw '{
     "Product":	{
@@ -827,6 +833,8 @@ catch(HTTP_Request2_Exception $e) {
 ```
 
 ```csharp
+
+
 var client = new RestClient("{{api_address}}/products?access_token={{access_token}}");
 client.Timeout = -1;
 var request = new RestRequest(Method.POST);
@@ -908,7 +916,7 @@ message|String|Mensagem de retorno
 :id|Number|Código do produto
 code|Number|Código do retorno(201)
 
-## Tabelas Auxiliares de Produtos
+### Tabelas Auxiliares de Produtos
 
 ### Tabela A - Disponibilidade do produto (campo available)
 Valor|Descrição
@@ -1034,7 +1042,7 @@ message|String|Mensagem de retorno
 :id|Number|Código do produto
 code|Number|Código do retorno(200)
 
-## Tabelas Auxiliares de Produtos
+### Tabelas Auxiliares de Produtos
 
 ### Tabela A - Disponibilidade do produto (campo available)
 Valor|Descrição
@@ -1042,13 +1050,15 @@ Valor|Descrição
 0|Produto indisponível
 1|Produto disponível
 
-## EXCLUSÃO DE PRODUTO#delete
+## Exclusão de Produtos#delete
 
 Requisição para excluir um Produto ou um Kit
 
 > Código de Exemplo:
 
 ```shell
+
+
 curl --location -g --request DELETE 'https://{api_address}/products/:id/?access_token={token}'
 ```
 
@@ -1077,6 +1087,8 @@ catch(HTTP_Request2_Exception $e) {
 ```
 
 ```csharp
+
+
 var client = new RestClient("https://{api_address}/products/:id/?access_token={token}");
 client.Timeout = -1;
 var request = new RestRequest(Method.DELETE);
@@ -1124,7 +1136,7 @@ message|String|Mensagem de retorno
 :id|Number|Código do produto
 code|Number|Código do retorno(200)
 
-## EXCLUSÃO DO KIT#delete
+## Exclusão de Kit#delete
 
 ### Método DELETE
 `https://{api_address}/products/product_parent_id/?access_token={token}`
@@ -1153,7 +1165,7 @@ message|String|Mensagem de retorno
 :id|Number|Código do produto is_kit=1
 code|Number|Código do retorno(200)
 
-## Especificações para o envio das imagens na API
+### Especificações para o envio das imagens na API
 
 Via API é possível enviar somente até 6 imagens, utilizando os campos citados acima do picture_source. Hoje, nossa plataforma recebe a url da imagem enviada na requisição, efetua o download e processa para a nossa cdn.
 

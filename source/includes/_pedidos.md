@@ -1400,7 +1400,7 @@ message	|String|	Mensagem de retorno
 order_id	|Number|	Código do pedido
 code	|Number|	Código do retorno (201)
 
-## Tabelas Auxiliares de Pedidos
+### Tabelas Auxiliares de Pedidos
 
 ### Tabela A - Confirmação de pedido enviado (campo delivered)
 Campo|Tipo
@@ -1445,7 +1445,7 @@ Campo|Tipo
 1 | Arquivo PDF
 
 
-## Retorno da API dentro de Pedidos Completo, quando á venda ocorrer no Mercado Livre
+### Retorno da API dentro de Pedidos Completo, quando á venda ocorrer no Mercado Livre
 
 ### Retorno dos campos:
 

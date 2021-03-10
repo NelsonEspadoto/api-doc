@@ -118,6 +118,8 @@ store_id | Number | Código da loja
 > api_address: "urldaloja.com.br/web_api"
 
 ```shell
+
+
 curl --location -g --request GET '{{api_address}}/auth?refresh_token={{refresh_token}}'
 ```
 
@@ -146,6 +148,8 @@ catch(HTTP_Request2_Exception $e) {
 ```
 
 ```csharp
+
+
 var client = new RestClient("{{api_address}}/auth?refresh_token={{refresh_token}}");
 client.Timeout = -1;
 var request = new RestRequest(Method.GET);

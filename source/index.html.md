@@ -15,30 +15,30 @@ includes:
   - introdution
   - autorizacao
   - produtos
-  - pedidos
-  - integracao-frete
-  - sistema-notificacao
-  - scripts-externos
-  - clientes
   - produtos-vendidos
-  - cupom
-  - caracteristicas
-  - variacao-produtos
-  - marca-produto
-  - kit
-  - informacao-adicional
-  - nota-fiscal
-  - status-pedido
-  - newsletter
-  - parceiros
-  - palavra-chave
-  - etiqueta-mercado-livre
-  - informacoes-pagamento
-  - informacoes-loja
-  - carrinho-compra
-  - lista-preco-b2b
-  - kittens
-  - errors
+  - pedidos
+  # - integracao-frete
+  # - sistema-notificacao
+  # - scripts-externos
+  - clientes
+  # - cupom
+  # - caracteristicas
+  # - variacao-produtos
+  # - marca-produto
+  # - kit
+  # - informacao-adicional
+  # - nota-fiscal
+  # - status-pedido
+  # - newsletter
+  # - parceiros
+  # - palavra-chave
+  # - etiqueta-mercado-livre
+  # - informacoes-pagamento
+  # - informacoes-loja
+  # - carrinho-compra
+  # - lista-preco-b2b
+  # - kittens
+  # - errors
 
 search: true
 

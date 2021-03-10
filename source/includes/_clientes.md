@@ -1369,7 +1369,7 @@ message	|String|	Mensagem de retorno
 id	|Number|	Código do endereço do cliente
 code	|Number|	Código do retorno (200)
 
-## Tabelas Auxiliares de Clientes
+### Tabelas Auxiliares de Clientes
 
 ### Tabela A - Sexo do cliente (campo gender)
 Campo|Tipo
