@@ -602,6 +602,62 @@
               </ul>
           </li>
           <li>
+            <a href="#api-de-categorias" class="toc-h1 toc-link" data-title="API de Categorias">
+              <svg width='23' height='24' viewBox='0 0 25 15' xmlns='http://www.w3.org/2000/svg'><path d='M1.9 1h5.027c.24 0 .467.1.637.276l2.172 2.272c.17.177.398.276.637.276H18.1c.497 0 .9.42.9.94V16.03c0 .52-.403.97-.9.97H1.9c-.497 0-.9-.45-.9-.97V1.94c0-.518.403-.94.9-.94z' stroke-width='2' stroke='#032f6a' fill='none' opacity='.6'/></svg>
+              API de Categorias
+            </a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#consultar-arvore-de-categorias-get" class="toc-h2 toc-link" data-title="Consultar Árvore de Categorias#get">
+                      <span class="tag tag--get">get</span>
+                      Consultar Árvore de Categorias
+                    </a>
+                  </li>
+                  <li>
+                  </li>
+                  <li>
+                    <a href="#consultar-dados-das-categorias-get" class="toc-h2 toc-link" data-title="Consultar Dados das Categorias#get">
+                      <span class="tag tag--get">get</span>
+                      Consultar Dados das Categorias
+                    </a>
+                  </li>
+                  <li>
+                  </li>
+                  <li>
+                    <a href="#consultar-dados-da-categoria-por-id-get" class="toc-h2 toc-link" data-title="Consultar Dados da Categoria-por :id#get">
+                      <span class="tag tag--get">get</span>
+                      Consultar Dados da Categoria-por :id
+                    </a>
+                  </li>
+                  <li>
+                  </li>
+                  <li>
+                    <a href="#cadastrar-categoria-post" class="toc-h2 toc-link" data-title="Cadastrar Categoria#post">
+                      <span class="tag tag--post">post</span>
+                      Cadastrar Categoria
+                    </a>
+                  </li>
+                  <li>
+                  </li>
+                  <li>
+                    <a href="#atualizar-dados-da-categoria-put" class="toc-h2 toc-link" data-title="Atualizar Dados da Categoria#put">
+                      <span class="tag tag--put">put</span>
+                      Atualizar Dados da Categoria
+                    </a>
+                  </li>
+                  <li>
+                  </li>
+                  <li>
+                    <a href="#excluir-categoria-delete" class="toc-h2 toc-link" data-title="Excluir Categoria#delete">
+                      <span class="tag tag--delete">delete</span>
+                      Excluir Categoria
+                    </a>
+                  </li>
+                  <li>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#api-de-nota-fiscal" class="toc-h1 toc-link" data-title="API de Nota Fiscal">
               <svg width='23' height='24' viewBox='0 0 25 15' xmlns='http://www.w3.org/2000/svg'><path d='M1.9 1h5.027c.24 0 .467.1.637.276l2.172 2.272c.17.177.398.276.637.276H18.1c.497 0 .9.42.9.94V16.03c0 .52-.403.97-.9.97H1.9c-.497 0-.9-.45-.9-.97V1.94c0-.518.403-.94.9-.94z' stroke-width='2' stroke='#032f6a' fill='none' opacity='.6'/></svg>
               API de Nota Fiscal
@@ -9796,6 +9852,1158 @@ Precisamos que seja realizado do lado ERP, uma gestão no envio dessas imagens, 
 <td>code</td>
 <td>Number</td>
 <td>Código do retorno (201)</td>
+</tr>
+</tbody></table>
+<h1 id='api-de-categorias'>API de Categorias</h1>
+<p>As APIs de Categorias disponibiliza a manutenção das categorias dentro da plataforma Tray, possiblilitando criar, atualizar e excluir as categorias por aplicações externas.</p>
+<h2 id='consultar-arvore-de-categorias-get'>Consultar Árvore de Categorias#get</h2>
+<p>Requisição para consultar os dados das categorias de forma estruturada.</p>
+
+<blockquote>
+<p>Código de Exemplo:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">-g</span> <span class="nt">--request</span> GET <span class="s1">'https://{api_address}/categories/tree/:id?access_token={{access_token}}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'HTTP/Request2.php'</span><span class="p">;</span>
+<span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HTTP_Request2</span><span class="p">();</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setUrl</span><span class="p">(</span><span class="s1">'https://{api_address}/categories/tree/:id?access_token={{access_token}}'</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setMethod</span><span class="p">(</span><span class="n">HTTP_Request2</span><span class="o">::</span><span class="no">METHOD_GET</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setConfig</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+  <span class="s1">'follow_redirects'</span> <span class="o">=&gt;</span> <span class="kc">TRUE</span>
+<span class="p">));</span>
+<span class="k">try</span> <span class="p">{</span>
+  <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">send</span><span class="p">();</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getBody</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s1">'Unexpected HTTP status: '</span> <span class="mf">.</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="mf">.</span> <span class="s1">' '</span> <span class="mf">.</span>
+    <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getReasonPhrase</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">catch</span><span class="p">(</span><span class="n">HTTP_Request2_Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s1">'Error: '</span> <span class="mf">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="nf">getMessage</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://{api_address}/categories/tree/:id?access_token={{access_token}}"</span><span class="p">);</span>
+<span class="n">client</span><span class="p">.</span><span class="n">Timeout</span> <span class="p">=</span> <span class="p">-</span><span class="m">1</span><span class="p">;</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">GET</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">Content</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">OkHttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">OkHttpClient</span><span class="o">().</span><span class="na">newBuilder</span><span class="o">()</span>
+  <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="nc">Request</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Request</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
+  <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="s">"https://{api_address}/categories/tree/:id?access_token={{access_token}}"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">method</span><span class="o">(</span><span class="s">"GET"</span><span class="o">,</span> <span class="kc">null</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="nc">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">newCall</span><span class="o">(</span><span class="n">request</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
+</code></pre></div><h3 id='metodo-get'>Método GET</h3>
+<p><code>https://{api_address}/categories/tree/:id</code></p>
+<h3 id='parametros-enviados'>Parâmetros enviados:</h3>
+<table><thead>
+<tr>
+<th>Campo</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>String</td>
+<td>Chave de acesso</td>
+</tr>
+<tr>
+<td>:id</td>
+<td>Number</td>
+<td>Código do categoria</td>
+</tr>
+</tbody></table>
+<h3 id='retorno-em-caso-de-sucesso-status-code-200-ou-201'>Retorno em caso de sucesso (status code 200 ou 201)</h3>
+<blockquote>
+<p>Retorno de Sucesso:</p>
+</blockquote>
+
+<pre>
+{
+  "Category": [
+      {
+          "Category": {
+              "slug": "categoria-teste",
+              "id": "123",
+              "parent_id": "",
+              "name": "Categoria Teste",
+              "description": "Descrição da Categoria de Teste",
+              "title": "",
+              "small_description": "",
+              "link": {
+                  "http": "http://loja.commercesuite.com.br/categoria-teste",
+                  "https": "https://loja.commercesuite.com.br/categoria-teste"
+              },
+              "images": [
+                  {
+                      "http": "http://images.tcdn.com.br/img/img_prod/123/categoria_img_1_123.png",
+                      "https": "https://images.tcdn.com.br/img/img_prod/123/categoria_img_1_123.png"
+                  }
+              ],
+              "has_product": "1",
+              "children": [
+                  {
+                      "Category": {
+                          "slug": "subcategoria-teste",
+                          "id": "456",
+                          "parent_id": "",
+                          "name": "Subcategoria Teste",
+                          "description": "Descrição da Categoria de Teste",
+                          "title": "",
+                          "small_description": "",
+                          "link": {
+                              "http": "http://loja.commercesuite.com.br/subcategoria-teste",
+                              "https": "https://loja.commercesuite.com.br/subcategoria-teste"
+                          },
+                          "images": [
+                              {
+                                  "http": "http://images.tcdn.com.br/img/img_prod/123/categoria_img_1_456.png",
+                                  "https": "https://images.tcdn.com.br/img/img_prod/123/categoria_img_1_456.png"
+                              }
+                          ],
+                          "has_product": "1",
+                          "children": null
+                      }
+                  }
+              ]
+          }
+      }
+  ]
+}
+</pre>
+
+<table><thead>
+<tr>
+<th>Campo</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Category</td>
+<td>Object</td>
+<td>Lista da categoria</td>
+</tr>
+<tr>
+<td>slug</td>
+<td>String</td>
+<td>Final da URL da categoria</td>
+</tr>
+<tr>
+<td>id</td>
+<td>Number</td>
+<td>Código da categoria</td>
+</tr>
+<tr>
+<td>parent_id</td>
+<td>Number</td>
+<td>Código da categoria pai</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>Nome da categoria</td>
+</tr>
+<tr>
+<td>description</td>
+<td>String</td>
+<td>Descrição da categoria</td>
+</tr>
+<tr>
+<td>title</td>
+<td>String</td>
+<td>Titulo da categoria</td>
+</tr>
+<tr>
+<td>small_description</td>
+<td>String</td>
+<td>Descrição resumida da categoria</td>
+</tr>
+<tr>
+<td>link</td>
+<td>Object</td>
+<td>URLs da categoria</td>
+</tr>
+<tr>
+<td>http</td>
+<td>String</td>
+<td>URL da categoria</td>
+</tr>
+<tr>
+<td>https</td>
+<td>String</td>
+<td>URL segura da categoria</td>
+</tr>
+<tr>
+<td>images</td>
+<td>Object</td>
+<td>Imagens da categoria</td>
+</tr>
+<tr>
+<td>http</td>
+<td>Number</td>
+<td>URL da imagem da categoria</td>
+</tr>
+<tr>
+<td>https</td>
+<td>Number</td>
+<td>URL segura da imagem da categoria</td>
+</tr>
+<tr>
+<td>has_product</td>
+<td>Number</td>
+<td>Categoria com produto relacionado 0</td>
+</tr>
+<tr>
+<td>children</td>
+<td>Object</td>
+<td>Subcategoria do produto (com os mesmos dados deste Object Category)</td>
+</tr>
+</tbody></table>
+<h2 id='consultar-dados-das-categorias-get'>Consultar Dados das Categorias#get</h2>
+<p>Requisição para consultar os dados das categorias.</p>
+
+<blockquote>
+<p>Código de Exemplo:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">-g</span> <span class="nt">--request</span> GET <span class="s1">'https://{api_address}/categories/?access_token={{access_token}}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'HTTP/Request2.php'</span><span class="p">;</span>
+<span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HTTP_Request2</span><span class="p">();</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setUrl</span><span class="p">(</span><span class="s1">'https://{api_address}/categories/?access_token={{access_token}}'</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setMethod</span><span class="p">(</span><span class="n">HTTP_Request2</span><span class="o">::</span><span class="no">METHOD_GET</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setConfig</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+  <span class="s1">'follow_redirects'</span> <span class="o">=&gt;</span> <span class="kc">TRUE</span>
+<span class="p">));</span>
+<span class="k">try</span> <span class="p">{</span>
+  <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">send</span><span class="p">();</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getBody</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s1">'Unexpected HTTP status: '</span> <span class="mf">.</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="mf">.</span> <span class="s1">' '</span> <span class="mf">.</span>
+    <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getReasonPhrase</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">catch</span><span class="p">(</span><span class="n">HTTP_Request2_Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s1">'Error: '</span> <span class="mf">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="nf">getMessage</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://{api_address}/categories/?access_token={{access_token}}"</span><span class="p">);</span>
+<span class="n">client</span><span class="p">.</span><span class="n">Timeout</span> <span class="p">=</span> <span class="p">-</span><span class="m">1</span><span class="p">;</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">GET</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">Content</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">OkHttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">OkHttpClient</span><span class="o">().</span><span class="na">newBuilder</span><span class="o">()</span>
+  <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="nc">Request</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Request</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
+  <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="s">"https://{api_address}/categories/?access_token={{access_token}}"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">method</span><span class="o">(</span><span class="s">"GET"</span><span class="o">,</span> <span class="kc">null</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="nc">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">newCall</span><span class="o">(</span><span class="n">request</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
+</code></pre></div><h3 id='metodo-get-2'>Método GET</h3>
+<p><code>https://{api_address}/categories/</code></p>
+<h3 id='parametros-enviados-2'>Parâmetros enviados:</h3>
+<table><thead>
+<tr>
+<th>Campo</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>String</td>
+<td>Token de acesso</td>
+</tr>
+<tr>
+<td>attrs</td>
+<td>String</td>
+<td>Atributos da categoria</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Number</td>
+<td>Limite de registros</td>
+</tr>
+<tr>
+<td>page</td>
+<td>Number</td>
+<td>Página corrente</td>
+</tr>
+<tr>
+<td>sort</td>
+<td>String</td>
+<td>Ordenação ex.: [campo]_[asc/desc]</td>
+</tr>
+</tbody></table>
+<h3 id='retorno-em-caso-de-sucesso-status-code-200-ou-201-2'>Retorno em caso de sucesso (status code 200 ou 201)</h3>
+<blockquote>
+<p>Retorno de Sucesso:</p>
+</blockquote>
+
+<pre>
+{
+  "paging": {
+      "total": 39,
+      "page": 1,
+      "offset": 0,
+      "limit": 30,
+      "maxLimit": 50
+  },
+  "sort": [
+      {
+          "id": "asc"
+      }
+  ],
+  "availableFilters": [
+      "id",
+      "name",
+      "parent_id"
+  ],
+  "appliedFilters": [],
+  "Categories": [
+      {
+          "Category": {
+              "id": "123",
+              "parent_id": "",
+              "name": "Categoria Teste",
+              "description": "Descrição da Categoria de Teste",
+              "small_description": "",
+              "Images": [
+                  {
+                      "http": "http://images.tcdn.com.br/img/img_prod/123/categoria_img_1_123.png",
+                      "https": "https://images.tcdn.com.br/img/img_prod/123/categoria_img_1_123.png"
+                  }
+              ]
+          }
+      }
+  ]
+}
+</pre>
+
+<table><thead>
+<tr>
+<th>Campo</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>paging</td>
+<td>Object</td>
+<td>Dados de paginação</td>
+</tr>
+<tr>
+<td>total</td>
+<td>Number</td>
+<td>Total de registros</td>
+</tr>
+<tr>
+<td>page</td>
+<td>Number</td>
+<td>Página corrente</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>Number</td>
+<td>Registro inicial da página</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Number</td>
+<td>Limite de registros</td>
+</tr>
+<tr>
+<td>maxLimit</td>
+<td>Number</td>
+<td>Máximo de registros</td>
+</tr>
+<tr>
+<td>sort</td>
+<td>Object</td>
+<td>Ordenação</td>
+</tr>
+<tr>
+<td>availableFilters</td>
+<td>String</td>
+<td>Filtros disponíveis</td>
+</tr>
+<tr>
+<td>appliedFilters</td>
+<td>String</td>
+<td>Filtros utilizados</td>
+</tr>
+<tr>
+<td>Categories</td>
+<td>Object</td>
+<td>Lista de categorias</td>
+</tr>
+<tr>
+<td>Category</td>
+<td>Object</td>
+<td>Dados da categoria</td>
+</tr>
+<tr>
+<td>id</td>
+<td>Number</td>
+<td>Código da categoria</td>
+</tr>
+<tr>
+<td>parent_id</td>
+<td>Number</td>
+<td>Código da categoria pai</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>Nome da categoria</td>
+</tr>
+<tr>
+<td>description</td>
+<td>String</td>
+<td>Descrição da categoria</td>
+</tr>
+<tr>
+<td>small_description</td>
+<td>String</td>
+<td>Descrição resumida da categoria</td>
+</tr>
+<tr>
+<td>Images</td>
+<td>Object</td>
+<td>Imagens da categoria</td>
+</tr>
+<tr>
+<td>http</td>
+<td>Number</td>
+<td>URL da imagem da categoria</td>
+</tr>
+<tr>
+<td>https</td>
+<td>Number</td>
+<td>URL segura da imagem da categoria</td>
+</tr>
+</tbody></table>
+<h2 id='consultar-dados-da-categoria-por-id-get'>Consultar Dados da Categoria-por :id#get</h2>
+<p>Requisição para consultar os dados de uma categoria.</p>
+
+<blockquote>
+<p>Código de Exemplo:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">-g</span> <span class="nt">--request</span> GET <span class="s1">'https://{api_address}/categories/:id?access_token={{access_token}}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'HTTP/Request2.php'</span><span class="p">;</span>
+<span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HTTP_Request2</span><span class="p">();</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setUrl</span><span class="p">(</span><span class="s1">'https://{api_address}/categories/:id?access_token={{access_token}}'</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setMethod</span><span class="p">(</span><span class="n">HTTP_Request2</span><span class="o">::</span><span class="no">METHOD_GET</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setConfig</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+  <span class="s1">'follow_redirects'</span> <span class="o">=&gt;</span> <span class="kc">TRUE</span>
+<span class="p">));</span>
+<span class="k">try</span> <span class="p">{</span>
+  <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">send</span><span class="p">();</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getBody</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s1">'Unexpected HTTP status: '</span> <span class="mf">.</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="mf">.</span> <span class="s1">' '</span> <span class="mf">.</span>
+    <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getReasonPhrase</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">catch</span><span class="p">(</span><span class="n">HTTP_Request2_Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s1">'Error: '</span> <span class="mf">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="nf">getMessage</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://{api_address}/categories/:id?access_token={{access_token}}"</span><span class="p">);</span>
+<span class="n">client</span><span class="p">.</span><span class="n">Timeout</span> <span class="p">=</span> <span class="p">-</span><span class="m">1</span><span class="p">;</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">GET</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">Content</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">OkHttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">OkHttpClient</span><span class="o">().</span><span class="na">newBuilder</span><span class="o">()</span>
+  <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="nc">Request</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Request</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
+  <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="s">"https://{api_address}/categories/:id?access_token={{access_token}}"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">method</span><span class="o">(</span><span class="s">"GET"</span><span class="o">,</span> <span class="kc">null</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="nc">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">newCall</span><span class="o">(</span><span class="n">request</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
+</code></pre></div><h3 id='metodo-get-3'>Método GET</h3>
+<p><code>https://{api_address}/categories/:id</code></p>
+<h3 id='parametros-enviados-3'>Parâmetros enviados:</h3>
+<table><thead>
+<tr>
+<th>Campo</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>String</td>
+<td>Chave de acesso</td>
+</tr>
+<tr>
+<td>:id</td>
+<td>Number</td>
+<td>Código da categoria</td>
+</tr>
+</tbody></table>
+<h3 id='retorno-em-caso-de-sucesso-status-code-200-ou-201-3'>Retorno em caso de sucesso (status code 200 ou 201)</h3>
+<blockquote>
+<p>Retorno de Sucesso:</p>
+</blockquote>
+
+<pre>
+{
+  "Category": {
+      "slug": "categoria-teste",
+      "id": "123",
+      "parent_id": "",
+      "name": "Categoria Teste",
+      "description": "Descrição da Categoria de Teste",
+      "order": "2",
+      "title": "",
+      "small_description": "",
+      "link": {
+          "http": "http://loja.commercesuite.com.br/categoria-teste",
+          "https": "https://loja.commercesuite.com.br/categoria-teste"
+      },
+      "has_acceptance_term": "",
+      "acceptance_term": "",
+      "Images": [
+          {
+              "http": "http://images.tcdn.com.br/img/img_prod/123/categoria_img_1_123.png",
+              "https": "https://images.tcdn.com.br/img/img_prod/123/categoria_img_1_123.png"
+          }
+      ]
+  }
+}
+</pre>
+
+<table><thead>
+<tr>
+<th>Campo</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Category</td>
+<td>Object</td>
+<td>Dados da categoria</td>
+</tr>
+<tr>
+<td>slug</td>
+<td>String</td>
+<td>Final da URL da categoria</td>
+</tr>
+<tr>
+<td>id</td>
+<td>Number</td>
+<td>Código da categoria</td>
+</tr>
+<tr>
+<td>parent_id</td>
+<td>Number</td>
+<td>Código da categoria pai</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>Nome da categoria</td>
+</tr>
+<tr>
+<td>description</td>
+<td>String</td>
+<td>Descrição da categoria</td>
+</tr>
+<tr>
+<td>order</td>
+<td>Number</td>
+<td>Ordem de exibição da categoria</td>
+</tr>
+<tr>
+<td>small_description</td>
+<td>String</td>
+<td>Descrição resumida da categoria</td>
+</tr>
+<tr>
+<td>link</td>
+<td>Object</td>
+<td>URLs da categoria</td>
+</tr>
+<tr>
+<td>http</td>
+<td>String</td>
+<td>URL da categoria</td>
+</tr>
+<tr>
+<td>https</td>
+<td>String</td>
+<td>URL segura da categoria</td>
+</tr>
+<tr>
+<td>has_acceptance_term</td>
+<td>Number</td>
+<td>Categoria com termo de aceitação ( 0 / 1)</td>
+</tr>
+<tr>
+<td>acceptance_term</td>
+<td>String</td>
+<td>Texto com os termos a ser aceito na categoria</td>
+</tr>
+<tr>
+<td>Images</td>
+<td>Object</td>
+<td>Imagens da categoria</td>
+</tr>
+<tr>
+<td>http</td>
+<td>String</td>
+<td>URL da imagem da categoria</td>
+</tr>
+<tr>
+<td>https</td>
+<td>String</td>
+<td>URL segura da imagem da categoria</td>
+</tr>
+</tbody></table>
+<h2 id='cadastrar-categoria-post'>Cadastrar Categoria#post</h2>
+<p>Requisição para criação de uma categoria. Deverá enviar o JSON com os dados da categoria para a criação.</p>
+
+<blockquote>
+<p>Código de Exemplo:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">-g</span> <span class="nt">--request</span> POST <span class="s1">'https://{api_address}/categories/?access_token={{access_token}}'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Content-Type: application/x-www-form-urlencoded'</span> <span class="se">\</span>
+<span class="nt">--data-urlencode</span> <span class="s1">'["Category"]["name"]=Categoria Teste'</span> <span class="se">\</span>
+<span class="nt">--data-urlencode</span> <span class="s1">'["Category"]["description"]=Categoria de Teste da Loja'</span> <span class="se">\</span>
+<span class="nt">--data-urlencode</span> <span class="s1">'["Category"]["slug"]=categoria-teste'</span> <span class="se">\</span>
+<span class="nt">--data-urlencode</span> <span class="s1">'["Category"]["order"]=2'</span> <span class="se">\</span>
+<span class="nt">--data-urlencode</span> <span class="s1">'["Category"]["title"]=Categoria de Teste'</span> <span class="se">\</span>
+<span class="nt">--data-urlencode</span> <span class="s1">'["Category"]["small_description"]=Categoria de Teste da Loja'</span> <span class="se">\</span>
+<span class="nt">--data-urlencode</span> <span class="s1">'["Category"]["has_acceptance_term"]=1'</span> <span class="se">\</span>
+<span class="nt">--data-urlencode</span> <span class="s1">'["Category"]["acceptance_term"]=Eu aceito os termos de uso ...'</span> <span class="se">\</span>
+<span class="nt">--data-urlencode</span> <span class="s1">'["Category"]["metatag"]["keywords"]=categoria teste'</span> <span class="se">\</span>
+<span class="nt">--data-urlencode</span> <span class="s1">'["Category"]["metatag"]["description"]=categoria teste da loja'</span> <span class="se">\</span>
+<span class="nt">--data-urlencode</span> <span class="s1">'["Category"]["property"]=Característica Teste 1","Característica Teste 2'</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="k">var</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RestClient</span><span class="p">(</span><span class="s2">"https://</span><span class="si">{</span><span class="nv">api_address}/categories/?access_token={{access_token}</span><span class="si">}</span><span class="s2">"</span><span class="p">);</span>
+<span class="n">client</span><span class="mf">.</span><span class="nc">Timeout</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="k">var</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RestRequest</span><span class="p">(</span><span class="nc">Method</span><span class="mf">.</span><span class="no">POST</span><span class="p">);</span>
+<span class="n">request</span><span class="mf">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s2">"Content-Type"</span><span class="p">,</span> <span class="s2">"application/x-www-form-urlencoded"</span><span class="p">);</span>
+<span class="n">request</span><span class="mf">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s2">"[</span><span class="se">\"</span><span class="s2">Category</span><span class="se">\"</span><span class="s2">][</span><span class="se">\"</span><span class="s2">name</span><span class="se">\"</span><span class="s2">]"</span><span class="p">,</span> <span class="s2">"Categoria Teste"</span><span class="p">);</span>
+<span class="n">request</span><span class="mf">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s2">"[</span><span class="se">\"</span><span class="s2">Category</span><span class="se">\"</span><span class="s2">][</span><span class="se">\"</span><span class="s2">description</span><span class="se">\"</span><span class="s2">]"</span><span class="p">,</span> <span class="s2">"Categoria de Teste da Loja"</span><span class="p">);</span>
+<span class="n">request</span><span class="mf">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s2">"[</span><span class="se">\"</span><span class="s2">Category</span><span class="se">\"</span><span class="s2">][</span><span class="se">\"</span><span class="s2">slug</span><span class="se">\"</span><span class="s2">]"</span><span class="p">,</span> <span class="s2">"categoria-teste"</span><span class="p">);</span>
+<span class="n">request</span><span class="mf">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s2">"[</span><span class="se">\"</span><span class="s2">Category</span><span class="se">\"</span><span class="s2">][</span><span class="se">\"</span><span class="s2">order</span><span class="se">\"</span><span class="s2">]"</span><span class="p">,</span> <span class="s2">"2"</span><span class="p">);</span>
+<span class="n">request</span><span class="mf">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s2">"[</span><span class="se">\"</span><span class="s2">Category</span><span class="se">\"</span><span class="s2">][</span><span class="se">\"</span><span class="s2">title</span><span class="se">\"</span><span class="s2">]"</span><span class="p">,</span> <span class="s2">"Categoria de Teste"</span><span class="p">);</span>
+<span class="n">request</span><span class="mf">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s2">"[</span><span class="se">\"</span><span class="s2">Category</span><span class="se">\"</span><span class="s2">][</span><span class="se">\"</span><span class="s2">small_description</span><span class="se">\"</span><span class="s2">]"</span><span class="p">,</span> <span class="s2">"Categoria de Teste da Loja"</span><span class="p">);</span>
+<span class="n">request</span><span class="mf">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s2">"[</span><span class="se">\"</span><span class="s2">Category</span><span class="se">\"</span><span class="s2">][</span><span class="se">\"</span><span class="s2">has_acceptance_term</span><span class="se">\"</span><span class="s2">]"</span><span class="p">,</span> <span class="s2">"1"</span><span class="p">);</span>
+<span class="n">request</span><span class="mf">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s2">"[</span><span class="se">\"</span><span class="s2">Category</span><span class="se">\"</span><span class="s2">][</span><span class="se">\"</span><span class="s2">acceptance_term</span><span class="se">\"</span><span class="s2">]"</span><span class="p">,</span> <span class="s2">"Eu aceito os termos de uso ..."</span><span class="p">);</span>
+<span class="n">request</span><span class="mf">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s2">"[</span><span class="se">\"</span><span class="s2">Category</span><span class="se">\"</span><span class="s2">][</span><span class="se">\"</span><span class="s2">metatag</span><span class="se">\"</span><span class="s2">][</span><span class="se">\"</span><span class="s2">keywords</span><span class="se">\"</span><span class="s2">]"</span><span class="p">,</span> <span class="s2">"categoria teste"</span><span class="p">);</span>
+<span class="n">request</span><span class="mf">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s2">"[</span><span class="se">\"</span><span class="s2">Category</span><span class="se">\"</span><span class="s2">][</span><span class="se">\"</span><span class="s2">metatag</span><span class="se">\"</span><span class="s2">][</span><span class="se">\"</span><span class="s2">description</span><span class="se">\"</span><span class="s2">]"</span><span class="p">,</span> <span class="s2">"categoria teste da loja"</span><span class="p">);</span>
+<span class="n">request</span><span class="mf">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s2">"[</span><span class="se">\"</span><span class="s2">Category</span><span class="se">\"</span><span class="s2">][</span><span class="se">\"</span><span class="s2">property</span><span class="se">\"</span><span class="s2">]"</span><span class="p">,</span> <span class="s2">"Característica Teste 1</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">Característica Teste 2"</span><span class="p">);</span>
+<span class="nc">IRestResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="mf">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+<span class="nc">Console</span><span class="mf">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">response</span><span class="mf">.</span><span class="nc">Content</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://{api_address}/categories/?access_token={{access_token}}"</span><span class="p">);</span>
+<span class="n">client</span><span class="p">.</span><span class="n">Timeout</span> <span class="p">=</span> <span class="p">-</span><span class="m">1</span><span class="p">;</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"Content-Type"</span><span class="p">,</span> <span class="s">"application/x-www-form-urlencoded"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"[\"Category\"][\"name\"]"</span><span class="p">,</span> <span class="s">"Categoria Teste"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"[\"Category\"][\"description\"]"</span><span class="p">,</span> <span class="s">"Categoria de Teste da Loja"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"[\"Category\"][\"slug\"]"</span><span class="p">,</span> <span class="s">"categoria-teste"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"[\"Category\"][\"order\"]"</span><span class="p">,</span> <span class="s">"2"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"[\"Category\"][\"title\"]"</span><span class="p">,</span> <span class="s">"Categoria de Teste"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"[\"Category\"][\"small_description\"]"</span><span class="p">,</span> <span class="s">"Categoria de Teste da Loja"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"[\"Category\"][\"has_acceptance_term\"]"</span><span class="p">,</span> <span class="s">"1"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"[\"Category\"][\"acceptance_term\"]"</span><span class="p">,</span> <span class="s">"Eu aceito os termos de uso ..."</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"[\"Category\"][\"metatag\"][\"keywords\"]"</span><span class="p">,</span> <span class="s">"categoria teste"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"[\"Category\"][\"metatag\"][\"description\"]"</span><span class="p">,</span> <span class="s">"categoria teste da loja"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"[\"Category\"][\"property\"]"</span><span class="p">,</span> <span class="s">"Característica Teste 1\",\"Característica Teste 2"</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">Content</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">OkHttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">OkHttpClient</span><span class="o">().</span><span class="na">newBuilder</span><span class="o">()</span>
+  <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="nc">MediaType</span> <span class="n">mediaType</span> <span class="o">=</span> <span class="nc">MediaType</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">"application/x-www-form-urlencoded"</span><span class="o">);</span>
+<span class="nc">RequestBody</span> <span class="n">body</span> <span class="o">=</span> <span class="nc">RequestBody</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">mediaType</span><span class="o">,</span> <span class="s">"[\"Category\"][\"name\"]=Categoria Teste&amp;[\"Category\"][\"description\"]=Categoria de Teste da Loja&amp;[\"Category\"][\"slug\"]=categoria-teste&amp;[\"Category\"][\"order\"]=2&amp;[\"Category\"][\"title\"]=Categoria de Teste&amp;[\"Category\"][\"small_description\"]=Categoria de Teste da Loja&amp;[\"Category\"][\"has_acceptance_term\"]=1&amp;[\"Category\"][\"acceptance_term\"]=Eu aceito os termos de uso ...&amp;[\"Category\"][\"metatag\"][\"keywords\"]=categoria teste&amp;[\"Category\"][\"metatag\"][\"description\"]=categoria teste da loja&amp;[\"Category\"][\"property\"]=Característica Teste 1\",\"Característica Teste 2"</span><span class="o">);</span>
+<span class="nc">Request</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Request</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
+  <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="s">"https://{api_address}/categories/?access_token={{access_token}}"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">method</span><span class="o">(</span><span class="s">"POST"</span><span class="o">,</span> <span class="n">body</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/x-www-form-urlencoded"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="nc">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">newCall</span><span class="o">(</span><span class="n">request</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
+</code></pre></div><h3 id='metodo-post'>Método POST</h3>
+<p><code>https://{api_address}/categories/</code></p>
+<h3 id='parametros-enviados-4'>Parâmetros enviados:</h3>
+<blockquote>
+<p>Estrutura do Json:</p>
+</blockquote>
+
+<pre>
+{
+  "Category": {
+      "name": "Categoria Teste", 
+      "description": "Categoria de Teste da Loja",
+      "slug": "categoria-teste",
+      "order":"2",
+      "title": "Categoria de Teste",
+      "small_description":"Categoria de Teste da Loja",
+      "has_acceptance_term":"1",
+      "acceptance_term": "Eu aceito os termos de uso ...",
+      "metatag": {
+          "keywords": "categoria teste 123",
+          "description": "categoria teste da loja 123"
+      },
+      "property": [
+          "Característica Teste 1 123",
+          "Característica Teste 2 123"
+      ]
+  }
+}
+</pre>
+
+<table><thead>
+<tr>
+<th>Campo</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>String</td>
+<td>Chave de acesso</td>
+</tr>
+<tr>
+<td>Category</td>
+<td>JSON</td>
+<td>Dados da categoria</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String (255)</td>
+<td>Nome da categoria</td>
+</tr>
+<tr>
+<td>description</td>
+<td>String</td>
+<td>Descrição da categoria</td>
+</tr>
+<tr>
+<td>slug</td>
+<td>String (255)</td>
+<td>Final da URL da categoria</td>
+</tr>
+<tr>
+<td>order</td>
+<td>Number</td>
+<td>Posição na Ordenação das Categorias</td>
+</tr>
+<tr>
+<td>title</td>
+<td>String (255)</td>
+<td>Title da pagina de categorias</td>
+</tr>
+<tr>
+<td>small_description</td>
+<td>String</td>
+<td>Descrição detalhada da Categoria</td>
+</tr>
+<tr>
+<td>has_acceptance_term</td>
+<td>Number</td>
+<td>Categoria com termo de aceitação ( 0 / 1)</td>
+</tr>
+<tr>
+<td>acceptance_term</td>
+<td>String</td>
+<td>Texto com os termos a ser aceito na categoria</td>
+</tr>
+<tr>
+<td>Metatag</td>
+<td>Object</td>
+<td>Meta Tag</td>
+</tr>
+<tr>
+<td>keywords</td>
+<td>String (256)</td>
+<td>Palavras-Chaves de Meta Tag</td>
+</tr>
+<tr>
+<td>description</td>
+<td>String (256)</td>
+<td>Descrição de Meta Tag</td>
+</tr>
+<tr>
+<td>property</td>
+<td>String</td>
+<td>Características</td>
+</tr>
+</tbody></table>
+<h3 id='retorno-em-caso-de-sucesso-status-code-200-ou-201-4'>Retorno em caso de sucesso (status code 200 ou 201)</h3>
+<blockquote>
+<p>Retorno de Sucesso:</p>
+</blockquote>
+
+<pre>
+{
+    "message": "Created",
+    "id": "456",
+    "code": 201
+}
+</pre>
+
+<table><thead>
+<tr>
+<th>Campo</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>message</td>
+<td>String</td>
+<td>Mensagem de retorno</td>
+</tr>
+<tr>
+<td>id</td>
+<td>Number</td>
+<td>Código da categoria</td>
+</tr>
+<tr>
+<td>code</td>
+<td>Number</td>
+<td>Código do retorno (201)</td>
+</tr>
+</tbody></table>
+<h3 id='observacao'>Observação:</h3>
+<p>Para cadastrar uma sub categoria, deverá ser realizado os mesmos procedimento para o cadastro da categoria pai, tendo como única informação adicional no corpo da requisição do json, o campo &quot;parent_id&quot; (categoria pai).</p>
+<h2 id='atualizar-dados-da-categoria-put'>Atualizar Dados da Categoria#put</h2>
+<p>Requisição para alterar os dados de uma categoria. Deverá enviar o JSON com os dados do categoria para a alteração.</p>
+
+<blockquote>
+<p>Código de Exemplo:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">-g</span> <span class="nt">--request</span> PUT <span class="s1">'https://{api_address}/categories/?access_token={{access_token}}'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Content-Type: application/x-www-form-urlencoded'</span> <span class="se">\</span>
+<span class="nt">--data-urlencode</span> <span class="s1">'["Category"]["name"]=Categoria Teste'</span> <span class="se">\</span>
+<span class="nt">--data-urlencode</span> <span class="s1">'["Category"]["description"]=Categoria de Teste da Loja'</span> <span class="se">\</span>
+<span class="nt">--data-urlencode</span> <span class="s1">'["Category"]["slug"]=categoria-teste'</span> <span class="se">\</span>
+<span class="nt">--data-urlencode</span> <span class="s1">'["Category"]["order"]=2'</span> <span class="se">\</span>
+<span class="nt">--data-urlencode</span> <span class="s1">'["Category"]["title"]=Categoria de Teste'</span> <span class="se">\</span>
+<span class="nt">--data-urlencode</span> <span class="s1">'["Category"]["small_description"]=Categoria de Teste da Loja'</span> <span class="se">\</span>
+<span class="nt">--data-urlencode</span> <span class="s1">'["Category"]["has_acceptance_term"]=1'</span> <span class="se">\</span>
+<span class="nt">--data-urlencode</span> <span class="s1">'["Category"]["acceptance_term"]=Eu aceito os termos de uso ...'</span> <span class="se">\</span>
+<span class="nt">--data-urlencode</span> <span class="s1">'["Category"]["metatag"]["keywords"]=categoria teste'</span> <span class="se">\</span>
+<span class="nt">--data-urlencode</span> <span class="s1">'["Category"]["metatag"]["description"]=categoria teste da loja'</span> <span class="se">\</span>
+<span class="nt">--data-urlencode</span> <span class="s1">'["Category"]["property"]=Característica Teste 1","Característica Teste 2'</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'HTTP/Request2.php'</span><span class="p">;</span>
+<span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HTTP_Request2</span><span class="p">();</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setUrl</span><span class="p">(</span><span class="s1">'https://{api_address}/categories/?access_token={{access_token}}'</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setMethod</span><span class="p">(</span><span class="n">HTTP_Request2</span><span class="o">::</span><span class="no">METHOD_PUT</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setConfig</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+  <span class="s1">'follow_redirects'</span> <span class="o">=&gt;</span> <span class="kc">TRUE</span>
+<span class="p">));</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setHeader</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+  <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/x-www-form-urlencoded'</span>
+<span class="p">));</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">addPostParameter</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+  <span class="s1">'["Category"]["name"]'</span> <span class="o">=&gt;</span> <span class="s1">'Categoria Teste'</span><span class="p">,</span>
+  <span class="s1">'["Category"]["description"]'</span> <span class="o">=&gt;</span> <span class="s1">'Categoria de Teste da Loja'</span><span class="p">,</span>
+  <span class="s1">'["Category"]["slug"]'</span> <span class="o">=&gt;</span> <span class="s1">'categoria-teste'</span><span class="p">,</span>
+  <span class="s1">'["Category"]["order"]'</span> <span class="o">=&gt;</span> <span class="s1">'2'</span><span class="p">,</span>
+  <span class="s1">'["Category"]["title"]'</span> <span class="o">=&gt;</span> <span class="s1">'Categoria de Teste'</span><span class="p">,</span>
+  <span class="s1">'["Category"]["small_description"]'</span> <span class="o">=&gt;</span> <span class="s1">'Categoria de Teste da Loja'</span><span class="p">,</span>
+  <span class="s1">'["Category"]["has_acceptance_term"]'</span> <span class="o">=&gt;</span> <span class="s1">'1'</span><span class="p">,</span>
+  <span class="s1">'["Category"]["acceptance_term"]'</span> <span class="o">=&gt;</span> <span class="s1">'Eu aceito os termos de uso ...'</span><span class="p">,</span>
+  <span class="s1">'["Category"]["metatag"]["keywords"]'</span> <span class="o">=&gt;</span> <span class="s1">'categoria teste'</span><span class="p">,</span>
+  <span class="s1">'["Category"]["metatag"]["description"]'</span> <span class="o">=&gt;</span> <span class="s1">'categoria teste da loja'</span><span class="p">,</span>
+  <span class="s1">'["Category"]["property"]'</span> <span class="o">=&gt;</span> <span class="s1">'Característica Teste 1","Característica Teste 2'</span>
+<span class="p">));</span>
+<span class="k">try</span> <span class="p">{</span>
+  <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">send</span><span class="p">();</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getBody</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s1">'Unexpected HTTP status: '</span> <span class="mf">.</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="mf">.</span> <span class="s1">' '</span> <span class="mf">.</span>
+    <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getReasonPhrase</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">catch</span><span class="p">(</span><span class="n">HTTP_Request2_Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s1">'Error: '</span> <span class="mf">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="nf">getMessage</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://{api_address}/categories/?access_token={{access_token}}"</span><span class="p">);</span>
+<span class="n">client</span><span class="p">.</span><span class="n">Timeout</span> <span class="p">=</span> <span class="p">-</span><span class="m">1</span><span class="p">;</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">PUT</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"Content-Type"</span><span class="p">,</span> <span class="s">"application/x-www-form-urlencoded"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"[\"Category\"][\"name\"]"</span><span class="p">,</span> <span class="s">"Categoria Teste"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"[\"Category\"][\"description\"]"</span><span class="p">,</span> <span class="s">"Categoria de Teste da Loja"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"[\"Category\"][\"slug\"]"</span><span class="p">,</span> <span class="s">"categoria-teste"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"[\"Category\"][\"order\"]"</span><span class="p">,</span> <span class="s">"2"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"[\"Category\"][\"title\"]"</span><span class="p">,</span> <span class="s">"Categoria de Teste"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"[\"Category\"][\"small_description\"]"</span><span class="p">,</span> <span class="s">"Categoria de Teste da Loja"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"[\"Category\"][\"has_acceptance_term\"]"</span><span class="p">,</span> <span class="s">"1"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"[\"Category\"][\"acceptance_term\"]"</span><span class="p">,</span> <span class="s">"Eu aceito os termos de uso ..."</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"[\"Category\"][\"metatag\"][\"keywords\"]"</span><span class="p">,</span> <span class="s">"categoria teste"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"[\"Category\"][\"metatag\"][\"description\"]"</span><span class="p">,</span> <span class="s">"categoria teste da loja"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"[\"Category\"][\"property\"]"</span><span class="p">,</span> <span class="s">"Característica Teste 1\",\"Característica Teste 2"</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">Content</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">OkHttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">OkHttpClient</span><span class="o">().</span><span class="na">newBuilder</span><span class="o">()</span>
+  <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="nc">MediaType</span> <span class="n">mediaType</span> <span class="o">=</span> <span class="nc">MediaType</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">"application/x-www-form-urlencoded"</span><span class="o">);</span>
+<span class="nc">RequestBody</span> <span class="n">body</span> <span class="o">=</span> <span class="nc">RequestBody</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">mediaType</span><span class="o">,</span> <span class="s">"[\"Category\"][\"name\"]=Categoria Teste&amp;[\"Category\"][\"description\"]=Categoria de Teste da Loja&amp;[\"Category\"][\"slug\"]=categoria-teste&amp;[\"Category\"][\"order\"]=2&amp;[\"Category\"][\"title\"]=Categoria de Teste&amp;[\"Category\"][\"small_description\"]=Categoria de Teste da Loja&amp;[\"Category\"][\"has_acceptance_term\"]=1&amp;[\"Category\"][\"acceptance_term\"]=Eu aceito os termos de uso ...&amp;[\"Category\"][\"metatag\"][\"keywords\"]=categoria teste&amp;[\"Category\"][\"metatag\"][\"description\"]=categoria teste da loja&amp;[\"Category\"][\"property\"]=Característica Teste 1\",\"Característica Teste 2"</span><span class="o">);</span>
+<span class="nc">Request</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Request</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
+  <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="s">"https://{api_address}/categories/?access_token={{access_token}}"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">method</span><span class="o">(</span><span class="s">"PUT"</span><span class="o">,</span> <span class="n">body</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/x-www-form-urlencoded"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="nc">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">newCall</span><span class="o">(</span><span class="n">request</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
+</code></pre></div><h3 id='metodo-put'>Método PUT</h3>
+<p><code>https://{api_address}/categories/:id</code></p>
+<h3 id='parametros-enviados-5'>Parâmetros enviados:</h3>
+<blockquote>
+<p>Estrutura do Json:</p>
+</blockquote>
+
+<pre>
+{
+  "Category": {
+      "name": "Categoria Teste", 
+      "description": "Categoria de Teste da Loja",
+      "slug": "categoria-teste",
+      "order":"2",
+      "title": "Categoria de Teste",
+      "small_description":"Categoria de Teste da Loja",
+      "has_acceptance_term":"1",
+      "acceptance_term": "Eu aceito os termos de uso ...",
+      "metatag": {
+          "keywords": "categoria teste 123",
+          "description": "categoria teste da loja 123"
+      },
+      "property": [
+          "Característica Teste 1 123",
+          "Característica Teste 2 123"
+      ]
+  }
+}
+</pre>
+
+<table><thead>
+<tr>
+<th>Campo</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>String</td>
+<td>Chave de acesso</td>
+</tr>
+<tr>
+<td>:id</td>
+<td>Number</td>
+<td>Código da categoria (pai)</td>
+</tr>
+<tr>
+<td>Category</td>
+<td>JSON</td>
+<td>Dados da categoria</td>
+</tr>
+<tr>
+<td>description</td>
+<td>String</td>
+<td>Descrição da categoria</td>
+</tr>
+<tr>
+<td>slug</td>
+<td>String</td>
+<td>Final da URL da categoria</td>
+</tr>
+<tr>
+<td>order</td>
+<td>Number</td>
+<td>Posição na Ordenação das Categorias</td>
+</tr>
+<tr>
+<td>title</td>
+<td>String</td>
+<td>Title da pagina de categorias</td>
+</tr>
+<tr>
+<td>small_description</td>
+<td>String</td>
+<td>Descrição detalhada da Categoria</td>
+</tr>
+<tr>
+<td>has_acceptance_term</td>
+<td>Number</td>
+<td>Categoria com termo de aceitação ( 0</td>
+</tr>
+<tr>
+<td>acceptance_term</td>
+<td>String</td>
+<td>Texto com os termos a ser aceito na categoria</td>
+</tr>
+<tr>
+<td>Metatag</td>
+<td>Object</td>
+<td>Meta Tag</td>
+</tr>
+<tr>
+<td>keywords</td>
+<td>String</td>
+<td>Palavras-Chaves de Meta Tag</td>
+</tr>
+<tr>
+<td>description</td>
+<td>String</td>
+<td>Descrição de Meta Tag</td>
+</tr>
+<tr>
+<td>property</td>
+<td>String</td>
+<td>Características</td>
+</tr>
+</tbody></table>
+<h3 id='retorno-em-caso-de-sucesso-status-code-200-ou-201-5'>Retorno em caso de sucesso (status code 200 ou 201)</h3>
+<blockquote>
+<p>Retorno de Sucesso:</p>
+</blockquote>
+
+<pre>
+{
+    "message": "Created",
+    "id": "456",
+    "code": 201
+}
+</pre>
+
+<table><thead>
+<tr>
+<th>Campo</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>message</td>
+<td>String</td>
+<td>Mensagem de retorno</td>
+</tr>
+<tr>
+<td>id</td>
+<td>Number</td>
+<td>Código da categoria</td>
+</tr>
+<tr>
+<td>code</td>
+<td>Number</td>
+<td>Código do retorno (201)</td>
+</tr>
+</tbody></table>
+<h3 id='observacao-2'>Observação:</h3>
+<p>Para atualizar uma sub categoria, deverá ser realizado os mesmos procedimento acima, no entanto, na url o id informado deverá ser o id da subcategoria</p>
+
+<p>E no corpo da requisição, deverá ser informado o campo <code>&quot;parent_id&quot;</code>, que será o id da categoria pai onde se encontra atualmente a subcategoria</p>
+<h2 id='excluir-categoria-delete'>Excluir Categoria#delete</h2>
+<blockquote>
+<p>Código de Exemplo:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">-g</span> <span class="nt">--request</span> DELETE <span class="s1">'https://{api_address}/categories/:id?access_token={{access_token}}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'HTTP/Request2.php'</span><span class="p">;</span>
+<span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HTTP_Request2</span><span class="p">();</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setUrl</span><span class="p">(</span><span class="s1">'https://{api_address}/categories/:id?access_token={{access_token}}'</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setMethod</span><span class="p">(</span><span class="n">HTTP_Request2</span><span class="o">::</span><span class="no">METHOD_DELETE</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setConfig</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+  <span class="s1">'follow_redirects'</span> <span class="o">=&gt;</span> <span class="kc">TRUE</span>
+<span class="p">));</span>
+<span class="k">try</span> <span class="p">{</span>
+  <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">send</span><span class="p">();</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getBody</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s1">'Unexpected HTTP status: '</span> <span class="mf">.</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="mf">.</span> <span class="s1">' '</span> <span class="mf">.</span>
+    <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getReasonPhrase</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">catch</span><span class="p">(</span><span class="n">HTTP_Request2_Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s1">'Error: '</span> <span class="mf">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="nf">getMessage</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://{api_address}/categories/:id?access_token={{access_token}}"</span><span class="p">);</span>
+<span class="n">client</span><span class="p">.</span><span class="n">Timeout</span> <span class="p">=</span> <span class="p">-</span><span class="m">1</span><span class="p">;</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">DELETE</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">Content</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">OkHttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">OkHttpClient</span><span class="o">().</span><span class="na">newBuilder</span><span class="o">()</span>
+  <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="nc">MediaType</span> <span class="n">mediaType</span> <span class="o">=</span> <span class="nc">MediaType</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">"text/plain"</span><span class="o">);</span>
+<span class="nc">RequestBody</span> <span class="n">body</span> <span class="o">=</span> <span class="nc">RequestBody</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">mediaType</span><span class="o">,</span> <span class="s">""</span><span class="o">);</span>
+<span class="nc">Request</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Request</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
+  <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="s">"https://{api_address}/categories/:id?access_token={{access_token}}"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">method</span><span class="o">(</span><span class="s">"DELETE"</span><span class="o">,</span> <span class="n">body</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="nc">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">newCall</span><span class="o">(</span><span class="n">request</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
+</code></pre></div><h3 id='metodo-get-4'>Método GET</h3>
+<p><code>https://{api_address}/categories/:id</code></p>
+<h3 id='parametros-enviados-6'>Parâmetros enviados:</h3>
+<table><thead>
+<tr>
+<th>Campo</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>String</td>
+<td>Chave de acesso</td>
+</tr>
+<tr>
+<td>:id</td>
+<td>Number</td>
+<td>Código da categoria</td>
+</tr>
+</tbody></table>
+<h3 id='retorno-em-caso-de-sucesso-status-code-200-ou-201-6'>Retorno em caso de sucesso (status code 200 ou 201)</h3>
+<blockquote>
+<p>Retorno de Sucesso:</p>
+</blockquote>
+
+<pre>
+{
+  "message": "Deleted",
+  "id": "456",
+  "code": 200
+}
+</pre>
+
+<table><thead>
+<tr>
+<th>Campo</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>message</td>
+<td>String</td>
+<td>Mensagem de retorno</td>
+</tr>
+<tr>
+<td>id</td>
+<td>Number</td>
+<td>Código da categoria</td>
+</tr>
+<tr>
+<td>code</td>
+<td>Number</td>
+<td>Código do retorno (200)</td>
 </tr>
 </tbody></table>
 <h1 id='api-de-nota-fiscal'>API de Nota Fiscal</h1><h2 id='listagem-de-notas-fiscais-get'>Listagem de Notas Fiscais#get</h2>
