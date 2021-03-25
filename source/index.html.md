@@ -23,7 +23,7 @@ includes:
   - clientes
   # - cupom
   - caracteristicas
-  # - categorias
+  - categorias
   # - variacao-produtos
   # - marca-produto
   # - kit
