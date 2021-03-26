@@ -18,14 +18,14 @@ includes:
   - produtos-vendidos
   - pedidos
   # - integracao-frete
-  # - sistema-notificacao
-  # - scripts-externos
+  - sistema-notificacao
+  - scripts-externos
   - clientes
   # - cupom
   - caracteristicas
   - categorias
   # - variacao-produtos
-  # - marca-produto
+  - marca-produto
   # - kit
   # - informacao-adicional
   - nota-fiscal
@@ -38,8 +38,6 @@ includes:
   - informacoes-loja
   # - carrinho-compra
   # - lista-preco-b2b
-  # - kittens
-  # - errors
 
 search: true
 
