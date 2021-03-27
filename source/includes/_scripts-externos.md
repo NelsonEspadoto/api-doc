@@ -255,7 +255,7 @@ Response response = client.newCall(request).execute();
 ```
 
 ### Método PUT
-`https://{api_address}/orders/invoices`
+`https://{api_address}/external_scripts/:id?access_token={{access_token}}`
 
 ### Parâmetros enviados:
 
@@ -299,13 +299,13 @@ code	|Number|	Código do retorno (201)
 > Código de Exemplo:
 
 ```shell
-curl --location -g --request DELETE 'https://{api_address}/external_scripts/?access_token={{access_token}}'
+curl --location -g --request DELETE 'https://{api_address}/external_scripts/:id?access_token={{access_token}}'
 ```
 ```php
 <?php
 require_once 'HTTP/Request2.php';
 $request = new HTTP_Request2();
-$request->setUrl('https://{api_address}/external_scripts/?access_token={{access_token}}');
+$request->setUrl('https://{api_address}/external_scripts/:id?access_token={{access_token}}');
 $request->setMethod(HTTP_Request2::METHOD_DELETE);
 $request->setConfig(array(
   'follow_redirects' => TRUE
@@ -325,7 +325,7 @@ catch(HTTP_Request2_Exception $e) {
 }
 ```
 ```csharp
-var client = new RestClient("https://{api_address}/external_scripts/?access_token={{access_token}}");
+var client = new RestClient("https://{api_address}/external_scripts/:id?access_token={{access_token}}");
 client.Timeout = -1;
 var request = new RestRequest(Method.DELETE);
 IRestResponse response = client.Execute(request);
@@ -337,15 +337,14 @@ OkHttpClient client = new OkHttpClient().newBuilder()
 MediaType mediaType = MediaType.parse("text/plain");
 RequestBody body = RequestBody.create(mediaType, "");
 Request request = new Request.Builder()
-  .url("https://{api_address}/external_scripts/?access_token={{access_token}}")
+  .url("https://{api_address}/external_scripts/:id?access_token={{access_token}}")
   .method("DELETE", body)
   .build();
 Response response = client.newCall(request).execute();
 ```
 
-
 ### Método DELETE
-`https://{api_address}/orders/invoices`
+`https://{api_address}/external_scripts/:id`
 
 ### Parâmetros enviados:
 

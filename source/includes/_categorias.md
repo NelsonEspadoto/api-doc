@@ -729,7 +729,7 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-### Método GET
+### Método Delete
 `https://{api_address}/categories/:id`
 
 ### Parâmetros enviados:

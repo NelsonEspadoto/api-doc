@@ -50,7 +50,7 @@ Response response = client.newCall(request).execute();
 ```
 
 ### Método GET
-`https://{api_address}/products/properties`
+`https://{api_address}/products/properties?access_token={{access_token}}`
 
 ### Parâmetros enviados:
 
@@ -235,7 +235,7 @@ Response response = client.newCall(request).execute();
 </pre>
 
 ### Método POST
-`https://{api_address}/products/:id/properties`
+`https://{api_address}/products/:id/properties?access_token={{access_token}}`
 
 ### Parâmetros enviados:
 
@@ -260,3 +260,172 @@ Campo|Tipo|Descrição
 -----|----|---------
 message	|String|	Mensagem de retorno
 code	|Number|	Código do retorno (201)
+
+## Criar uma Característica#post
+
+> Código de Exemplo:
+
+```shell
+curl --location -g --request POST 'https://{api_address}/properties?access_token={{access_token}}' \
+--data-raw '{
+    "name": "Caracteristica via API 1",
+    "PropertyValues": [
+        {
+            "name": "Valor 1"
+        },
+        {
+            "name": "Valor 2"
+        }
+    ]
+}'
+```
+```php
+<?php
+require_once 'HTTP/Request2.php';
+$request = new HTTP_Request2();
+$request->setUrl('https://{api_address}/properties?access_token={{access_token}}');
+$request->setMethod(HTTP_Request2::METHOD_POST);
+$request->setConfig(array(
+  'follow_redirects' => TRUE
+));
+$request->setBody('{\n    "name": "Caracteristica via API 1",\n    "PropertyValues": [\n        {\n            "name": "Valor 1"\n        },\n        {\n            "name": "Valor 2"\n        }\n    ]\n}');
+try {
+  $response = $request->send();
+  if ($response->getStatus() == 200) {
+    echo $response->getBody();
+  }
+  else {
+    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    $response->getReasonPhrase();
+  }
+}
+catch(HTTP_Request2_Exception $e) {
+  echo 'Error: ' . $e->getMessage();
+}
+```
+```csharp
+var client = new RestClient("https://{api_address}/properties?access_token={{access_token}}");
+client.Timeout = -1;
+var request = new RestRequest(Method.POST);
+request.AddParameter("text/plain", "{\n    \"name\": \"Caracteristica via API 1\",\n    \"PropertyValues\": [\n        {\n            \"name\": \"Valor 1\"\n        },\n        {\n            \"name\": \"Valor 2\"\n        }\n    ]\n}",  ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+Console.WriteLine(response.Content);
+```
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("text/plain");
+RequestBody body = RequestBody.create(mediaType, "{\n    \"name\": \"Caracteristica via API 1\",\n    \"PropertyValues\": [\n        {\n            \"name\": \"Valor 1\"\n        },\n        {\n            \"name\": \"Valor 2\"\n        }\n    ]\n}");
+Request request = new Request.Builder()
+  .url("https://{api_address}/properties?access_token={{access_token}}")
+  .method("POST", body)
+  .build();
+Response response = client.newCall(request).execute();
+```
+
+### Método POST
+`https://{api_address}/properties?access_token={{access_token}}`
+
+### Parâmetros enviados:
+
+Campo|Tipo|Descrição
+-----|----|---------
+access_token	|String|	Chave de acesso
+name	|String|	Nome da característica
+PropertyValues	|Array[ ]|	Propriedades da característica
+name	|String|	Nome da propriedade
+
+### Retorno em caso de sucesso (status code 200 ou 201)
+
+> Retorno de Sucesso:
+
+<pre>
+{
+    "message": "Created",
+    "id": "19",
+    "code": 201
+}
+</pre>
+
+Campo|Tipo|Descrição
+-----|----|---------
+message	|String|	Mensagem de retorno
+id	|Number|	Código da característica
+code	|Number|	Código do retorno (201)
+
+## Deletar uma Característica#delete
+
+> Código de Exemplo:
+
+```shell
+curl --location -g --request DELETE 'https://{api_address}/properties/:id?access_token={{access_token}}'
+```
+```php
+<?php
+require_once 'HTTP/Request2.php';
+$request = new HTTP_Request2();
+$request->setUrl('https://{api_address}/properties/:id?access_token={{access_token}}');
+$request->setMethod(HTTP_Request2::METHOD_DELETE);
+$request->setConfig(array(
+  'follow_redirects' => TRUE
+));
+try {
+  $response = $request->send();
+  if ($response->getStatus() == 200) {
+    echo $response->getBody();
+  }
+  else {
+    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    $response->getReasonPhrase();
+  }
+}
+catch(HTTP_Request2_Exception $e) {
+  echo 'Error: ' . $e->getMessage();
+}
+```
+```csharp
+var client = new RestClient("https://{api_address}/properties/:id?access_token={{access_token}}");
+client.Timeout = -1;
+var request = new RestRequest(Method.DELETE);
+IRestResponse response = client.Execute(request);
+Console.WriteLine(response.Content);
+```
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("text/plain");
+RequestBody body = RequestBody.create(mediaType, "");
+Request request = new Request.Builder()
+  .url("https://{api_address}/properties/:id?access_token={{access_token}}")
+  .method("DELETE", body)
+  .build();
+Response response = client.newCall(request).execute();
+```
+
+### Método Delete
+`https://{api_address}/properties/:id?access_token={{access_token}}`
+
+### Parâmetros enviados:
+
+Campo|Tipo|Descrição
+-----|----|---------
+access_token	|String|	Chave de acesso
+:id	|Number|	Código do cliente
+
+### Retorno em caso de sucesso (status code 200 ou 201)
+
+> Retorno de Sucesso:
+
+<pre>
+{
+  "message": "Deleted",
+  "id": "19",
+  "code": 200
+}
+</pre>
+
+Campo|Tipo|Descrição
+-----|----|---------
+message	|String|	Mensagem de retorno
+id	|Number|	Código da característica
+code	|Number|	Código do retorno (200)

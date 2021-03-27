@@ -17,27 +17,27 @@ includes:
   - produtos
   - produtos-vendidos
   - pedidos
-  # - integracao-frete
+  - integracao-frete
   - sistema-notificacao
   - scripts-externos
   - clientes
-  # - cupom
+  - cupom
   - caracteristicas
   - categorias
-  # - variacao-produtos
+  - variacao-produtos
   - marca-produto
-  # - kit
-  # - informacao-adicional
+  - kit
+  - informacao-adicional
   - nota-fiscal
-  # - status-pedido
-  # - newsletter
-  # - parceiros
+  - status-pedido
+  - newsletter
+  - parceiros
   - palavra-chave
   - etiqueta-mercado-livre
-  # - informacoes-pagamento
+  - informacoes-pagamento
   - informacoes-loja
-  # - carrinho-compra
-  # - lista-preco-b2b
+  - carrinho-compra
+  - lista-preco-b2b
 
 search: true
 

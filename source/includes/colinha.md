@@ -12,10 +12,7 @@
 ```java
 
 ```
-
 {{access_token}}
-
-
 ### Método GET
 `https://{api_address}/orders/invoices`
 

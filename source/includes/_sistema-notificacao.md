@@ -54,7 +54,7 @@ Exemplo de envio do payload:
 
 Segue exemplo abaixo de payload, sobre o que é enviado via POST da Tray para a url do Webhook, dessa forma, é necessário realizar a captura dessas informações via código e então implementar as configurações dentro do sistema, de acordo com a necessidade do aplicativo.
 
-{ "seller_id"=>391250, "scope_id"=>4375797, "scope_name"=>"order", "act"=>"update", "app_code"=>"718", "url_notification"=>"https://suaurldenotificacao" }
+`{ "seller_id"=>391250, "scope_id"=>4375797, "scope_name"=>"order", "act"=>"update", "app_code"=>"718", "url_notification"=>"https://suaurldenotificacao" }`
 
 ### É possível habilitar o webhook para lojas específicas ou desabilitar de lojas específicas?
 Não. Atualmente o serviço disponibilizado atua sobre o aplicativo e não sobre as lojas, ou seja, qualquer loja integrada ao app, o Integrador receberá as notificações das mesmas, sendo assim, para não receber as notificações de determinada loja, somente realizando a desinstalação do app dentro dessa loja.
