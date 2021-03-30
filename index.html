@@ -1190,6 +1190,48 @@
               <svg width='23' height='24' viewBox='0 0 25 15' xmlns='http://www.w3.org/2000/svg'><path d='M1.9 1h5.027c.24 0 .467.1.637.276l2.172 2.272c.17.177.398.276.637.276H18.1c.497 0 .9.42.9.94V16.03c0 .52-.403.97-.9.97H1.9c-.497 0-.9-.45-.9-.97V1.94c0-.518.403-.94.9-.94z' stroke-width='2' stroke='#032f6a' fill='none' opacity='.6'/></svg>
               API de Status do Pedido
             </a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#listagem-de-status-get" class="toc-h2 toc-link" data-title="Listagem de Status#get">
+                      <span class="tag tag--get">get</span>
+                      Listagem de Status
+                    </a>
+                  </li>
+                  <li>
+                  </li>
+                  <li>
+                    <a href="#consultar-dados-do-status-get" class="toc-h2 toc-link" data-title="Consultar Dados do Status#get">
+                      <span class="tag tag--get">get</span>
+                      Consultar Dados do Status
+                    </a>
+                  </li>
+                  <li>
+                  </li>
+                  <li>
+                    <a href="#cadastrar-status-post" class="toc-h2 toc-link" data-title="Cadastrar Status#post">
+                      <span class="tag tag--post">post</span>
+                      Cadastrar Status
+                    </a>
+                  </li>
+                  <li>
+                  </li>
+                  <li>
+                    <a href="#atualizar-dados-do-status-put" class="toc-h2 toc-link" data-title="Atualizar Dados do Status#put">
+                      <span class="tag tag--put">put</span>
+                      Atualizar Dados do Status
+                    </a>
+                  </li>
+                  <li>
+                  </li>
+                  <li>
+                    <a href="#excluir-status-delete" class="toc-h2 toc-link" data-title="Excluir Status#delete">
+                      <span class="tag tag--delete">delete</span>
+                      Excluir Status
+                    </a>
+                  </li>
+                  <li>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#apis-de-newsletter" class="toc-h1 toc-link" data-title="APIs de Newsletter">
@@ -20910,7 +20952,672 @@ Visualização de produto que apenas compõe o kit &quot;filho&quot; (is_kit = 0
 <p>Quando se tratar de um pedido do Mercado Livre, é muito importante o integrador validar junto ao lojista, o fluxo da utilização do Faturar do ML, para que não venha ocorrer problemas de duplicação de notas fiscais.</p>
 
 <p>Sendo assim, é de suma importância que o integrador contemple em sua rotina, a checagem do pedido, para averiguar se o mesmo já possui nota emitida ou não, pois é muito comum retornar um erro genérico do Mercado Livre na API, devido ao pedido já possuir uma nota fiscal e o integrador ficar tentando criar uma nota que já existe. Por este motivo, o fluxo do Faturador do ML deverá ser acertado entre ERP X LOJISTA.</p>
-<h1 id='api-de-status-do-pedido'>API de Status do Pedido</h1><h1 id='apis-de-newsletter'>APIs de Newsletter</h1><h2 id='listagem-de-newsletter-get'>Listagem de Newsletter#get</h2>
+<h1 id='api-de-status-do-pedido'>API de Status do Pedido</h1><h2 id='listagem-de-status-get'>Listagem de Status#get</h2>
+<blockquote>
+<p>Código de Exemplo:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">-g</span> <span class="nt">--request</span> GET <span class="s1">'https://{api_address}/orders/statuses?access_token={{access_token}}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'HTTP/Request2.php'</span><span class="p">;</span>
+<span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HTTP_Request2</span><span class="p">();</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setUrl</span><span class="p">(</span><span class="s1">'https://{api_address}/orders/statuses?access_token={{access_token}}'</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setMethod</span><span class="p">(</span><span class="n">HTTP_Request2</span><span class="o">::</span><span class="no">METHOD_GET</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setConfig</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+  <span class="s1">'follow_redirects'</span> <span class="o">=&gt;</span> <span class="kc">TRUE</span>
+<span class="p">));</span>
+<span class="k">try</span> <span class="p">{</span>
+  <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">send</span><span class="p">();</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getBody</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s1">'Unexpected HTTP status: '</span> <span class="mf">.</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="mf">.</span> <span class="s1">' '</span> <span class="mf">.</span>
+    <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getReasonPhrase</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">catch</span><span class="p">(</span><span class="n">HTTP_Request2_Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s1">'Error: '</span> <span class="mf">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="nf">getMessage</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://{api_address}/orders/statuses?access_token={{access_token}}"</span><span class="p">);</span>
+<span class="n">client</span><span class="p">.</span><span class="n">Timeout</span> <span class="p">=</span> <span class="p">-</span><span class="m">1</span><span class="p">;</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">GET</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">Content</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">OkHttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">OkHttpClient</span><span class="o">().</span><span class="na">newBuilder</span><span class="o">()</span>
+  <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="nc">Request</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Request</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
+  <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="s">"https://{api_address}/orders/statuses?access_token={{access_token}}"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">method</span><span class="o">(</span><span class="s">"GET"</span><span class="o">,</span> <span class="kc">null</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="nc">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">newCall</span><span class="o">(</span><span class="n">request</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
+</code></pre></div><h3 id='metodo-get'>Método GET</h3>
+<p><code>https://{api_address}/orders/statuses?access_token={{access_token}}</code></p>
+<h3 id='parametros-enviados'>Parâmetros enviados:</h3>
+<table><thead>
+<tr>
+<th>Campo</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>String</td>
+<td>Chave de acesso</td>
+</tr>
+<tr>
+<td>attrs</td>
+<td>Number</td>
+<td>Atributos do status</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Number</td>
+<td>Limite de registros</td>
+</tr>
+<tr>
+<td>page</td>
+<td>Number</td>
+<td>Página corrente</td>
+</tr>
+<tr>
+<td>sort</td>
+<td>String</td>
+<td>Ordenação ex.: [campo]_[asc/desc]</td>
+</tr>
+</tbody></table>
+<h3 id='retorno-em-caso-de-sucesso-status-code-200-ou-201'>Retorno em caso de sucesso (status code 200 ou 201)</h3>
+<blockquote>
+<p>Retorno de Sucesso:</p>
+</blockquote>
+
+<pre>
+{
+    "paging": {
+        "total": 6,
+        "page": 1,
+        "offset": 0,
+        "limit": 1,
+        "maxLimit": 50
+    },
+    "sort": [
+        {
+            "id": "desc"
+        }
+    ],
+    "availableFilters": [],
+    "appliedFilters": [],
+    "OrderStatuses": [
+        {
+            "OrderStatus": {
+                "status": "ENVIADO",
+                "id": "1",
+                "show_backoffice": "1"
+            }
+        }
+    ]
+}
+</pre>
+
+<table><thead>
+<tr>
+<th>Campo</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>paging</td>
+<td>Object</td>
+<td>Dados de paginação</td>
+</tr>
+<tr>
+<td>total</td>
+<td>Number</td>
+<td>Total de registros</td>
+</tr>
+<tr>
+<td>page</td>
+<td>Number</td>
+<td>Página corrente</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>Number</td>
+<td>Registro inicial da página</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Number</td>
+<td>Limite de registros</td>
+</tr>
+<tr>
+<td>maxLimit</td>
+<td>Number</td>
+<td>Máximo de registros</td>
+</tr>
+<tr>
+<td>sort</td>
+<td>Object[ ]</td>
+<td>Ordenação</td>
+</tr>
+<tr>
+<td>availableFilters</td>
+<td>String[ ]</td>
+<td>Filtros disponíveis</td>
+</tr>
+<tr>
+<td>appliedFilters</td>
+<td>String[ ]</td>
+<td>Filtros utilizados</td>
+</tr>
+<tr>
+<td>OrderStatuses</td>
+<td>Object[ ]</td>
+<td>Lista de produtos</td>
+</tr>
+<tr>
+<td>OrderStatus</td>
+<td>Object</td>
+<td>Dados do status</td>
+</tr>
+<tr>
+<td>id</td>
+<td>Number</td>
+<td>Código do status</td>
+</tr>
+<tr>
+<td>status</td>
+<td>String</td>
+<td>Nome do status</td>
+</tr>
+<tr>
+<td>show_backoffice</td>
+<td>Number</td>
+<td>Exibir na área administrativa</td>
+</tr>
+</tbody></table>
+<h2 id='consultar-dados-do-status-get'>Consultar Dados do Status#get</h2>
+<p>Requisição para a consulta de dados de um status de pedidos.</p>
+
+<blockquote>
+<p>Código de Exemplo:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">-g</span> <span class="nt">--request</span> GET <span class="s1">'https://{api_address}/orders/statuses/:id?access_token={{access_token}}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'HTTP/Request2.php'</span><span class="p">;</span>
+<span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HTTP_Request2</span><span class="p">();</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setUrl</span><span class="p">(</span><span class="s1">'https://{api_address}/orders/statuses/:id?access_token={{access_token}}'</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setMethod</span><span class="p">(</span><span class="n">HTTP_Request2</span><span class="o">::</span><span class="no">METHOD_GET</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setConfig</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+  <span class="s1">'follow_redirects'</span> <span class="o">=&gt;</span> <span class="kc">TRUE</span>
+<span class="p">));</span>
+<span class="k">try</span> <span class="p">{</span>
+  <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">send</span><span class="p">();</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getBody</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s1">'Unexpected HTTP status: '</span> <span class="mf">.</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="mf">.</span> <span class="s1">' '</span> <span class="mf">.</span>
+    <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getReasonPhrase</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">catch</span><span class="p">(</span><span class="n">HTTP_Request2_Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s1">'Error: '</span> <span class="mf">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="nf">getMessage</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://{api_address}/orders/statuses/:id?access_token={{access_token}}"</span><span class="p">);</span>
+<span class="n">client</span><span class="p">.</span><span class="n">Timeout</span> <span class="p">=</span> <span class="p">-</span><span class="m">1</span><span class="p">;</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">GET</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">Content</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">OkHttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">OkHttpClient</span><span class="o">().</span><span class="na">newBuilder</span><span class="o">()</span>
+  <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="nc">Request</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Request</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
+  <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="s">"https://{api_address}/orders/statuses/:id?access_token={{access_token}}"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">method</span><span class="o">(</span><span class="s">"GET"</span><span class="o">,</span> <span class="kc">null</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="nc">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">newCall</span><span class="o">(</span><span class="n">request</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
+</code></pre></div><h3 id='metodo-get-2'>Método GET</h3>
+<p><code>https://{api_address}/orders/statuses/:id?access_token={{access_token}}</code></p>
+<h3 id='parametros-enviados-2'>Parâmetros enviados:</h3>
+<table><thead>
+<tr>
+<th>Campo</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>String</td>
+<td>Chave de acesso</td>
+</tr>
+<tr>
+<td>:id</td>
+<td>Number</td>
+<td>Código do status</td>
+</tr>
+</tbody></table>
+<h3 id='retorno-em-caso-de-sucesso-status-code-200-ou-201-2'>Retorno em caso de sucesso (status code 200 ou 201)</h3>
+<blockquote>
+<p>Retorno de Sucesso:</p>
+</blockquote>
+
+<pre>
+{
+    "OrderStatus":{
+        "status":"ENVIADO",
+        "id":"1",
+        "default":"1"
+    }
+}
+</pre>
+
+<table><thead>
+<tr>
+<th>Campo</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>OrderStatus</td>
+<td>Object</td>
+<td>Dados do status</td>
+</tr>
+<tr>
+<td>id</td>
+<td>Number</td>
+<td>Código do status</td>
+</tr>
+<tr>
+<td>status</td>
+<td>String</td>
+<td>Nome do status</td>
+</tr>
+<tr>
+<td>default</td>
+<td>Number</td>
+<td>Status padrão (Veja Tabela A)</td>
+</tr>
+</tbody></table>
+<h2 id='cadastrar-status-post'>Cadastrar Status#post</h2>
+<p>Requisição para inclusão de um novo status de pedidos. Deverá enviar o JSON com os dados do status para a criação.</p>
+
+<blockquote>
+<p>Código de Exemplo:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">-g</span> <span class="nt">--request</span> POST <span class="s1">'https://{api_address}/orders/statuses?access_token={{access_token}}'</span> <span class="se">\</span>
+<span class="nt">--data-urlencode</span> <span class="s1">'["OrderStatus"]["status"]=NOVO STATUS'</span> <span class="se">\</span>
+<span class="nt">--data-urlencode</span> <span class="s1">'["OrderStatus"]["default"]=1'</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'HTTP/Request2.php'</span><span class="p">;</span>
+<span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HTTP_Request2</span><span class="p">();</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setUrl</span><span class="p">(</span><span class="s1">'https://{api_address}/orders/statuses?access_token={{access_token}}'</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setMethod</span><span class="p">(</span><span class="n">HTTP_Request2</span><span class="o">::</span><span class="no">METHOD_POST</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setConfig</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+  <span class="s1">'follow_redirects'</span> <span class="o">=&gt;</span> <span class="kc">TRUE</span>
+<span class="p">));</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">addPostParameter</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+  <span class="s1">'["OrderStatus"]["status"]'</span> <span class="o">=&gt;</span> <span class="s1">'NOVO STATUS'</span><span class="p">,</span>
+  <span class="s1">'["OrderStatus"]["default"]'</span> <span class="o">=&gt;</span> <span class="s1">'1'</span>
+<span class="p">));</span>
+<span class="k">try</span> <span class="p">{</span>
+  <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">send</span><span class="p">();</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getBody</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s1">'Unexpected HTTP status: '</span> <span class="mf">.</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="mf">.</span> <span class="s1">' '</span> <span class="mf">.</span>
+    <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getReasonPhrase</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">catch</span><span class="p">(</span><span class="n">HTTP_Request2_Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s1">'Error: '</span> <span class="mf">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="nf">getMessage</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://{api_address}/orders/statuses?access_token={{access_token}}"</span><span class="p">);</span>
+<span class="n">client</span><span class="p">.</span><span class="n">Timeout</span> <span class="p">=</span> <span class="p">-</span><span class="m">1</span><span class="p">;</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"[\"OrderStatus\"][\"status\"]"</span><span class="p">,</span> <span class="s">"NOVO STATUS"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"[\"OrderStatus\"][\"default\"]"</span><span class="p">,</span> <span class="s">"1"</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">Content</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">OkHttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">OkHttpClient</span><span class="o">().</span><span class="na">newBuilder</span><span class="o">()</span>
+  <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="nc">MediaType</span> <span class="n">mediaType</span> <span class="o">=</span> <span class="nc">MediaType</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">"text/plain"</span><span class="o">);</span>
+<span class="nc">RequestBody</span> <span class="n">body</span> <span class="o">=</span> <span class="nc">RequestBody</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">mediaType</span><span class="o">,</span> <span class="s">"[\"OrderStatus\"][\"status\"]=NOVO STATUS&amp;[\"OrderStatus\"][\"default\"]=1"</span><span class="o">);</span>
+<span class="nc">Request</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Request</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
+  <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="s">"https://{api_address}/orders/statuses?access_token={{access_token}}"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">method</span><span class="o">(</span><span class="s">"POST"</span><span class="o">,</span> <span class="n">body</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="nc">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">newCall</span><span class="o">(</span><span class="n">request</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
+</code></pre></div>
+<blockquote>
+<p>Estrutura do Json:</p>
+</blockquote>
+
+<pre>
+{
+    "OrderStatus":{
+        "status":"A ENVIAR TESTE1",
+        "description": "criação de um novo status",
+        "background": "#FFFFFF",
+        "default":"1"
+    }
+}
+</pre>
+<h3 id='metodo-post'>Método POST</h3>
+<p><code>https://{api_address}/orders/statuses?access_token={{access_token}}</code></p>
+<h3 id='parametros-enviados-3'>Parâmetros enviados:</h3>
+<table><thead>
+<tr>
+<th>Campo</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>String</td>
+<td>Chave de acesso</td>
+</tr>
+<tr>
+<td>OrderStatus</td>
+<td>JSON</td>
+<td>Dados do status</td>
+</tr>
+<tr>
+<td>status</td>
+<td>String</td>
+<td>Nome do status</td>
+</tr>
+<tr>
+<td>default</td>
+<td>Number</td>
+<td>Status padrão (Veja Tabela A)</td>
+</tr>
+</tbody></table>
+<h3 id='retorno-em-caso-de-sucesso-status-code-200-ou-201-3'>Retorno em caso de sucesso (status code 200 ou 201)</h3>
+<blockquote>
+<p>Retorno de Sucesso:</p>
+</blockquote>
+
+<pre>
+{
+    "message": "Created",
+    "id": "123",
+    "code": 201
+}
+</pre>
+
+<table><thead>
+<tr>
+<th>Campo</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>message</td>
+<td>String</td>
+<td>Mensagem de retorno</td>
+</tr>
+<tr>
+<td>id</td>
+<td>Number</td>
+<td>Código do status</td>
+</tr>
+<tr>
+<td>code</td>
+<td>Number</td>
+<td>Código do retorno (201)</td>
+</tr>
+</tbody></table>
+<h2 id='atualizar-dados-do-status-put'>Atualizar Dados do Status#put</h2>
+<p>Requisição para alterar os dados de um status de pedidos. Deverá enviar o JSON com os dados do status para a alteração.</p>
+
+<blockquote>
+<p>Código de Exemplo:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">-g</span> <span class="nt">--request</span> PUT <span class="s1">'https://{api_address}/orders/statuses/:id?access_token={{access_token}}'</span> <span class="se">\</span>
+<span class="nt">--data-urlencode</span> <span class="s1">'["OrderStatus"]["status"]=STATUS ALTERADO'</span> <span class="se">\</span>
+<span class="nt">--data-urlencode</span> <span class="s1">'["OrderStatus"]["default"]=1'</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'HTTP/Request2.php'</span><span class="p">;</span>
+<span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HTTP_Request2</span><span class="p">();</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setUrl</span><span class="p">(</span><span class="s1">'https://{api_address}/orders/statuses/:id?access_token={{access_token}}'</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setMethod</span><span class="p">(</span><span class="n">HTTP_Request2</span><span class="o">::</span><span class="no">METHOD_PUT</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setConfig</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+  <span class="s1">'follow_redirects'</span> <span class="o">=&gt;</span> <span class="kc">TRUE</span>
+<span class="p">));</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">addPostParameter</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+  <span class="s1">'["OrderStatus"]["status"]'</span> <span class="o">=&gt;</span> <span class="s1">'STATUS ALTERADO'</span><span class="p">,</span>
+  <span class="s1">'["OrderStatus"]["default"]'</span> <span class="o">=&gt;</span> <span class="s1">'1'</span>
+<span class="p">));</span>
+<span class="k">try</span> <span class="p">{</span>
+  <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">send</span><span class="p">();</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getBody</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s1">'Unexpected HTTP status: '</span> <span class="mf">.</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="mf">.</span> <span class="s1">' '</span> <span class="mf">.</span>
+    <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getReasonPhrase</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">catch</span><span class="p">(</span><span class="n">HTTP_Request2_Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s1">'Error: '</span> <span class="mf">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="nf">getMessage</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://{api_address}/orders/statuses/:id?access_token={{access_token}}"</span><span class="p">);</span>
+<span class="n">client</span><span class="p">.</span><span class="n">Timeout</span> <span class="p">=</span> <span class="p">-</span><span class="m">1</span><span class="p">;</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">PUT</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"[\"OrderStatus\"][\"status\"]"</span><span class="p">,</span> <span class="s">"STATUS ALTERADO"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"[\"OrderStatus\"][\"default\"]"</span><span class="p">,</span> <span class="s">"1"</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">Content</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">OkHttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">OkHttpClient</span><span class="o">().</span><span class="na">newBuilder</span><span class="o">()</span>
+  <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="nc">MediaType</span> <span class="n">mediaType</span> <span class="o">=</span> <span class="nc">MediaType</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">"text/plain"</span><span class="o">);</span>
+<span class="nc">RequestBody</span> <span class="n">body</span> <span class="o">=</span> <span class="nc">RequestBody</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">mediaType</span><span class="o">,</span> <span class="s">"[\"OrderStatus\"][\"status\"]=STATUS ALTERADO&amp;[\"OrderStatus\"][\"default\"]=1"</span><span class="o">);</span>
+<span class="nc">Request</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Request</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
+  <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="s">"https://{api_address}/orders/statuses/:id?access_token={{access_token}}"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">method</span><span class="o">(</span><span class="s">"PUT"</span><span class="o">,</span> <span class="n">body</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="nc">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">newCall</span><span class="o">(</span><span class="n">request</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
+</code></pre></div>
+<blockquote>
+<p>Estrutura do Json:</p>
+</blockquote>
+
+<pre>
+{
+    "OrderStatus":{
+        "status":"STATUS ALTERADO",
+        "default":"1"
+    }
+}
+</pre>
+<h3 id='metodo-put'>Método PUT</h3>
+<p><code>https://{api_address}/orders/statuses/:id?access_token={{access_token}}</code></p>
+<h3 id='parametros-enviados-4'>Parâmetros enviados:</h3>
+<table><thead>
+<tr>
+<th>Campo</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>String</td>
+<td>Chave de acesso</td>
+</tr>
+<tr>
+<td>:id</td>
+<td>String</td>
+<td>Código do status</td>
+</tr>
+<tr>
+<td>OrderStatus</td>
+<td>JSON</td>
+<td>Dados do status</td>
+</tr>
+<tr>
+<td>status</td>
+<td>String</td>
+<td>Nome do status</td>
+</tr>
+<tr>
+<td>default</td>
+<td>Number</td>
+<td>Status padrão (Veja Tabela A)</td>
+</tr>
+</tbody></table>
+<h3 id='retorno-em-caso-de-sucesso-status-code-200-ou-201-4'>Retorno em caso de sucesso (status code 200 ou 201)</h3>
+<blockquote>
+<p>Retorno de Sucesso:</p>
+</blockquote>
+
+<pre>
+{
+    "message": "Saved",
+    "id": "123",
+    "code": 200
+}
+</pre>
+
+<table><thead>
+<tr>
+<th>Campo</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>message</td>
+<td>String</td>
+<td>Mensagem de retorno</td>
+</tr>
+<tr>
+<td>id</td>
+<td>Number</td>
+<td>Código do cliente</td>
+</tr>
+<tr>
+<td>code</td>
+<td>Number</td>
+<td>Código do retorno (200)</td>
+</tr>
+</tbody></table>
+<h2 id='excluir-status-delete'>Excluir Status#delete</h2>
+<blockquote>
+<p>Código de Exemplo:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">-g</span> <span class="nt">--request</span> DELETE <span class="s1">'https://{api_address}/orders/statuses/:id?access_token={{access_token}}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'HTTP/Request2.php'</span><span class="p">;</span>
+<span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HTTP_Request2</span><span class="p">();</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setUrl</span><span class="p">(</span><span class="s1">'https://{api_address}/orders/statuses/:id?access_token={{access_token}}'</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setMethod</span><span class="p">(</span><span class="n">HTTP_Request2</span><span class="o">::</span><span class="no">METHOD_DELETE</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setConfig</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+  <span class="s1">'follow_redirects'</span> <span class="o">=&gt;</span> <span class="kc">TRUE</span>
+<span class="p">));</span>
+<span class="k">try</span> <span class="p">{</span>
+  <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">send</span><span class="p">();</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getBody</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s1">'Unexpected HTTP status: '</span> <span class="mf">.</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="mf">.</span> <span class="s1">' '</span> <span class="mf">.</span>
+    <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getReasonPhrase</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">catch</span><span class="p">(</span><span class="n">HTTP_Request2_Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s1">'Error: '</span> <span class="mf">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="nf">getMessage</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://{api_address}/orders/statuses/:id?access_token={{access_token}}"</span><span class="p">);</span>
+<span class="n">client</span><span class="p">.</span><span class="n">Timeout</span> <span class="p">=</span> <span class="p">-</span><span class="m">1</span><span class="p">;</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">DELETE</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">Content</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">OkHttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">OkHttpClient</span><span class="o">().</span><span class="na">newBuilder</span><span class="o">()</span>
+  <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="nc">MediaType</span> <span class="n">mediaType</span> <span class="o">=</span> <span class="nc">MediaType</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">"text/plain"</span><span class="o">);</span>
+<span class="nc">RequestBody</span> <span class="n">body</span> <span class="o">=</span> <span class="nc">RequestBody</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">mediaType</span><span class="o">,</span> <span class="s">""</span><span class="o">);</span>
+<span class="nc">Request</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Request</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
+  <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="s">"https://{api_address}/orders/statuses/:id?access_token={{access_token}}"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">method</span><span class="o">(</span><span class="s">"DELETE"</span><span class="o">,</span> <span class="n">body</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="nc">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">newCall</span><span class="o">(</span><span class="n">request</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
+</code></pre></div><h3 id='metodo-delete'>Método DELETE</h3>
+<p><code>https://{api_address}/orders/statuses/:id?access_token={{access_token}}</code></p>
+<h3 id='parametros-enviados-5'>Parâmetros enviados:</h3>
+<table><thead>
+<tr>
+<th>Campo</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>String</td>
+<td>Chave de acesso</td>
+</tr>
+<tr>
+<td>:id</td>
+<td>Number</td>
+<td>Código do pedido</td>
+</tr>
+</tbody></table>
+<h3 id='retorno-em-caso-de-sucesso-status-code-200-ou-201-5'>Retorno em caso de sucesso (status code 200 ou 201)</h3>
+<blockquote>
+<p>Retorno de Sucesso:</p>
+</blockquote>
+
+<pre>
+{
+    "message": "Deleted",
+    "id": "1",
+    "code": 200
+}
+</pre>
+
+<table><thead>
+<tr>
+<th>Campo</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>message</td>
+<td>String</td>
+<td>Mensagem de retorno</td>
+</tr>
+<tr>
+<td>id</td>
+<td>Number</td>
+<td>Código do status</td>
+</tr>
+<tr>
+<td>code</td>
+<td>Number</td>
+<td>Código do retorno (200)</td>
+</tr>
+</tbody></table>
+<h3 id='tabelas-auxiliares-de-pedidos'>Tabelas Auxiliares de Pedidos</h3><h3 id='tabela-a-tipo-de-status-do-pedido-campo-orderstatus-default'>Tabela A - Tipo de status do pedido (campo OrderStatus.default)</h3>
+<table><thead>
+<tr>
+<th>Valor</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>Status adicional</td>
+</tr>
+</tbody></table>
+<h1 id='apis-de-newsletter'>APIs de Newsletter</h1><h2 id='listagem-de-newsletter-get'>Listagem de Newsletter#get</h2>
 <p>Requisição para a consulta de diversos newsletter.</p>
 
 <blockquote>
