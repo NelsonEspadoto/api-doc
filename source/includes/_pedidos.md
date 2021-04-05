@@ -814,7 +814,7 @@ Requisição para consultar os dados das categorias de forma estruturada.
 > Código de Exemplo:
 
 ```shell
-curl --location -g --request POST 'https://{api_address}/orders?access_token={access_token}' \
+curl --location -g --request POST 'https://{api_address}/orders?access_token={{access_token}}' \
 --data-urlencode '["Order"]["point_sale"]=PARTICULAR' \
 --data-urlencode '["Order"]["shipment"] =Sedex' \
 --data-urlencode '["Order"]["shipment_value"]=10.44' \
@@ -839,13 +839,22 @@ curl --location -g --request POST 'https://{api_address}/orders?access_token={ac
 --data-urlencode '["Order"]["Customer"]["ProductsSold"][0]["variant_id"]=12' \
 --data-urlencode '["Order"]["Customer"]["ProductsSold"][0]["price"]=42.90' \
 --data-urlencode '["Order"]["Customer"]["ProductsSold"][0]["original_price"]=42.90' \
---data-urlencode '["Order"]["Customer"]["ProductsSold"][0]["quantity"]=1'
+--data-urlencode '["Order"]["Customer"]["ProductsSold"][0]["quantity"]=1' \
+--data-urlencode '["Order"]["MarketplaceOrder""]["marketplace_name"]=Mercado Livre' \
+--data-urlencode '["Order"]["MarketplaceOrder""]["marketplace_seller_name"]=1234567890' \
+--data-urlencode '["Order"]["MarketplaceOrder""]["marketplace_seller_id"]=273480425' \
+--data-urlencode '["Order"]["MarketplaceOrder""]["marketplace_document"]=0000000000000' \
+--data-urlencode '["Order"]["MarketplaceOrder""]["payment_responsible_document"]=0000000000000' \
+--data-urlencode '["Order"]["MarketplaceOrder""]["marketplace_order_id"]=4429804558' \
+--data-urlencode '["Order"]["MarketplaceOrder""]["marketplace_shipping_id"]=40457395268' \
+--data-urlencode '["Order"]["MarketplaceOrder""]["marketplace_shipping_type"]=me2' \
+--data-urlencode '["Order"]["MarketplaceOrder""]["marketplace_internal_status"]=shipping'
 ```
 ```php
 <?php
 require_once 'HTTP/Request2.php';
 $request = new HTTP_Request2();
-$request->setUrl('https://{api_address}/orders?access_token={access_token}');
+$request->setUrl('https://{api_address}/orders?access_token={{access_token}}');
 $request->setMethod(HTTP_Request2::METHOD_POST);
 $request->setConfig(array(
   'follow_redirects' => TRUE
@@ -875,7 +884,16 @@ $request->addPostParameter(array(
   '["Order"]["Customer"]["ProductsSold"][0]["variant_id"]' => '12',
   '["Order"]["Customer"]["ProductsSold"][0]["price"]' => '42.90',
   '["Order"]["Customer"]["ProductsSold"][0]["original_price"]' => '42.90',
-  '["Order"]["Customer"]["ProductsSold"][0]["quantity"]' => '1'
+  '["Order"]["Customer"]["ProductsSold"][0]["quantity"]' => '1',
+  '["Order"]["MarketplaceOrder""]["marketplace_name"]' => 'Mercado Livre',
+  '["Order"]["MarketplaceOrder""]["marketplace_seller_name"]' => '1234567890',
+  '["Order"]["MarketplaceOrder""]["marketplace_seller_id"]' => '273480425',
+  '["Order"]["MarketplaceOrder""]["marketplace_document"]' => '0000000000000',
+  '["Order"]["MarketplaceOrder""]["payment_responsible_document"]' => '0000000000000',
+  '["Order"]["MarketplaceOrder""]["marketplace_order_id"]' => '4429804558',
+  '["Order"]["MarketplaceOrder""]["marketplace_shipping_id"]' => '40457395268',
+  '["Order"]["MarketplaceOrder""]["marketplace_shipping_type"]' => 'me2',
+  '["Order"]["MarketplaceOrder""]["marketplace_internal_status"]' => 'shipping'
 ));
 try {
   $response = $request->send();
@@ -892,7 +910,7 @@ catch(HTTP_Request2_Exception $e) {
 }
 ```
 ```csharp
-var client = new RestClient("https://{api_address}/orders?access_token={access_token}");
+var client = new RestClient("https://{api_address}/orders?access_token={{access_token}}");
 client.Timeout = -1;
 var request = new RestRequest(Method.POST);
 request.AddParameter("[\"Order\"][\"point_sale\"]", "PARTICULAR");
@@ -920,6 +938,15 @@ request.AddParameter("[\"Order\"][\"Customer\"][\"ProductsSold\"][0][\"variant_i
 request.AddParameter("[\"Order\"][\"Customer\"][\"ProductsSold\"][0][\"price\"]", "42.90");
 request.AddParameter("[\"Order\"][\"Customer\"][\"ProductsSold\"][0][\"original_price\"]", "42.90");
 request.AddParameter("[\"Order\"][\"Customer\"][\"ProductsSold\"][0][\"quantity\"]", "1");
+request.AddParameter("[\"Order\"][\"MarketplaceOrder\"\"][\"marketplace_name\"]", "Mercado Livre");
+request.AddParameter("[\"Order\"][\"MarketplaceOrder\"\"][\"marketplace_seller_name\"]", "1234567890");
+request.AddParameter("[\"Order\"][\"MarketplaceOrder\"\"][\"marketplace_seller_id\"]", "273480425");
+request.AddParameter("[\"Order\"][\"MarketplaceOrder\"\"][\"marketplace_document\"]", "0000000000000");
+request.AddParameter("[\"Order\"][\"MarketplaceOrder\"\"][\"payment_responsible_document\"]", "0000000000000");
+request.AddParameter("[\"Order\"][\"MarketplaceOrder\"\"][\"marketplace_order_id\"]", "4429804558");
+request.AddParameter("[\"Order\"][\"MarketplaceOrder\"\"][\"marketplace_shipping_id\"]", "40457395268");
+request.AddParameter("[\"Order\"][\"MarketplaceOrder\"\"][\"marketplace_shipping_type\"]", "me2");
+request.AddParameter("[\"Order\"][\"MarketplaceOrder\"\"][\"marketplace_internal_status\"]", "shipping");
 IRestResponse response = client.Execute(request);
 Console.WriteLine(response.Content);
 ```
@@ -927,16 +954,16 @@ Console.WriteLine(response.Content);
 OkHttpClient client = new OkHttpClient().newBuilder()
   .build();
 MediaType mediaType = MediaType.parse("text/plain");
-RequestBody body = RequestBody.create(mediaType, "[\"Order\"][\"point_sale\"]=PARTICULAR&[\"Order\"][\"shipment\"] =Sedex&[\"Order\"][\"shipment_value\"]=10.44&[\"Order\"][\"payment_form\"]=Boleto - TrayCheckout&[\"Order\"][\"Customer\"][\"type\"]=0&[\"Order\"][\"Customer\"][\"name\"]=Nome do Cliente&[\"Order\"][\"Customer\"][\"cpf\"]=00000000000&[\"Order\"][\"Customer\"][\"email\"]=email@docliente.com&[\"Order\"][\"Customer\"][\"rg\"]=00.000.000-X&[\"Order\"][\"Customer\"][\"gender\"]=M&[\"Order\"][\"Customer\"][\"phone\"]=1133330001&[\"Order\"][\"Customer\"][\"CustomerAddress\"][0][\"address\"]=Endereço do Cliente&[\"Order\"][\"Customer\"][\"CustomerAddress\"][0][\"zip_code\"]=04001001&[\"Order\"][\"Customer\"][\"CustomerAddress\"][0][\"number\"]=123&[\"Order\"][\"Customer\"][\"CustomerAddress\"][0][\"complement\"]=Sala 123&[\"Order\"][\"Customer\"][\"CustomerAddress\"][0][\"neighborhood\"] =Bairro do Cliente&[\"Order\"][\"Customer\"][\"CustomerAddress\"][0][\"city\"]=Cidade do Cliente&[\"Order\"][\"Customer\"][\"CustomerAddress\"][0][\"state\"]=SP&[\"Order\"][\"Customer\"][\"CustomerAddress\"][0][\"country\"]=BRASIL&[\"Order\"][\"Customer\"][\"CustomerAddress\"][0][\"type\"]=1&[\"Order\"][\"Customer\"][\"ProductsSold\"][0][\"product_id\"]=1&[\"Order\"][\"Customer\"][\"ProductsSold\"][0][\"variant_id\"]=12&[\"Order\"][\"Customer\"][\"ProductsSold\"][0][\"price\"]=42.90&[\"Order\"][\"Customer\"][\"ProductsSold\"][0][\"original_price\"]=42.90&[\"Order\"][\"Customer\"][\"ProductsSold\"][0][\"quantity\"]=1");
+RequestBody body = RequestBody.create(mediaType, "[\"Order\"][\"point_sale\"]=PARTICULAR&[\"Order\"][\"shipment\"] =Sedex&[\"Order\"][\"shipment_value\"]=10.44&[\"Order\"][\"payment_form\"]=Boleto - TrayCheckout&[\"Order\"][\"Customer\"][\"type\"]=0&[\"Order\"][\"Customer\"][\"name\"]=Nome do Cliente&[\"Order\"][\"Customer\"][\"cpf\"]=00000000000&[\"Order\"][\"Customer\"][\"email\"]=email@docliente.com&[\"Order\"][\"Customer\"][\"rg\"]=00.000.000-X&[\"Order\"][\"Customer\"][\"gender\"]=M&[\"Order\"][\"Customer\"][\"phone\"]=1133330001&[\"Order\"][\"Customer\"][\"CustomerAddress\"][0][\"address\"]=Endereço do Cliente&[\"Order\"][\"Customer\"][\"CustomerAddress\"][0][\"zip_code\"]=04001001&[\"Order\"][\"Customer\"][\"CustomerAddress\"][0][\"number\"]=123&[\"Order\"][\"Customer\"][\"CustomerAddress\"][0][\"complement\"]=Sala 123&[\"Order\"][\"Customer\"][\"CustomerAddress\"][0][\"neighborhood\"] =Bairro do Cliente&[\"Order\"][\"Customer\"][\"CustomerAddress\"][0][\"city\"]=Cidade do Cliente&[\"Order\"][\"Customer\"][\"CustomerAddress\"][0][\"state\"]=SP&[\"Order\"][\"Customer\"][\"CustomerAddress\"][0][\"country\"]=BRASIL&[\"Order\"][\"Customer\"][\"CustomerAddress\"][0][\"type\"]=1&[\"Order\"][\"Customer\"][\"ProductsSold\"][0][\"product_id\"]=1&[\"Order\"][\"Customer\"][\"ProductsSold\"][0][\"variant_id\"]=12&[\"Order\"][\"Customer\"][\"ProductsSold\"][0][\"price\"]=42.90&[\"Order\"][\"Customer\"][\"ProductsSold\"][0][\"original_price\"]=42.90&[\"Order\"][\"Customer\"][\"ProductsSold\"][0][\"quantity\"]=1&[\"Order\"][\"MarketplaceOrder\"\"][\"marketplace_name\"]=Mercado Livre&[\"Order\"][\"MarketplaceOrder\"\"][\"marketplace_seller_name\"]=1234567890&[\"Order\"][\"MarketplaceOrder\"\"][\"marketplace_seller_id\"]=273480425&[\"Order\"][\"MarketplaceOrder\"\"][\"marketplace_document\"]=0000000000000&[\"Order\"][\"MarketplaceOrder\"\"][\"payment_responsible_document\"]=0000000000000&[\"Order\"][\"MarketplaceOrder\"\"][\"marketplace_order_id\"]=4429804558&[\"Order\"][\"MarketplaceOrder\"\"][\"marketplace_shipping_id\"]=40457395268&[\"Order\"][\"MarketplaceOrder\"\"][\"marketplace_shipping_type\"]=me2&[\"Order\"][\"MarketplaceOrder\"\"][\"marketplace_internal_status\"]=shipping");
 Request request = new Request.Builder()
-  .url("https://{api_address}/orders?access_token={access_token}")
+  .url("https://{api_address}/orders?access_token={{access_token}}")
   .method("POST", body)
   .build();
 Response response = client.newCall(request).execute();
 ```
 
 ### Método POST
-`https://{api_address}/orders`
+`https://{api_address}/orders?access_token={{access_token}}`
 
 ### Parâmetros enviados:
 
@@ -945,38 +972,50 @@ Response response = client.newCall(request).execute();
 <pre>
 {
     "Order":{
-    "point_sale":"PARTICULAR",
-    "shipment":"Sedex",
-    "shipment_value":"10.44",
-    "payment_form":"Boleto - TrayCheckout",
-    "Customer":{"type":"0",
-    "name":"Nome do Cliente",
-    "cpf":"00000000000",
-    "email":"email@docliente.com",
-    "rg":"00.000.000-X",
-    "gender":"M",
-    "phone":"1133330001",
-    "CustomerAddress":[{
-        "address":"Endereço do Cliente",
-        "zip_code":"04001001",
-        "number":"123",
-        "complement":"Sala 123",
-        "neighborhood":"Bairro do Cliente",
-        "city":"Cidade do Cliente",
-        "state":"SP",
-        "country":"BRA",
-        "type":"1"
-                }
-    ]},
-    "ProductsSold":[{
-        "product_id":1,
-        "variant_id":12,
-        "price":"42.90",
-        "original_price":"42.90",
-        "quantity":1
-        
-                }
-    ]}    
+      "point_sale":"PARTICULAR",
+      "shipment":"Sedex",
+      "shipment_value":"10.44",
+      "payment_form":"Boleto - TrayCheckout",
+      "Customer":{"type":"0",
+      "name":"Nome do Cliente",
+      "cpf":"00000000000",
+      "email":"email@docliente.com",
+      "rg":"00.000.000-X",
+      "gender":"M",
+      "phone":"1133330001",
+      "CustomerAddress":[{
+          "address":"Endereço do Cliente",
+          "zip_code":"04001001",
+          "number":"123",
+          "complement":"Sala 123",
+          "neighborhood":"Bairro do Cliente",
+          "city":"Cidade do Cliente",
+          "state":"SP",
+          "country":"BRA",
+          "type":"1"
+          }
+      ]},
+      "ProductsSold":[{
+          "product_id":1,
+          "variant_id":12,
+          "price":"42.90",
+          "original_price":"42.90",
+          "quantity":1  
+        }
+      ],
+      "MarketplaceOrder": [{
+          "marketplace_name": "Mercado Livre",
+          "marketplace_seller_name": "1234567890",
+          "marketplace_seller_id": "273480425",
+          "marketplace_document": "0000000000000",
+          "payment_responsible_document": "0000000000000",
+          "marketplace_order_id": "4429804558",
+          "marketplace_shipping_id": "40457395268",
+          "marketplace_shipping_type": "me2",
+          "marketplace_internal_status": "shipping"
+        }
+      ]
+    }    
 }
 </pre>
 
@@ -1012,6 +1051,15 @@ variant_id	|Number|	Código da variação do produto
 price	|Number|	Preço do produto
 original_price	|Number|	Valor original do produto
 quantity	|Number|	Quantidade vendida do produto
+marketplace_name |String| Nome do Marketplace
+marketplace_seller_name |String| Nome do Seller junto ao marketplace
+marketplace_seller_id |String| Id do vendedor junto ao marketplace
+marketplace_document |String| CNPJ do marketplace
+payment_responsible_document |String| CNPJ do intermediador de pagamento que processou o pagamento
+marketplace_order_id |String| Id do pedido junto ao marketplace
+marketplace_shipping_id |String| Id do envio junto ao marketplace (OBS. Não é o código de rastreio)
+marketplace_shipping_type |String| Tipo de envio do marketplace
+marketplace_internal_status |String| Status do pedido dentro do marketplace
 
 ### Retorno em caso de sucesso (status code 200 ou 201):
 
