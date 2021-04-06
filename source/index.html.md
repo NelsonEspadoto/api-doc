@@ -7,8 +7,8 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - csharp
   - java
 
-# toc_footers:
-#   - developers@tray.com.br
+toc_footers:
+  - Tray 2021
   
 
 includes:
@@ -34,6 +34,7 @@ includes:
   - parceiros
   - palavra-chave
   - etiqueta-mercado-livre
+  - emissores_etiqueta
   - informacoes-pagamento
   - informacoes-loja
   - carrinho-compra

@@ -178,7 +178,7 @@ html, body {
   .toc-footer {
     padding: 1em 0;
     margin-top: 1em;
-    border-top: 1px dashed $nav-footer-border-color;
+    border-top: 1px solid $nav-footer-border-color;
 
     li,a {
       color: $nav-text;
@@ -190,6 +190,7 @@ html, body {
     }
 
     li {
+      text-align: center; 
       font-size: 0.8em;
       line-height: 1.7;
       text-decoration: none;
