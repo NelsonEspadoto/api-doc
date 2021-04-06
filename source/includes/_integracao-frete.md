@@ -8,7 +8,6 @@ Atualmente disponibilizamos duas formas para integração de frete.
 Integração Gateway de Frete | Descrição
 ----------------------------|----------
 Objetivo	|Disponibilizar cotações de frete ao lojista, conforme disponibilidade de envio do integrador
-Documentação	|[https://traydevelopers.zendesk.com/hc/pt-br/articles/360017423314-Gateway-de-Frete](https://traydevelopers.zendesk.com/hc/pt-br/articles/360017423314-Gateway-de-Frete)
 Funcionalidade	|"A integração via Gateway de Frete, não é necessário um aplicativo para disponibilizar as cotações. Conforme a documentação, você precisará apenas disponibilizar uma url para integrar com a loja do cliente. A informação da url e o token, são disponibilizado no painel administrativo da loja, dessa forma, para efetuar o cadastro da url do Gateway de Frete, o integrador deverá informar o lojista para que o mesmo efetue a configuração da url e o token dentro da loja para integração do Gateway de Frete, lembrando que o token deverá ser fornecido por loja que integrar e o mesmo deverá ser fixo. Esse token do Gateway de Frete, ele não pode ser atualizado, ele deverá ser fixo por loja."
 
 ![imagem](../images/frete1.png)
@@ -17,7 +16,6 @@ Integração API de Frete | Descrição
 ----------------------------|----------
 Usabilidade	|Geralmente utilizada pelos MARKETPLACES e serviços externos, para realizar uma cotação fora da loja
 Objetivo	|Realizar cotações e listar formas de envio mediante configurações na loja, atualizando os pedidos da loja, conforme necessidade
-Documentação	|[https://traydevelopers.zendesk.com/hc/pt-br/articles/360013056153-API-DE-FRETE-C%C3%A1lculo-de-Frete](https://traydevelopers.zendesk.com/hc/pt-br/articles/360013056153-API-DE-FRETE-C%C3%A1lculo-de-Frete) <br> [https://traydevelopers.zendesk.com/hc/pt-br/articles/360012934234-API-DE-FRETE-Listagem-de-Formas-de-Envio](https://traydevelopers.zendesk.com/hc/pt-br/articles/360012934234-API-DE-FRETE-Listagem-de-Formas-de-Envio)
 Funcionalidade	|"Conforme a documentação informada acima, para acessar alguma informação do cliente e realizar cotação de frete ou inserir rastreio, será necessário realizar ter acesso a API de Frete e API do Pedido. No entanto, para consumir qualquer tipo de API, atualmente é obrigatório possuir o aplicativo credenciado junto a plataforma, pois através desse aplicativo, será possível gerar uma chave chamada access_token, onde poderá realizar a integração com a Tray e realizar o consumo das APIs. Para isso, será necessário primeiramente entrar em contato diretamente com a nossa equipe de parcerias"
 
 No caso de algumas **Transportadoras**, elas possuem dois tipos de integração:
@@ -68,13 +66,9 @@ Documentações Gerais:
 
 [https://atendimento.tray.com.br/hc/pt-br/categories/360000452772-Frete-e-Envio](https://atendimento.tray.com.br/hc/pt-br/categories/360000452772-Frete-e-Envio)
 
-[https://traydevelopers.zendesk.com/hc/pt-br/sections/360005300393-Integra%C3%A7%C3%A3o-de-Frete](https://traydevelopers.zendesk.com/hc/pt-br/sections/360005300393-Integra%C3%A7%C3%A3o-de-Frete)
-
 ## FRETE X API
 
 Atualmente, a API que disponibilizamos para cotação de frete, não é para retornar a cotação no front da loja e sim para realizar apenas uma cotação pontual, fora da loja.
-
-Documentação: [https://traydevelopers.zendesk.com/hc/pt-br/articles/360013056153-API-DE-FRETE-C%C3%A1lculo-de-Frete](https://traydevelopers.zendesk.com/hc/pt-br/articles/360013056153-API-DE-FRETE-C%C3%A1lculo-de-Frete)
 
 Caso a Transportadora/Integradora necessite automatizar alguma parte de seu processo ou necessite realizar consultas e/ou alterações no pedido do cliente, ela precisará consumir nossas APIs, para isso, a mesma deverá se credenciar como Parceira da Tray, contatando nosso time de Relacionamento de Parcerias, através deste link: [https://www.tray.com.br/parceiros/quero-ser-parceiro/](https://www.tray.com.br/parceiros/quero-ser-parceiro/)
 

@@ -12,7 +12,7 @@ Exemplo de caso: se a loja possui 1000 pedidos e foram alterados 50 pedidos e cr
 
 Para ativar as notificações, é necessário informar uma URL de Notificação, onde será cadastrada em seu aplicativo que já esteja credenciado junto a Tray.
 
-Sendo assim, favor abrir um chamado através deste link: https://atendimento.tray.com.br/hc/pt-br/requests/new e em: Precisa de ajuda com sua loja virtual? escolher o escopo: "TRAY DESENVOLVEDORES" > "INTEGRAÇÕES API" e informar o nome do aplicativo e url de notificação para iniciar o processo de ativação.
+Sendo assim, favor abrir um chamado através deste link: [https://atendimento.tray.com.br/hc/pt-br/requests/new](https://atendimento.tray.com.br/hc/pt-br/requests/new) e em: Precisa de ajuda com sua loja virtual? escolher o escopo: "TRAY DESENVOLVEDORES" > "INTEGRAÇÕES API" e informar o nome do aplicativo e url de notificação para iniciar o processo de ativação.
 
 ### Funcionalidade:
 
@@ -62,7 +62,7 @@ Não. Atualmente o serviço disponibilizado atua sobre o aplicativo e não sobre
 ### É possível receber outros tipos de notificações, conforme demostrando no exemplo do playload?
 Não. Atualmente não é possível. Caso deseje receber outros tipos de notificações, você poderá enviar uma solicitação para o nosso canal de SUGESTÕES.
 
-Segue o link: (https://clientes.tray.com.br/sugestao-tray/)
+Segue o link: [https://clientes.tray.com.br/sugestao-tray/](https://clientes.tray.com.br/sugestao-tray/)
 
 ### Exclusão do serviço em caso de desinstalação do aplicativo?
 (será o mesmo comportamento para troca de url de notificação)
