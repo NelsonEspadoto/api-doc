@@ -1358,6 +1358,16 @@
               <svg width='23' height='24' viewBox='0 0 25 15' xmlns='http://www.w3.org/2000/svg'><path d='M1.9 1h5.027c.24 0 .467.1.637.276l2.172 2.272c.17.177.398.276.637.276H18.1c.497 0 .9.42.9.94V16.03c0 .52-.403.97-.9.97H1.9c-.497 0-.9-.45-.9-.97V1.94c0-.518.403-.94.9-.94z' stroke-width='2' stroke='#032f6a' fill='none' opacity='.6'/></svg>
               API de Emissores de Etiqueta
             </a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#em-breve" class="toc-h2 toc-link" data-title="Em breve ...">
+                      <span class="tag tag--"></span>
+                      Em breve ...
+                    </a>
+                  </li>
+                  <li>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#apis-de-informacoes-de-pagamento" class="toc-h1 toc-link" data-title="APIs de Informações de Pagamento">
@@ -7999,10 +8009,6 @@ Precisamos que seja realizado do lado ERP, uma gestão no envio dessas imagens, 
 <td>Disponibilizar cotações de frete ao lojista, conforme disponibilidade de envio do integrador</td>
 </tr>
 <tr>
-<td>Documentação</td>
-<td><a href="https://traydevelopers.zendesk.com/hc/pt-br/articles/360017423314-Gateway-de-Frete">https://traydevelopers.zendesk.com/hc/pt-br/articles/360017423314-Gateway-de-Frete</a></td>
-</tr>
-<tr>
 <td>Funcionalidade</td>
 <td>&quot;A integração via Gateway de Frete, não é necessário um aplicativo para disponibilizar as cotações. Conforme a documentação, você precisará apenas disponibilizar uma url para integrar com a loja do cliente. A informação da url e o token, são disponibilizado no painel administrativo da loja, dessa forma, para efetuar o cadastro da url do Gateway de Frete, o integrador deverá informar o lojista para que o mesmo efetue a configuração da url e o token dentro da loja para integração do Gateway de Frete, lembrando que o token deverá ser fornecido por loja que integrar e o mesmo deverá ser fixo. Esse token do Gateway de Frete, ele não pode ser atualizado, ele deverá ser fixo por loja.&quot;</td>
 </tr>
@@ -8023,10 +8029,6 @@ Precisamos que seja realizado do lado ERP, uma gestão no envio dessas imagens, 
 <tr>
 <td>Objetivo</td>
 <td>Realizar cotações e listar formas de envio mediante configurações na loja, atualizando os pedidos da loja, conforme necessidade</td>
-</tr>
-<tr>
-<td>Documentação</td>
-<td><a href="https://traydevelopers.zendesk.com/hc/pt-br/articles/360013056153-API-DE-FRETE-C%C3%A1lculo-de-Frete">https://traydevelopers.zendesk.com/hc/pt-br/articles/360013056153-API-DE-FRETE-C%C3%A1lculo-de-Frete</a> <br> <a href="https://traydevelopers.zendesk.com/hc/pt-br/articles/360012934234-API-DE-FRETE-Listagem-de-Formas-de-Envio">https://traydevelopers.zendesk.com/hc/pt-br/articles/360012934234-API-DE-FRETE-Listagem-de-Formas-de-Envio</a></td>
 </tr>
 <tr>
 <td>Funcionalidade</td>
@@ -8077,12 +8079,8 @@ Precisamos que seja realizado do lado ERP, uma gestão no envio dessas imagens, 
 <p>Documentações Gerais:</p>
 
 <p><a href="https://atendimento.tray.com.br/hc/pt-br/categories/360000452772-Frete-e-Envio">https://atendimento.tray.com.br/hc/pt-br/categories/360000452772-Frete-e-Envio</a></p>
-
-<p><a href="https://traydevelopers.zendesk.com/hc/pt-br/sections/360005300393-Integra%C3%A7%C3%A3o-de-Frete">https://traydevelopers.zendesk.com/hc/pt-br/sections/360005300393-Integra%C3%A7%C3%A3o-de-Frete</a></p>
 <h2 id='frete-x-api'>FRETE X API</h2>
 <p>Atualmente, a API que disponibilizamos para cotação de frete, não é para retornar a cotação no front da loja e sim para realizar apenas uma cotação pontual, fora da loja.</p>
-
-<p>Documentação: <a href="https://traydevelopers.zendesk.com/hc/pt-br/articles/360013056153-API-DE-FRETE-C%C3%A1lculo-de-Frete">https://traydevelopers.zendesk.com/hc/pt-br/articles/360013056153-API-DE-FRETE-C%C3%A1lculo-de-Frete</a></p>
 
 <p>Caso a Transportadora/Integradora necessite automatizar alguma parte de seu processo ou necessite realizar consultas e/ou alterações no pedido do cliente, ela precisará consumir nossas APIs, para isso, a mesma deverá se credenciar como Parceira da Tray, contatando nosso time de Relacionamento de Parcerias, através deste link: <a href="https://www.tray.com.br/parceiros/quero-ser-parceiro/">https://www.tray.com.br/parceiros/quero-ser-parceiro/</a></p>
 
@@ -8741,7 +8739,7 @@ prods=0.2;0.2;0.2;0.008;1;0.1;6;43.99/0.3;0.22;0.5;0.033;2;0.235;8;151.33
 <h3 id='ativacao-da-notificacao'>Ativação da Notificação:</h3>
 <p>Para ativar as notificações, é necessário informar uma URL de Notificação, onde será cadastrada em seu aplicativo que já esteja credenciado junto a Tray.</p>
 
-<p>Sendo assim, favor abrir um chamado através deste link: https://atendimento.tray.com.br/hc/pt-br/requests/new e em: Precisa de ajuda com sua loja virtual? escolher o escopo: &quot;TRAY DESENVOLVEDORES&quot; &gt; &quot;INTEGRAÇÕES API&quot; e informar o nome do aplicativo e url de notificação para iniciar o processo de ativação.</p>
+<p>Sendo assim, favor abrir um chamado através deste link: <a href="https://atendimento.tray.com.br/hc/pt-br/requests/new">https://atendimento.tray.com.br/hc/pt-br/requests/new</a> e em: Precisa de ajuda com sua loja virtual? escolher o escopo: &quot;TRAY DESENVOLVEDORES&quot; &gt; &quot;INTEGRAÇÕES API&quot; e informar o nome do aplicativo e url de notificação para iniciar o processo de ativação.</p>
 <h3 id='funcionalidade'>Funcionalidade:</h3>
 <p>A Tray irá realizar o envio dos parâmetros (scope_name | scope_id | seller_id | act) via POST, para a url de notificação cadastrada no aplicativo, onde a mesma receberá os parâmetros dentro do body.</p>
 
@@ -8781,7 +8779,7 @@ prods=0.2;0.2;0.2;0.008;1;0.1;6;43.99/0.3;0.22;0.5;0.033;2;0.235;8;151.33
 <h3 id='e-possivel-receber-outros-tipos-de-notificacoes-conforme-demostrando-no-exemplo-do-playload'>É possível receber outros tipos de notificações, conforme demostrando no exemplo do playload?</h3>
 <p>Não. Atualmente não é possível. Caso deseje receber outros tipos de notificações, você poderá enviar uma solicitação para o nosso canal de SUGESTÕES.</p>
 
-<p>Segue o link: (https://clientes.tray.com.br/sugestao-tray/)</p>
+<p>Segue o link: <a href="https://clientes.tray.com.br/sugestao-tray/">https://clientes.tray.com.br/sugestao-tray/</a></p>
 <h3 id='exclusao-do-servico-em-caso-de-desinstalacao-do-aplicativo'>Exclusão do serviço em caso de desinstalação do aplicativo?</h3>
 <p>(será o mesmo comportamento para troca de url de notificação)</p>
 
@@ -23455,7 +23453,7 @@ Visualização de produto que apenas compõe o kit &quot;filho&quot; (is_kit = 0
 <td>Arquivo PDF</td>
 </tr>
 </tbody></table>
-<h1 id='api-de-emissores-de-etiqueta'>API de Emissores de Etiqueta</h1><h1 id='apis-de-informacoes-de-pagamento'>APIs de Informações de Pagamento</h1><h2 id='listagem-de-pagamentos-get'>Listagem de Pagamentos#get</h2>
+<h1 id='api-de-emissores-de-etiqueta'>API de Emissores de Etiqueta</h1><h3 id='em-breve'>Em breve ...</h3><h1 id='apis-de-informacoes-de-pagamento'>APIs de Informações de Pagamento</h1><h2 id='listagem-de-pagamentos-get'>Listagem de Pagamentos#get</h2>
 <p>Requisição para consultar os dados de pagamentos.</p>
 
 <blockquote>
