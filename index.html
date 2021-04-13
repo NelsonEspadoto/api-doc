@@ -1360,9 +1360,17 @@
             </a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#em-breve" class="toc-h2 toc-link" data-title="Em breve ...">
-                      <span class="tag tag--"></span>
-                      Em breve ...
+                    <a href="#criando-a-etiqueta-post" class="toc-h2 toc-link" data-title="Criando a Etiqueta#post">
+                      <span class="tag tag--post">post</span>
+                      Criando a Etiqueta
+                    </a>
+                  </li>
+                  <li>
+                  </li>
+                  <li>
+                    <a href="#criando-a-url-da-etiqueta-post" class="toc-h2 toc-link" data-title="Criando a URL da Etiqueta#post">
+                      <span class="tag tag--post">post</span>
+                      Criando a URL da Etiqueta
                     </a>
                   </li>
                   <li>
@@ -1684,7 +1692,7 @@
 <h3 id='metodo-post'>Método POST</h3>
 <p><code>https://{api_address}/auth</code>
 <br/><br/>
-Parâmetros de envio:</p>
+Dados para ser enviados no corpo da requisição:</p>
 
 <table><thead>
 <tr>
@@ -23453,7 +23461,145 @@ Visualização de produto que apenas compõe o kit &quot;filho&quot; (is_kit = 0
 <td>Arquivo PDF</td>
 </tr>
 </tbody></table>
-<h1 id='api-de-emissores-de-etiqueta'>API de Emissores de Etiqueta</h1><h3 id='em-breve'>Em breve ...</h3><h1 id='apis-de-informacoes-de-pagamento'>APIs de Informações de Pagamento</h1><h2 id='listagem-de-pagamentos-get'>Listagem de Pagamentos#get</h2>
+<h1 id='api-de-emissores-de-etiqueta'>API de Emissores de Etiqueta</h1><h2 id='criando-a-etiqueta-post'>Criando a Etiqueta#post</h2>
+<p>Requisição para criar a etiqueta</p>
+
+<blockquote>
+<p>Estrutura do Json:</p>
+</blockquote>
+
+<pre>
+{
+    "ShippingLabel": {
+        "configuration_url" : "www.urldoadeemissaodeetiquetadoaplicativo.com"
+    }
+}
+</pre>
+<h3 id='metodo-post'>Método POST</h3>
+<p><code>https://{api_address}/shipping_labels?access_token={{access_token}}</code></p>
+<h3 id='parametros-enviados'>Parâmetros enviados:</h3>
+<table><thead>
+<tr>
+<th>Campo</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>String</td>
+<td>Chave de acesso</td>
+</tr>
+</tbody></table>
+<h3 id='retorno-em-caso-de-sucesso-status-code-200-ou-201'>Retorno em caso de sucesso (status code 200 ou 201)</h3>
+<blockquote>
+<p>Retorno de Sucesso:</p>
+</blockquote>
+
+<pre>
+{
+    "message": "Created",
+    "id": "2659",
+    "code": 201
+}
+</pre>
+
+<table><thead>
+<tr>
+<th>Campo</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>message</td>
+<td>String</td>
+<td>Mensagem de retorno</td>
+</tr>
+<tr>
+<td>id</td>
+<td>Number</td>
+<td>Código da etiqueta</td>
+</tr>
+<tr>
+<td>code</td>
+<td>Number</td>
+<td>Código do retorno (201)</td>
+</tr>
+</tbody></table>
+<h2 id='criando-a-url-da-etiqueta-post'>Criando a URL da Etiqueta#post</h2>
+<p>Requisição para criar a url da etiqueta</p>
+
+<blockquote>
+<p>Estrutura do Json:</p>
+</blockquote>
+
+<pre>
+{
+    "ShippingLabel": {
+        "name": "Nome",
+        "configuration_url" : "www.urldoadeemissaodeetiquetadoaplicativo.com"
+    }
+}
+</pre>
+<h3 id='metodo-post-2'>Método POST</h3>
+<p><code>https://{api_address}/orders/{:id}/shipping_label?access_token={{access_token}}</code></p>
+<h3 id='parametros-enviados-2'>Parâmetros enviados:</h3>
+<table><thead>
+<tr>
+<th>Campo</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>String</td>
+<td>Chave de acesso</td>
+</tr>
+<tr>
+<td>:id</td>
+<td>Number</td>
+<td>Código do pedido</td>
+</tr>
+</tbody></table>
+<h3 id='retorno-em-caso-de-sucesso-status-code-200-ou-201-2'>Retorno em caso de sucesso (status code 200 ou 201)</h3>
+<blockquote>
+<p>Retorno de Sucesso:</p>
+</blockquote>
+
+<pre>
+{
+    "message": "Created",
+    "id": "123",
+    "code": 201
+}
+</pre>
+
+<table><thead>
+<tr>
+<th>Campo</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>message</td>
+<td>String</td>
+<td>Mensagem de retorno</td>
+</tr>
+<tr>
+<td>id</td>
+<td>Number</td>
+<td>Código da etiqueta</td>
+</tr>
+<tr>
+<td>code</td>
+<td>Number</td>
+<td>Código do retorno (201)</td>
+</tr>
+</tbody></table>
+<h1 id='apis-de-informacoes-de-pagamento'>APIs de Informações de Pagamento</h1><h2 id='listagem-de-pagamentos-get'>Listagem de Pagamentos#get</h2>
 <p>Requisição para consultar os dados de pagamentos.</p>
 
 <blockquote>
