@@ -72,7 +72,7 @@ Essa chave representa a autorização emitida pelo cliente no servidor de autori
 
 `https://{api_address}/auth`
 <br/><br/>
-Parâmetros de envio:
+Dados para ser enviados no corpo da requisição:
 
 Campo | Tipo | Descrição
 ------|------|-----------
