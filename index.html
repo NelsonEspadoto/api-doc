@@ -312,17 +312,41 @@
             </a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#duvidas-e-suporte" class="toc-h2 toc-link" data-title="Dúvidas e Suporte">
+                    <a href="#ambiente-de-teste" class="toc-h2 toc-link" data-title="Ambiente de Teste">
                       <span class="tag tag--"></span>
-                      Dúvidas e Suporte
+                      Ambiente de Teste
                     </a>
                   </li>
                   <li>
                   </li>
                   <li>
-                    <a href="#ambiente-de-teste" class="toc-h2 toc-link" data-title="Ambiente de Teste">
+                    <a href="#nossas-integracoes" class="toc-h2 toc-link" data-title="Nossas Integrações">
                       <span class="tag tag--"></span>
-                      Ambiente de Teste
+                      Nossas Integrações
+                    </a>
+                  </li>
+                  <li>
+                  </li>
+                  <li>
+                    <a href="#criando-seu-aplicativo" class="toc-h2 toc-link" data-title="Criando seu Aplicativo">
+                      <span class="tag tag--"></span>
+                      Criando seu Aplicativo
+                    </a>
+                  </li>
+                  <li>
+                  </li>
+                  <li>
+                    <a href="#autorizando-seu-aplicativo" class="toc-h2 toc-link" data-title="Autorizando seu Aplicativo">
+                      <span class="tag tag--"></span>
+                      Autorizando seu Aplicativo
+                    </a>
+                  </li>
+                  <li>
+                  </li>
+                  <li>
+                    <a href="#duvidas-e-suporte" class="toc-h2 toc-link" data-title="Dúvidas e Suporte">
+                      <span class="tag tag--"></span>
+                      Dúvidas e Suporte
                     </a>
                   </li>
                   <li>
@@ -1608,30 +1632,167 @@
 
         <h1 id='como-integrar'>Como Integrar</h1>
 <p>As APIs de Integração é um serviço formecido pela Tray para que nossos clientes possam integrar seus softwares a nossa plataforma.</p>
+<h2 id='ambiente-de-teste'>Ambiente de Teste</h2>
+<p>Não possuimos um ambiente especifico para teste, para esse fim, disponibilizamos uma loja compartilhada entre todos os integradores.</p>
 
-<p>Atualmente a integração da Tray ocorre de forma passiva, onde o integrador quem realiza o consumo de nossas APIs.</p>
+<p>Para acessa-la <a href="http://portaldeparceiros.tray.com.br/loja-de-testes">clique aqui</a>.</p>
+<h2 id='nossas-integracoes'>Nossas Integrações</h2>
+<p>A integração com a Tray é feita através das Nossas APIs no padrão REST, o que possibilita manipular os clientes, produtos e até os pedidos da loja virtual. Atualmente estão disponíveis as APIs:</p>
 
-<p>Para realizar a integração com as nossas APIs, é necessário realizar o credenciamento de um aplicativo junto a nossa equipe de parcerias, para que esse app integre na loja do cliente e então realize o consumo de nossas APIs.</p>
+<ul>
+<li>Autorização</li>
+<li>Características</li>
+<li>Carrinho de Compra</li>
+<li>Categorias</li>
+<li>Clientes</li>
+<li>Cupom</li>
+<li>Emissores de Etiquetas</li>
+<li>Etiqueta Mercado Livre</li>
+<li>informações Adicionais</li>
+<li>Informações da Loja</li>
+<li>Informações de Pagamentos</li>
+<li>Integração de Fretes</li>
+<li>Kits</li>
+<li>Lista de Preços B2B</li>
+<li>Marca de Produtos</li>
+<li>Newsletter</li>
+<li>Nota Fiscal</li>
+<li>Páginas da Loja</li>
+<li>Palavras-Chave</li>
+<li>Parceiros</li>
+<li>Pedidos</li>
+<li>Produtos</li>
+<li>Produtos Vendidos</li>
+<li>Scripts Externos</li>
+<li>Sistema de Notificação Webhook</li>
+<li>Status de Pedido</li>
+<li>Variação de Produtos</li>
+</ul>
 
-<p>Para realizar esse credênciamento, solicitamos por gentileza que siga as instruções abaixo:</p>
+<p>Para utilizar as APIs é necessário criar seu aplicativo e, após este cadastro, são liberadas as chaves para a integração.</p>
 
-<p>Para disponibilizar as chaves de integração, primeiro é necessário realizar contato com nossa equipe de parcerias para credênciamento da aplicação/desenvolvedor. </p>
+<p>Temos disponível para parceiros nossa Loja de Aplicativos, onde nossos lojistas conseguem localizar e fazer a instalação de forma simples e rápida e já integrar com a sua aplicação.</p>
+
+<p>Desta forma, é possível integrar desde um sistema de gestão empresarial (ERP) ou sistemas próprios para melhorar a experiência do consumidor.</p>
+
+<p>Também disponibilizamos a integração com o sistema de Gateway de Frete, caso precise personalizar o calculo de frete através de alguma transportadora.</p>
+<h2 id='criando-seu-aplicativo'>Criando seu Aplicativo</h2>
+<p>Para disponibilizar as chaves de integração é necessário realizar dois processos:</p>
+
+<ul>
+<li>Realizar o credenciamento</li>
+<li>Informar os dados para a criação de uma aplicação.</li>
+</ul>
+
+<p>Para o credenciamento é necessário contato com nossa equipe de parcerias através do formulário de contato.</p>
 
 <p>Segue abaixo link do formulário para contato:</p>
 
 <p><a href="https://www.tray.com.br/parceiros/quero-ser-parceiro/">https://www.tray.com.br/parceiros/quero-ser-parceiro/</a></p>
 
-<p>Assim que realizado o credênciamento enviaremos mais detalhes referente a integração com as APIs da Tray, como um ambiente de testes e as chaves iniciais para integração.</p>
+<p>Após o credenciamento, será necessário informar os dados do aplicativo para cadastro. Estes dados são divididos em dados do integrador, onde é necessário informar os dados da empresa que irá realizar a integração, e dados do aplicativo, com os dados para cadastro da aplicação. Segue abaixo os dados necessários:</p>
+<h3 id='dados-do-aplicativo'>Dados do Aplicativo:</h3>
+<ul>
+<li>Nome do aplicativo</li>
+<li>Descrição simplificada do aplicativo</li>
+<li>Imagem com o logo da aplicação</li>
+<li>Descrição completa do aplicativo</li>
+<li>URL de callback, em ambiente seguro - SSL (URL utilizada para realizar a autorização da aplicação)</li>
+<li>ID da Loja</li>
+<li>Link do vídeo (Youtube)</li>
+<li>URLs de imagens (máximo 3)</li>
+</ul>
+<h3 id='dados-do-integrador'>Dados do integrador:</h3>
+<ul>
+<li>Nome da empresa</li>
+<li>Telefone</li>
+<li>E-mail</li>
+<li>Site</li>
+<li>Nome do Responsável Técnico (Desenvolvedor)</li>
+<li>E-mail do Responsável Técnico (Desenvolvedor)</li>
+</ul>
 
-<p>Após o cadastro da aplicação são disponibilizadas as chaves <strong>Consumer Key</strong> e <strong>Consumer Secret</strong> necessárias para a autorização do aplicativo e geração das chaves de acesso.</p>
+<p>Após o cadastro da aplicação são disponibilizadas as chaves Consumer Key e Consumer Secret necessárias para a autorização do aplicativo e geração das chaves de acesso.</p>
 
 <p>OBS: Todas as solicitações serão analisadas, onde poderão ser aprovadas ou rejeitadas devido solicitação indevida, ausência de informações ou solicitação de parceiro ou desenvolvedor não credenciado.</p>
+
+<p>Quantidade de Requisições</p>
+
+<p>As requisições tem um limite de envio, onde são diferenciadas de duas formas.</p>
+
+<p>1 - Quantidade de requisições de curto espaço de tempo, limitado em 180 requisições por minuto.</p>
+
+<p>2 - Quantidade de requisições diárias, limitado em 10 mil requisições diárias por loja, sendo um limite de 50 mil requisições por dia em caso de loja corporativa.</p>
+<h2 id='autorizando-seu-aplicativo'>Autorizando seu Aplicativo</h2>
+<p>A autenticação via oAuth 2.0 é necessário para acesso as informações da API e Aplicativos de Terceiro.</p>
+
+<p>Abaixo a sequência de autenticação:</p>
+
+<p>O código de autorização é fornecido através do servidor de autenticação do Tray.</p>
+
+<p>Para permitir acesso as informações e recursos da conta, o cliente deve ser redirecionado para a url de autenticação pelo navegador.</p>
+
+<p>O Tray Commerce é responsável por receber a confirmação da autorização do cliente e fornecer o código de autorização ao aplicativo.</p>
+<h3 id='url-para-autenticacao'>Url para autenticação:</h3>
+<p><code>https://{dominio_da_loja}/auth.php</code></p>
+
+<p>Parâmetros HTTP &quot;GET&quot; suportados para a autenticação:</p>
+
+<table><thead>
+<tr>
+<th>Parâmetro</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>response_type</td>
+<td>Tipo de solicitação (Valor padrão <strong>code</strong>)</td>
+</tr>
+<tr>
+<td>consumer_secret</td>
+<td>Identificação do aplicativo junto ao Tray Commerce.</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>URL de Callback que será redirecionado depois da autorização</td>
+</tr>
+</tbody></table>
+
+<p>Exemplo da url:</p>
+
+<p><code>https://{dominio_da_loja}/auth.php?response_type=code&amp;consumer_key=2r9dg7sgdb&amp;callback=https://{url_de_callback}</code></p>
+<h3 id='fluxo-de-autorizacao'>Fluxo de autorização</h3>
+<p>Toda aplicação precisa passar pelo processo de autorização, onde sem essa autorização, não é possível acessar os dados da loja, senão qualquer pessoa com as chaves poderiam acessar qualquer loja de nossa plataforma sem o conhecimento do lojista, o que seria uma grande falha de segurança.</p>
+
+<p>O aplicativo é acessado dentro da área administrativa da loja no menu Meus aplicativos. Após o acesso a este menu, terá disponível o botão Instalar novos aplicativos, onde os clientes poderão localizar a aplicação para instalação na loja.</p>
+
+<p>Ao instalar uma aplicação, será realizado o redirecionamento para a URL de Callback informada no momento do cadastro do aplicativo, abrindo por exemplo a página http://{dominiodoapp}/tray/callback em um iframe, dentro da área administrativa da loja.</p>
+
+<p>Você deverá implementar nesta URL (http://{dominiodoapp}/tray/callback), uma Landing Page apresentando os detalhes do aplicativo e disponibilizar um botão para o cliente solicitando a integração com a aplicação. Geralmente este botão tem o titulo de Instale agora ou Inicie agora.</p>
+
+<p>Neste botão você irá direcionar o cliente para a URL de autorização da loja, onde esta URL ficaria:</p>
+
+<p>http://{URL da loja}/auth.php?response_type=code&amp;consumer_key=<strong>CONSUMER_KEY</strong>&amp;callback=http://{dominiodoapp}/tray/callback/auth/</p>
+
+<p>Quando direcionado o cliente para essa pagina, irá aparecer uma tela solicitando a autorização da aplicação, conforme abaixo:</p>
+
+<p><img src="images/integracao-a7ae58ba.png" alt="imagem" /></p>
+
+<p>Uma observação importante é que, após autorizado, não será mais exibida essa tela, já passando automaticamente para o fluxo abaixo.</p>
+
+<p>Após a autorização, o cliente é redirecionado para URL informada no parâmetro callback passado no momento da autorização (no exemplo acima é a URL http://{dominiodoapp}/tray/callback/auth/), onde ficará da seguinte forma esta URL:</p>
+
+<p>http://{dominiodoapp}/tray/callback/auth/?code=2132112312321313abc123edf&amp;store=391250&amp;api_address=http://{URL da loja}/web_api/</p>
+
+<p>Neste processo deve-se capturar as informações dessa URL e utilizá-las para configurar em sua aplicação, sendo os parâmetros code e api_address mais importantes no processo de integração.</p>
+
+<p>Com o code e api_address é possível utilizar a <a href="#gerar-chaves-de-acesso-post">API de Gerar Chave de Acesso</a>, para gerar o valor do access_tokenutilizados nas outras APIs. É de extrema importância armazenar todas as informações de retorno desta API, pois serão utilizados constantemente durante a comunicação com a Tray.</p>
+
+<p>Pode-se notar que no retorno da <a href="#gerar-chaves-de-acesso-post">API de Gerar Chave de Acesso</a> existe a expiração dessa chave e, quando expirado, deverá utilizar a <a href="#atualizar-chave-de-acesso-get">API de Atualizar Chave de Acesso</a>, onde será gerada um novo access_token para continuar realizando requisições nas APIs.</p>
+
+<p>Dessa forma, toda referência que encontrar na documentação de {api_address} deverá ser utilizada a URL retornada no momento da autorização da API, conforme informado acima, e utilizar o access_token gerado para não ocorrer problema de permissão de acesso aos dados.</p>
 <h2 id='duvidas-e-suporte'>Dúvidas e Suporte</h2>
 <p>Para dúvidas relacionadas ao consumo das APIs disponibilizadas pedimos que abra um chamado diretamente através da nossa <a href="https://atendimento.tray.com.br/hc/pt-br/requests/new">central de atendimento</a>.</p>
-<h2 id='ambiente-de-teste'>Ambiente de Teste</h2>
-<p>Não possuimos um ambiente especifico para teste, para esse fim, disponibilizamos uma loja compartilhada entre todos os integradores.</p>
-
-<p>Para acessa-la <a href="http://portaldeparceiros.tray.com.br/loja-de-testes">clique aqui</a>.</p>
 <h1 id='autorizacao'>Autorização</h1><h2 id='gerar-chaves-de-acesso-post'>Gerar Chaves de Acesso#post</h2>
 <blockquote>
 <p>api_address: &quot;urldaloja.com.br/web_api&quot;</p>
