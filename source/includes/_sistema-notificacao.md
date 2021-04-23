@@ -16,7 +16,7 @@ Sendo assim, favor abrir um chamado através deste link: [https://atendimento.tr
 
 ### Funcionalidade:
 
-A Tray irá realizar o envio dos parâmetros (scope_name | scope_id | seller_id | act) via POST, para a url de notificação cadastrada no aplicativo, onde a mesma receberá os parâmetros dentro do body.
+A Tray irá realizar o envio dos parâmetros (scope_name | scope_id | seller_id | act) via POST, para a url de notificação cadastrada no aplicativo.
 
 Esta url deverá estar disponível, para receber os parâmetros que a Tray vai enviar.
 

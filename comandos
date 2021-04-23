@@ -4,3 +4,6 @@ docker run --rm --name slate -p 4567:4567 -v $(pwd)/source:/srv/slate/source sla
 Github
 developers@tray.net.br
 traydevelopers2019
+
+Build
+docker run --rm --name slate -v $(pwd)/build:/srv/slate/build -v $(pwd)/source:/srv/slate/source slatedocs/slate
