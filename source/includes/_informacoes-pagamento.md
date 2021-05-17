@@ -764,6 +764,13 @@ reseller_token	|string|	token de revendedor
 seller_code	|string|	token de vendedor
 secure_url	|string|	url de ambiente seguro da loja
 
+<aside class="warning">Obs: Para recuperar todos os métodos de pagamentos da loja:</aside>
+
+Endpoint|Descrição
+-----|----
+https://{api_address}/payments/methods/1?access_token={{access_token}}	| Recupera todos os métodos de pagamento
+https://{api_address}/payments/methods/1/active?access_token={{access_token}}	| Recupera os métodos ativos na loja
+
 ### Tabelas Auxiliares de Pagamentos
 
 ### Tabela A - Identificar se é um facilitador (campo facilitator)

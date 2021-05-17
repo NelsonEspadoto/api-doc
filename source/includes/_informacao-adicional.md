@@ -703,7 +703,7 @@ curl --location -g --request POST 'https://{api_address}/products/:id/additional
         "info_id": 17,
         "inherit_deadline": 1,
         "deadline": 3,
-        "order": 1
+        "order": 1,
     }
 }'
 ```
@@ -755,12 +755,16 @@ Response response = client.newCall(request).execute();
 
 <pre>
 {
-    "AdditionalInfo": {
-        "info_id": 17,
-        "inherit_deadline": 1,
-        "deadline": 3,
-        "order": 1
-    }
+  "AdditionalInfo": {
+    "info_id": 17,
+    "inherit_deadline": 1,
+    "deadline": 3,
+    "order": 1,
+    "options_ids": [
+      11,
+      15
+    ]
+  }
 }
 </pre>
 

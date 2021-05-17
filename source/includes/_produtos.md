@@ -916,6 +916,12 @@ message|String|Mensagem de retorno
 :id|Number|Código do produto
 code|Number|Código do retorno(201)
 
+<aside class="warning">Obs: Para cadastrar um produto com preço sob encomenda:</aside>
+
+Campo|Descrição
+-----|----
+"price"	| Enviar este campo com valor zerado, ativará o campo **"upon_request"**
+
 ### Tabelas Auxiliares de Produtos
 
 ### Tabela A - Disponibilidade do produto (campo available)

@@ -353,7 +353,7 @@ use_taxes	|Number|	Taxas
 Products	|Object[ ]|	Dados dos produtos
 id	|Number|	Código do produto
 quantity	|Number|	Quantidade do produto no carrinho
-price	Decimal	Preço do produto
+price	|Decimal|	Preço do produto
 variant_id	|Number|	Código da variação do produto
 additional_information	|String|	Informações adicionais do produto
 name	|String|	Nome do produto
@@ -549,15 +549,15 @@ Campo|Tipo|Descrição
 access_token	|String|	Chave de acesso
 Cart	|JSON|	Dados do carrinho de compra
 session_id	|String|	Código da sessão do carrinho
-product_id	|Number	Código do produto
-variant_id	|Number	Código da variação
-quantity	|Number	Quantidade do produto no carrinho
+product_id	|Number|	Código do produto
+variant_id	|Number|	Código da variação
+quantity	|Number|	Quantidade do produto no carrinho
 price	|Decimal|	Preço do produto
 additional_information	|String|	Informações adicionais
-id_shipping	|Number	Código da forma de envio
+id_shipping	|Number|	Código da forma de envio
 name	|String|	Nome do destinatário
-min_period	|Number	Período mínimo para envio
-max_period	|Number	Período máximo para envio
+min_period	|Number|	Período mínimo para envio
+max_period	|Number|	Período máximo para envio
 zip_code	|String|	CEP
 price	|Decimal|	Valor do envio
 tax_name	|String|	Descrição de acréscimo / taxa

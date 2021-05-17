@@ -641,8 +641,6 @@ Campo|Tipo|Descrição
 access_token	|String|	Chave de acesso
 :id	|Number|	Código da lista de valores
 
-### Retorno em caso de sucesso (status code 200 ou 201)
-
 > Retorno de Sucesso:
 
 <pre>

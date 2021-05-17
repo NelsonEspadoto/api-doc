@@ -14,11 +14,14 @@ toc_footers:
 includes:
   - introdution
   - autorizacao
+  - sistema-notificacao
   - produtos
   - produtos-vendidos
   - pedidos
   - integracao-frete
-  - sistema-notificacao
+  - configuracao-forma-frete
+  - emissores-etiqueta
+  - etiqueta-mercado-livre
   - scripts-externos
   - clientes
   - cupom
@@ -33,8 +36,6 @@ includes:
   - newsletter
   - parceiros
   - palavra-chave
-  - etiqueta-mercado-livre
-  - emissores_etiqueta
   - informacoes-pagamento
   - informacoes-loja
   - carrinho-compra
