@@ -75,8 +75,9 @@ modified	|Date|	Filtro de data de modificação, ex.: [start], [end] Formato: aa
 
 <pre>
 {
+  {
     "paging": {
-        "total": 5,
+        "total": 7,
         "page": 1,
         "offset": 0,
         "limit": 30,
@@ -84,7 +85,7 @@ modified	|Date|	Filtro de data de modificação, ex.: [start], [end] Formato: aa
     },
     "sort": [
         {
-            "id": "asc"
+          "id": "asc"
         }
     ],
     "availableFilters": [
@@ -99,6 +100,14 @@ modified	|Date|	Filtro de data de modificação, ex.: [start], [end] Formato: aa
         "payment_form",
         "access_code",
         "external_code",
+        "has_payment",
+        "has_invoice",
+        "has_shipment",
+        "with_statuses",
+        "printed",
+        "payment_method_id",
+        "store_note",
+        "discount_coupon",
         "modified",
         "date",
         "shipment_date",
@@ -106,53 +115,78 @@ modified	|Date|	Filtro de data de modificação, ex.: [start], [end] Formato: aa
     ],
     "appliedFilters": [],
     "Orders": [
-        {
-            "Order": {
-                "status": "CANCELADO AUT",
-                "id": "2",
-                "date": "2018-03-08",
-                "customer_id": "1",
-                "partial_total": "200.00",
-                "taxes": "0.00",
-                "discount": "0.00",
-                "point_sale": "LOJA VIRTUAL",
-                "shipment": "Encomenda PAC",
-                "shipment_value": "19.20",
-                "shipment_date": "",
-                "discount_coupon": "",
-                "payment_method_rate": "0.00",
-                "value_1": "0.00",
-                "payment_form": "Boleto - Yapay",
-                "sending_code": "",
-                "session_id": "123abc123abc123abc123abc12",
-                "total": "219.20",
-                "payment_date": "0000-00-00",
-                "access_code": "AD8BC6B29CAD4D9",
-                "shipment_integrator": "Correios",
-                "modified": "2018-04-05 16:27:26",
-                "id_quotation": "",
-                "estimated_delivery_date": "2018-03-15",
-                "external_code": "",
-                "total_comission_user": "0.00",
-                "total_comission": "0.00",
-                "is_traceable": "0",
-                "OrderStatus": {
-                    "type": "canceled",
-                    "allow_edit_order": "0"
-                },
-                "ProductsSold": [
-                    {
-                        "id": "2"
-                    }
-                ],
-                "Payment": [],
-                "OrderInvoice": [],
-                "MlOrder": [],
-                "OrderTransactions": [],
-                "Extensions": []
-            }
+      {
+        "Order": {
+            "status": "A ENVIAR",
+            "id": "5",
+            "date": "2020-12-07",
+            "customer_id": "5",
+            "partial_total": "35999.00",
+            "taxes": "0.00",
+            "discount": "0.00",
+            "point_sale": "LOJA VIRTUAL",
+            "shipment": "Correios Expresso",
+            "shipment_value": "28.35",
+            "shipment_date": "",
+            "store_note": "07/12/2020 11:55:22 Pedido em 1 vez de R$ 27,027.60 através do Boleto - Yapay - Boleto",
+            "discount_coupon": "natal25/8999.75",
+            "payment_method_rate": "0.00",
+            "value_1": "0.00",
+            "payment_form": "Boleto - Yapay",
+            "sending_code": "",
+            "session_id": "rdlq7ogripa61r33p75bei8cj2",
+            "total": "27027.60",
+            "payment_date": "0000-00-00",
+            "access_code": "DB91EEA5D671CA2",
+            "progressive_discount": "0.00",
+            "shipping_progressive_discount": "0.00",
+            "shipment_integrator": "Frete Fácil",
+            "modified": "2020-12-21 11:21:52",
+            "printed": "",
+            "interest": "0.00",
+            "id_quotation": "3220",
+            "estimated_delivery_date": "2020-12-22",
+            "external_code": "",
+            "has_payment": "0",
+            "has_shipment": "0",
+            "has_invoice": "1",
+            "total_comission_user": "0.00",
+            "total_comission": "0.00",
+            "coupon": {
+                "code": "natal25",
+                "discount": "8999.75"
+            },
+            "is_traceable": "",
+            "OrderStatus": {
+                "id": "1",
+                "default": "1",
+                "type": "open",
+                "show_backoffice": "1",
+                "allow_edit_order": "0",
+                "description": "",
+                "status": "A ENVIAR",
+                "show_status_central": "",
+                "background": "#CAFAD1"
+            },
+            "PickupLocation": [],
+            "ProductsSold": [
+                {
+                    "id": "5"
+                }
+            ],
+            "Payment": [],
+            "OrderInvoice": [
+                {
+                    "id": "7",
+                    "link": ""
+                }
+            ],
+            "MlOrder": [],
+            "OrderTransactions": [],
+            "MarketplaceOrder": [],
+            "Extensions": []
         }
-    ]
+    }
 }
 </pre>
 
@@ -189,6 +223,8 @@ payment_date	|Date|	Data de Pagamento
 access_code	|String|	Código de acesso
 shipment_integrator	|String|	Integrador de Envio
 modified	|Date|	Data de Modificação
+printed	|String|	"se o retorno for 1 - o pedido já foi impresso se o retorno for vazio """" - o pedido ainda não foi impresso"
+interest	|Decimal|	Valor do Juros do Pedido
 id_quotation	|Number|	Código externo de cotação de frete (Gateway de Frete)
 estimated_delivery_date	|Number|	Tempo estimado de entrega
 total_comission_user	|Decimal|	Comissão por usuario
@@ -223,79 +259,87 @@ access_token	|String|Chave de acesso
 
 <pre>
 {
-    "Order": {
-        "status": "FINALIZADO",
-        "id": "1",
-        "date": "2018-12-26",
-        "hour": "14:58:46",
-        "customer_id": "1",
-        "partial_total": "5.00",
-        "taxes": "0.00",
-        "discount": "0.00",
-        "point_sale": "LOJA VIRTUAL",
-        "shipment": "Encomenda PAC",
-        "shipment_value": "20.80",
-        "shipment_date": "",
-        "delivered": "",
-        "store_note": "",
-        "customer_note": "",
-        "partner_id": "",
-        "discount_coupon": "",
-        "payment_method_rate": "0.00",
-        "installment": "1",
-        "value_1": "0.00",
-        "sending_code": "",
-        "sending_date": "0000-00-00",
-        "billing_address": "",
-        "delivery_time": "7",
-        "payment_method_id": "80",
-        "payment_method": "Boleto - Yapay",
-        "session_id": "abc123abc123abc123abc123",
-        "total": "25.80",
-        "access_code": "48B8E08A466849F",
-        "shipment_integrator": "Correios",
-        "modified": "2018-12-26 15:01:26",
-        "id_quotation": "",
-        "estimated_delivery_date": "2019-01-07",
-        "is_traceable": "0",
-        "external_code": "",
-        "total_comission_user": "0.00",
-        "total_comission": "0.00",
-        "OrderStatus": {
-            "type": "closed",
-            "allow_edit_order": "0"
-        },
-        "ProductsSold": [
-            {
-                "id": "1"
-            }
-        ],
-        "Payment": [],
-        "OrderInvoice": [],
-        "MlOrder": [],
-        "OrderTransactions": [
-            {
-                "url_payment": ""
-            }
-        ],
-        "Extensions": {
-            "AdditionalProductInfo": [
-                {
-                    "product_id": "4",
-                    "product_name": "Produto Informação Adicional",
-                    "variant_id": "0",
-                    "information": "nome: teste"
-                }
-            ]
-        },
-        "CustomerAddress": {
-            "id": "4"
-        },
-        "payments_notification": {
-            ""
-        },
-        "partner_name": ""
-    }
+  "Order": {
+      "status": "FINALIZADO",
+      "id": "15",
+      "date": "2021-02-10",
+      "hour": "11:28:21",
+      "customer_id": "1",
+      "partial_total": "59900.00",
+      "taxes": "0.00",
+      "discount": "0.00",
+      "point_sale": "LOJA VIRTUAL",
+      "shipment": "Correios Expresso",
+      "shipment_value": "38.91",
+      "shipment_date": "",
+      "delivered": "",
+      "shipping_cancelled": "",
+      "store_note": "10/02/2021 11:28:28 Pedido em 1 vez de R$ 62,935.86 através do Boleto - Yapay - Boleto Link da transação: https://intermediador.yapay.com.br/orders/billet/17471d7cd90f7d3ee4643e1da0f15",
+      "customer_note": "",
+      "partner_id": "0",
+      "discount_coupon": "",
+      "payment_method_rate": "2996.95",
+      "installment": "1",
+      "value_1": "0.00",
+      "sending_code": "",
+      "sending_date": "0000-00-00",
+      "billing_address": "0",
+      "delivery_time": "3",
+      "payment_method_id": "80",
+      "payment_method": "Boleto - Yapay",
+      "session_id": "k8ku3icuvb5uge2qj7u8gbtli6",
+      "total": "62935.86",
+      "payment_date": "2021-02-10",
+      "access_code": "38D071AEFEF4960",
+      "shipment_integrator": "Frete Fácil",
+      "modified": "2021-05-06 10:38:45",
+      "printed": "",
+      "interest": "0.00",
+      "id_quotation": "3220",
+      "estimated_delivery_date": "2021-02-15",
+      "is_traceable": "",
+      "external_code": "",
+      "tracking_url": "",
+      "has_payment": "0",
+      "has_shipment": "0",
+      "has_invoice": "0",
+      "total_comission_user": "0.00",
+      "total_comission": "0.00",
+      "OrderStatus": {
+          "id": "69",
+          "default": "1",
+          "type": "closed",
+          "show_backoffice": "1",
+          "allow_edit_order": "0",
+          "description": "",
+          "status": "FINALIZADO",
+          "show_status_central": "",
+          "background": "#85CC8D"
+      },
+      "PickupLocation": [],
+      "ProductsSold": [
+          {
+              "id": "17"
+          }
+      ],
+      "Payment": [],
+      "OrderInvoice": [],
+      "MlOrder": [],
+      "OrderTransactions": [
+          {
+              "url_payment": "https://intermediador.yapay.com.br/orders/billet/17471d7cd3ee4643e1da0f15"
+          }
+      ],
+      "MarketplaceOrder": [],
+      "Extensions": [],
+      "CustomerAddress": {
+          "id": "7"
+      },
+      "payments_notification": {
+          "notification": "https://trayparceiros.commercesuite.com.br/loja/retorno_pagamento.php?loja=391250&gateway=5&codigoAcesso=38D071AEFEF4960&notification=true"
+      },
+      "partner_name": ""
+  }
 }
 </pre>
 
@@ -341,6 +385,7 @@ has_payment	|String|	"se o retorno for 1 - existe pagamento efetuado se o retorn
 has_shipment	|String|	"se o retorno for 1 - existe forma de envio se o retorno for 0 - não há forma de envio"
 has_invoice	|String|	"se o retorno for 1 - existe dados fiscais se o retorno for 0 - ainda não há dados fiscais"
 printed	|String|	"se o retorno for 1 - o pedido já foi impresso se o retorno for vazio """" - o pedido ainda não foi impresso"
+interest	|Decimal|	Valor do Juros do Pedido
 total_comission_user	|String|	Total de commisão por Usuario
 total_comission	|String|	Total de commisão
 OrderStatus	|Object|	Detalhes do status do pedido
@@ -420,220 +465,261 @@ access_token	|String|Chave de acesso
 
 <pre>
 {
-    "Order": {
-        "status": "A ENVIAR",
-        "id": "85",
-        "date": "2017-08-17",
-        "hour": "14:23:33",
-        "customer_id": "2",
-        "partial_total": "0.01",
-        "taxes": "0.00",
-        "discount": "0.00",
-        "point_sale": "LOJA VIRTUAL",
-        "shipment": "ENTREGA RAPIDA",
-        "shipment_value": "25.51",
-        "shipment_date": "",
-        "delivered": "",
-        "store_note": "17/08/2017 14:23:33 Pedido em 1 vez de R$ 25.52 através do Boleto - TrayCheckout - Boleto",
-        "customer_note": "",
-        "partner_id": "",
-        "discount_coupon": "",
-        "payment_method_rate": "0.00",
-        "installment": "1",
-        "value_1": "0.00",
-        "sending_code": "",
-        "sending_date": "0000-00-00",
-        "billing_address": "",
-        "delivery_time": "2 a 4",
-        "payment_method_id": "80",
-        "payment_method": "Boleto - Yapay",
-        "session_id": "sdasdsadasidaqidjas9dasd",
-        "total": "25.52",
-        "access_code": "EADE00",
-        "shipment_integrator": "gateway",
-        "modified": "2018-04-05 16:08:46",
-        "id_quotation": "",
-        "estimated_delivery_date": "",
-        "is_traceable": "0",
-        "external_code": "",
-        "Extensions": [],
-        "total_comission_user": "0.00",
-        "total_comission": "0.00",
-        "OrderStatus": {
-            "type": "open",
-            "allow_edit_order": "1"
-        },
-        "PickupLocation": {
-            "shipping_id": "49",
-            "code": "00027300",
-            "name": "CORREIOS - AC MARILIA",
-            "address": {
-            "zip_code": "17500970",
-            "street": "AVENIDA SAMPAIO VIDAL",
-            "number": "1029",
-            "neighborhood": "CENTRO",
-            "complement": "",
-            "city": "MARILIA",
-            "uf": "SP"
-            },
-            "values": {
-            "value": "21.00",
-            "information": "Retire em um de nossos pontos de atendimento credenciados pelos Correios."
-            },
-            "cellphone": "14981253696"
-            },
-        "urls": {
-            "payment": "https://lojax.commerce.com.br/loja/pagamento.php?loja=406562&pedido=EADE00"
-        },
-        "Customer": {
-            "cnpj": "07.551.102/0001-44",
-            "created": "0000-00-00 00:00:00",
-            "id": "2",
-            "name": "Tray Sistemas",
-            "registration_date": "2008-10-14",
-            "rg": "",
-            "cpf": "00126908601",
-            "phone": "1434546185",
-            "cellphone": "",
-            "birth_date": "0000-00-00",
-            "gender": "0",
-            "email": "teste@tray.com.br",
-            "nickname": "",
-            "token": "8D9",
-            "total_orders": "8",
-            "observation": "aaa",
-            "type": "1",
-            "company_name": "Tray Locação de Sistema de Internet LTDA ME",
-            "state_inscription": "Isento",
-            "reseller": "1",
-            "discount": "0.100",
-            "blocked": "",
-            "credit_limit": "0.00",
-            "indicator_id": "0",
-            "profile_customer_id": "1",
-            "last_sending_newsletter": "0000-00-00",
-            "last_purchase": "2019-01-30",
-            "last_visit": "2019-01-30",
-            "last_modification": "2017-07-03 09:22:37",
-            "address": "Avenida Alcides Lajes Magalhães",
-            "zip_code": "17525-181",
-            "number": "130",
-            "complement": "",
-            "neighborhood": "Jardim Acapulco",
-            "city": "Marília",
-            "state": "SP",
-            "country": "Brasil",
-            "newsletter": "0",
-            "modified": "2019-01-30 10:14:20",
-            "Extensions": [],
-            "CustomerAddresses": [
-                {
-                    "CustomerAddress": {
-                        "id": "100",
-                        "customer_id": "2",
-                        "address": "Avenida Maria Fernandes Cavallari 1",
-                        "number": "1655",
-                        "complement": "Sala 021",
-                        "neighborhood": "Jardim Cavallari1",
-                        "city": "Marília",
-                        "state": "SP",
-                        "zip_code": "17526-431",
-                        "country": "Brasil",
-                        "type": "1",
-                        "active": "0",
-                        "description": "",
-                        "recipient": "",
-                        "type_delivery": "1",
-                        "not_list": "0"
-                    }
-                }
-            ]
-        },
-        "ProductsSold": [
-            {
-                "ProductsSold": {
-                    "product_kit_id": "0",
-                    "product_kit_id_kit": "0",
-                    "id_campaign": "",
-                    "id": "95",
-                    "product_id": "1338",
-                    "order_id": "85",
-                    "name": "Produto Teste API (Ref. 111)",
-                    "original_name": "",
-                    "virtual_product": "0",
-                    "Sku": [],
-                    "price": "0.01",
-                    "cost_price": "0.01",
-                    "original_price": "0.01",
-                    "weight": "1000",
-                    "weight_cubic": "209",
-                    "quantity": "1",
-                    "brand": "marca",
-                    "model": "",
-                    "reference": "111",
-                    "length": "10",
-                    "width": "10",
-                    "height": "10",
-                    "variant_id": "0",
-                    "additional_information": "",
-                    "text_variant": "",
-                    "warranty": "",
-                    "bought_together_id": "0",
-                    "ncm": "",
-                    "included_items": "",
-                    "release_date": "",
-                    "comissao": "0.00",
-                    "ProductSoldImage": [],
-                    "is_giveaway": "0",
-                    "ProductSoldPackage": [],
-                    "ProductSoldCard": [],
-                    "url": {
-                        "http": "",
-                        "https": ""
-                    }
-                }
-            }
-        ],
-        "OrderInvoice": [
-            {
-                "OrderInvoice": {
-                    "id": "18",
-                    "order_id": "85",
-                    "issue_date": "2017-12-04",
-                    "number": "2285",
-                    "serie": "1",
-                    "value": "1139.01",
-                    "key": "000000102550010000022851493279299",
-                    "link": "",
-                    "xml_danfe": ""
-                },
-                "ProductCfop": []
-            }
-        ],
-        "Payment": [
-            {
-                "Payment": {
-                    "created": "2017-11-10 15:47:12",
-                    "modified": "2017-11-10 15:47:12",
-                    "id": "4",
-                    "order_id": "85",
-                    "payment_method_id": "80",
-                    "method": "Boleto - TrayCheckout",
-                    "payment_place": "Teste",
-                    "value": "25.52",
-                    "date": "2017-11-09",
-                    "note": "teste de teste"
-                }
-            }
-        ],
-        "MlOrder": [],
-        "OrderTransactions": [],
-        "payments_notification": {
-            "notification": "https://com.pay.tray.com.br/loja/retorno_pagamento.php?loja=406562&gateway=5&numeroTransacao=85&notification=true"
-        },
-        "partner_name": ""
-    },
-    "Extensions": []
+  "Order": {
+      "status": "FINALIZADO",
+      "id": "15",
+      "date": "2021-02-10",
+      "hour": "11:28:21",
+      "customer_id": "1",
+      "partial_total": "59900.00",
+      "taxes": "0.00",
+      "discount": "0.00",
+      "point_sale": "LOJA VIRTUAL",
+      "shipment": "Correios Expresso",
+      "shipment_value": "38.91",
+      "shipment_date": "",
+      "delivered": "",
+      "shipping_cancelled": "",
+      "store_note": "10/02/2021 11:28:28 Pedido em 1 vez de R$ 62,935.86 através do Boleto - Yapay - Boleto Link da transação: https://intermediador.yapay.com.br/orders/billet/17471d7cd90fd3ee4643e1da0f15",
+      "customer_note": "",
+      "partner_id": "0",
+      "discount_coupon": "",
+      "payment_method_rate": "2996.95",
+      "installment": "1",
+      "value_1": "0.00",
+      "sending_code": "",
+      "sending_date": "0000-00-00",
+      "billing_address": "0",
+      "delivery_time": "3",
+      "payment_method_id": "80",
+      "payment_method": "Boleto - Yapay",
+      "session_id": "k8ku3icuvb5uge2qj7u8gbtli6",
+      "total": "62935.86",
+      "payment_date": "2021-02-10",
+      "access_code": "38D071AEFEF4960",
+      "shipment_integrator": "Frete Fácil",
+      "modified": "2021-05-06 10:38:45",
+      "printed": "",
+      "interest": "0.00",
+      "id_quotation": "3220",
+      "estimated_delivery_date": "2021-02-15",
+      "is_traceable": "",
+      "external_code": "",
+      "tracking_url": "",
+      "has_payment": "0",
+      "has_shipment": "0",
+      "has_invoice": "0",
+      "total_comission_user": "0.00",
+      "total_comission": "0.00",
+      "OrderStatus": {
+          "id": "69",
+          "default": "1",
+          "type": "closed",
+          "show_backoffice": "1",
+          "allow_edit_order": "0",
+          "description": "",
+          "status": "FINALIZADO",
+          "show_status_central": "",
+          "background": "#85CC8D"
+      },
+      "PickupLocation": [],
+      "cost": "0",
+      "urls": {
+          "payment": "https://trayparceiros.commercesuite.com.br/loja/pagamento.php?loja=391250&pedido=38D071AEFEF4960"
+      },
+      "payment_method_type": "bank_billet",
+      "Customer": {
+          "cnpj": "",
+          "newsletter": "0",
+          "created": "0000-00-00 00:00:00",
+          "terms": "0000-00-00 00:00:00",
+          "id": "1",
+          "name": "Nome Cliente",
+          "registration_date": "2008-10-14",
+          "rg": "",
+          "cpf": "12442673177",
+          "phone": "1434546185",
+          "cellphone": "",
+          "birth_date": "0000-00-00",
+          "gender": "0",
+          "email": "email@tray.com.br",
+          "nickname": "",
+          "token": "0BBB15A404B6BA1",
+          "total_orders": "0",
+          "observation": "Teste 2",
+          "type": "0",
+          "company_name": "",
+          "state_inscription": "",
+          "reseller": "0",
+          "discount": "0.000",
+          "blocked": "",
+          "credit_limit": "0.00",
+          "indicator_id": "0",
+          "profile_customer_id": "1",
+          "last_sending_newsletter": "0000-00-00",
+          "last_purchase": "2021-02-23",
+          "last_visit": "2021-02-25",
+          "last_modification": "0000-00-00 00:00:00",
+          "address": "Rua Teste",
+          "zip_code": "17500-000",
+          "number": "55",
+          "complement": "Casa 26",
+          "neighborhood": "Centro",
+          "city": "Marília",
+          "state": "SP",
+          "country": "Brasil",
+          "modified": "2021-04-05 09:33:59",
+          "Extensions": {
+              "Profile": {
+                  "id": "1",
+                  "name": "Padrao"
+              },
+              "Profiles": [
+                  {
+                      "id": "1",
+                      "price_list_id": "0",
+                      "name": "Padrao",
+                      "approves_registration": "0",
+                      "show_price": "",
+                      "theme_id": "0",
+                      "selected": "1"
+                  }
+              ]
+          },
+          "CustomerAddresses": [
+              {
+                  "CustomerAddress": {
+                      "id": "7",
+                      "customer_id": "1",
+                      "address": "Rua Teste",
+                      "number": "55",
+                      "complement": "Casa 26",
+                      "neighborhood": "Centro",
+                      "city": "Marília",
+                      "state": "SP",
+                      "zip_code": "17500-000",
+                      "country": "Brasil",
+                      "type": "1",
+                      "active": "1",
+                      "description": "Residencial",
+                      "recipient": "",
+                      "type_delivery": "1",
+                      "not_list": "0"
+                  }
+              }
+          ]
+      },
+      "ProductsSold": [
+          {
+              "ProductsSold": {
+                  "product_kit_id": "0",
+                  "product_kit_id_kit": "0",
+                  "id_campaign": "0",
+                  "product_id": "13",
+                  "quantity": "1",
+                  "id": "17",
+                  "order_id": "15",
+                  "name": "Notebook Alienware Gamer,
+                  "original_name": "Notebook Alienware Gamer",
+                  "virtual_product": "0",
+                  "ean": "",
+                  "Sku": [
+                      {
+                        "type": "Voltagem",
+                        "value": "110v"
+                      }
+                  ],
+                  "price": "59900.00",
+                  "cost_price": "0.00",
+                  "original_price": "59900.00",
+                  "weight": "3000",
+                  "weight_cubic": "15000",
+                  "brand": "Dell Alienware",
+                  "model": "area51m",
+                  "reference": "",
+                  "length": "40",
+                  "width": "45",
+                  "height": "40",
+                  "variant_id": "25",
+                  "additional_information": "",
+                  "text_variant": "",
+                  "warranty": "",
+                  "bought_together_id": "0",
+                  "ncm": "",
+                  "included_items": "",
+                  "release_date": "",
+                  "commissioner_value": "0.00",
+                  "comissao": "0.00",
+                  "ProductSoldImage": [
+                      {
+                        "http": "http://images.tcdn.com.br/img/img_prod/391250/notebook_alienware_gamer_13_1_8396502fb367dd214dd15f06782390c3.png",
+                        "https": "https://images.tcdn.com.br/img/img_prod/391250/notebook_alienware_gamer_13_1_8396502fb367dd214dd15f06782390c3.png",
+                        "thumbs": {
+                            "30": {
+                                "http": "http://images.tcdn.com.br/img/img_prod/391250/30_notebook_alienware_gamer_13_1_8396502fb367dd214dd15f06782390c3.png",
+                                "https": "https://images.tcdn.com.br/img/img_prod/391250/30_notebook_alienware_gamer_13_1_8396502fb367dd214dd15f06782390c3.png"
+                            },
+                            "90": {
+                                "http": "http://images.tcdn.com.br/img/img_prod/391250/90_notebook_alienware_gamer_13_1_8396502fb367dd214dd15f06782390c3.png",
+                                "https": "https://images.tcdn.com.br/img/img_prod/391250/90_notebook_alienware_gamer_13_1_8396502fb367dd214dd15f06782390c3.png"
+                            },
+                            "180": {
+                                "http": "http://images.tcdn.com.br/img/img_prod/391250/180_notebook_alienware_gamer_13_1_8396502fb367dd214dd15f06782390c3.png",
+                                "https": "https://images.tcdn.com.br/img/img_prod/391250/180_notebook_alienware_gamer_13_1_8396502fb367dd214dd15f06782390c3.png"
+                            }
+                          }
+                      }
+                  ],
+                  "Category": [
+                      {
+                        "id": "5",
+                        "name": "Notebooks",
+                        "main_category": "0"
+                      },
+                      {
+                        "id": "15",
+                        "name": "Gamer",
+                        "main_category": "1"
+                      }
+                  ],
+                  "is_giveaway": "",
+                  "BoughtTogether": [],
+                  "url": {
+                    "http": "http://trayparceiros.commercesuite.com.br/notebooks/gamer/notebook-alienware-gamer",
+                    "https": "https://trayparceiros.commercesuite.com.br/notebooks/gamer/notebook-alienware-gamer"
+                  },
+                  "Discount": [],
+                  "Stock": {
+                    "id": "1",
+                    "name": "Loja"
+                  }
+              }
+          }
+      ],
+      "OrderInvoice": [],
+      "Payment": [],
+      "MlOrder": [],
+      "MarketplaceOrder": [],
+      "OrderTransactions": [
+          {
+            "url_payment": "https://intermediador.yapay.com.br/orders/billet/17471d7cd90f3ee4643e1da0f15"
+          }
+      ],
+      "OrderInvoiceAmount": [],
+      "PaymentMethodMessage": {
+        "text": "",
+        "text_pag": "",
+        "text_confirm": "",
+        "confirmation": "0"
+      },
+      "payments_notification": {
+        "notification": "https://trayparceiros.commercesuite.com.br/loja/retorno_pagamento.php?loja=391250&gateway=5&codigoAcesso=38D071AEFEF4960&notification=true"
+      },
+      "partner_name": ""
+  },
+  "Extensions": [],
+  "User": [],
+  "Confirmation": []
 }
 </pre>
 
@@ -682,6 +768,7 @@ has_payment	|String|	"se o retorno for 1 - existe pagamento efetuado se o retorn
 has_shipment	|String|	"se o retorno for 1 - existe forma de envio se o retorno for 0 - não há forma de envio"
 has_invoice	|String|	"se o retorno for 1 - existe dados fiscais se o retorno for 0 - ainda não há dados fiscais"
 printed	|String|	"se o retorno for 1 - o pedido já foi impresso se o retorno for vazio """" - o pedido ainda não foi impresso"
+interest	|Decimal|	Valor do Juros do Pedido
 cupom	|Object|	Dados do cupom de desconto
 code	|Object|	Código do cupom de desconto
 discount	|Object|	Valor de desconto

@@ -108,27 +108,6 @@ code	|Number|	Código do retorno (200)
 
 ## Exclusão da forma de envio com integração externa pelo ID#delete
 
-> Estrutura do Json:
-
-<pre>
-{
-    "Shipping": {
-        "name": "Tabela de CEP Teste",
-        "active": 1,
-        "product_rate": "10",
-        "additional_order": "12",
-        "delivery_days": {
-            "min": "7",
-            "max": "12"
-        },
-        "customer_message": "Teste",
-        "store_display": 1,
-        "cart_display": 0,
-        "payment_display": 1
-    }
-}
-</pre>
-
 ### Método DELETE
 `https://{api_address}/shippings/method/gateway/:id?access_token?access_token={{access_token}}`
 
@@ -260,27 +239,6 @@ id	|Number|	Código da etiqueta
 code	|Number|	Código do retorno (200)
 
 ## Exclusão de tabela de CEP pelo ID#delete
-
-> Estrutura do Json:
-
-<pre>
-{
-    "Shipping": {
-        "name": "Tabela de CEP Teste",
-        "active": 1,
-        "product_rate": "10",
-        "additional_order": "12",
-        "delivery_days": {
-            "min": "7",
-            "max": "12"
-        },
-        "customer_message": "Teste",
-        "store_display": 1,
-        "cart_display": 0,
-        "payment_display": 1
-    }
-}
-</pre>
 
 ### Método DELETE
 `https://{api_address}/shippings/method/zipcode_table/:id?access_token={{access_token}}`
