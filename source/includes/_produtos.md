@@ -916,7 +916,7 @@ message|String|Mensagem de retorno
 :id|Number|Código do produto
 code|Number|Código do retorno(201)
 
-<aside class="warning">Obs: Para cadastrar um produto com preço sob encomenda:</aside>
+<aside class="warning">Obs: Para cadastrar um produto com preço sob consulta:</aside>
 
 Campo|Descrição
 -----|----
