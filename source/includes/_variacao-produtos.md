@@ -596,8 +596,8 @@ weight	|Number|	Peso da variação
 length	|Number|	Comprimento da variação
 width	|Number|	Largura da variação
 height	|Number|	Altura da variação
-start_promotion	Date	Data de início da promoção da variação (Formato: aaaa-mm-dd)
-end_promotion	Date	Data de termino da promoção da variação (Formato: aaaa-mm-dd)
+start_promotion	|Date|	Data de início da promoção da variação (Formato: aaaa-mm-dd)
+end_promotion	|Date|	Data de termino da promoção da variação (Formato: aaaa-mm-dd)
 promotional_price	|Decimal|	Preço promocional da variação
 type	|String|	Tipo de sku da variação
 value	|String|	Valor de sku da variação
