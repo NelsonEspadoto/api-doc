@@ -6339,7 +6339,24 @@ Precisamos que seja realizado do lado ERP, uma gestão no envio dessas imagens, 
       "OrderInvoice": [],
       "Payment": [],
       "MlOrder": [],
-      "MarketplaceOrder": [],
+      "MarketplaceOrder": [
+            {
+                "MarketplaceOrder": {
+                    "order_id": "123456",
+                    "marketplace_name": "Dafiti",
+                    "marketplace_seller_name": "Loja",
+                    "marketplace_seller_id": "",
+                    "marketplace_document": "1154987592",
+                    "payment_responsible_document": "11200456549",
+                    "marketplace_order_id": "987654",
+                    "marketplace_shipping_id": "",
+                    "marketplace_shipping_type": "",
+                    "marketplace_internal_status": "",
+                    "created": "2021-06-11 10:00:51",
+                    "updated": "2021-06-11 10:00:51"
+                }
+            }
+        ],
       "OrderTransactions": [
           {
             "url_payment": "https://intermediador.yapay.com.br/orders/billet/17471d7cd90f3ee4643e1da0f15"
@@ -7106,6 +7123,51 @@ Precisamos que seja realizado do lado ERP, uma gestão no envio dessas imagens, 
 <td>&quot;Dados do Mercado Livre *verificar retorno dos campos do ML no rodapé&quot;</td>
 </tr>
 <tr>
+<td>marketplace_name</td>
+<td>String</td>
+<td>Nome do Marketplace</td>
+</tr>
+<tr>
+<td>marketplace_seller_name</td>
+<td>String</td>
+<td>Nome do Seller junto ao marketplace</td>
+</tr>
+<tr>
+<td>marketplace_seller_id</td>
+<td>String</td>
+<td>Id do vendedor junto ao marketplace</td>
+</tr>
+<tr>
+<td>marketplace_document</td>
+<td>String</td>
+<td>CNPJ do marketplace</td>
+</tr>
+<tr>
+<td>payment_responsible_document</td>
+<td>String</td>
+<td>CNPJ do intermediador de pagamento que processou o pagamento</td>
+</tr>
+<tr>
+<td>marketplace_order_id</td>
+<td>String</td>
+<td>Id do pedido junto ao marketplace</td>
+</tr>
+<tr>
+<td>marketplace_shipping_id</td>
+<td>String</td>
+<td>Id do envio junto ao marketplace (OBS. Não é o código de rastreio)</td>
+</tr>
+<tr>
+<td>marketplace_shipping_type</td>
+<td>String</td>
+<td>Tipo de envio do marketplace</td>
+</tr>
+<tr>
+<td>marketplace_internal_status</td>
+<td>String</td>
+<td>Status do pedido dentro do marketplace</td>
+</tr>
+<tr>
 <td>id</td>
 <td>Number</td>
 <td>Codigo interno</td>
@@ -7219,6 +7281,7 @@ Precisamos que seja realizado do lado ERP, uma gestão no envio dessas imagens, 
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">-g</span> <span class="nt">--request</span> POST <span class="s1">'https://{api_address}/orders?access_token={{access_token}}'</span> <span class="se">\</span>
 <span class="nt">--data-urlencode</span> <span class="s1">'["Order"]["point_sale"]=PARTICULAR'</span> <span class="se">\</span>
+<span class="nt">--data-urlencode</span> <span class="s1">'["Order"]["session_id"]=0BBB15A404B6BA1'</span> <span class="se">\</span>
 <span class="nt">--data-urlencode</span> <span class="s1">'["Order"]["shipment"] =Sedex'</span> <span class="se">\</span>
 <span class="nt">--data-urlencode</span> <span class="s1">'["Order"]["shipment_value"]=10.44'</span> <span class="se">\</span>
 <span class="nt">--data-urlencode</span> <span class="s1">'["Order"]["payment_form"]=Boleto - TrayCheckout'</span> <span class="se">\</span>
@@ -7262,6 +7325,7 @@ Precisamos que seja realizado do lado ERP, uma gestão no envio dessas imagens, 
 <span class="p">));</span>
 <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">addPostParameter</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
   <span class="s1">'["Order"]["point_sale"]'</span> <span class="o">=&gt;</span> <span class="s1">'PARTICULAR'</span><span class="p">,</span>
+  <span class="s1">'["Order"]["session_id"] '</span> <span class="o">=&gt;</span> <span class="s1">'0BBB15A404B6BA1'</span><span class="p">,</span>
   <span class="s1">'["Order"]["shipment"] '</span> <span class="o">=&gt;</span> <span class="s1">'Sedex'</span><span class="p">,</span>
   <span class="s1">'["Order"]["shipment_value"]'</span> <span class="o">=&gt;</span> <span class="s1">'10.44'</span><span class="p">,</span>
   <span class="s1">'["Order"]["payment_form"]'</span> <span class="o">=&gt;</span> <span class="s1">'Boleto - TrayCheckout'</span><span class="p">,</span>
@@ -7313,6 +7377,7 @@ Precisamos que seja realizado do lado ERP, uma gestão no envio dessas imagens, 
 <span class="n">client</span><span class="p">.</span><span class="n">Timeout</span> <span class="p">=</span> <span class="p">-</span><span class="m">1</span><span class="p">;</span>
 <span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
 <span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"[\"Order\"][\"point_sale\"]"</span><span class="p">,</span> <span class="s">"PARTICULAR"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"[\"Order\"][\"session_id\"]"</span><span class="p">,</span> <span class="s">"0BBB15A404B6BA1"</span><span class="p">);</span>
 <span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"[\"Order\"][\"shipment\"] "</span><span class="p">,</span> <span class="s">"Sedex"</span><span class="p">);</span>
 <span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"[\"Order\"][\"shipment_value\"]"</span><span class="p">,</span> <span class="s">"10.44"</span><span class="p">);</span>
 <span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"[\"Order\"][\"payment_form\"]"</span><span class="p">,</span> <span class="s">"Boleto - TrayCheckout"</span><span class="p">);</span>
@@ -7351,7 +7416,7 @@ Precisamos que seja realizado do lado ERP, uma gestão no envio dessas imagens, 
 </code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">OkHttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">OkHttpClient</span><span class="o">().</span><span class="na">newBuilder</span><span class="o">()</span>
   <span class="o">.</span><span class="na">build</span><span class="o">();</span>
 <span class="nc">MediaType</span> <span class="n">mediaType</span> <span class="o">=</span> <span class="nc">MediaType</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">"text/plain"</span><span class="o">);</span>
-<span class="nc">RequestBody</span> <span class="n">body</span> <span class="o">=</span> <span class="nc">RequestBody</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">mediaType</span><span class="o">,</span> <span class="s">"[\"Order\"][\"point_sale\"]=PARTICULAR&amp;[\"Order\"][\"shipment\"] =Sedex&amp;[\"Order\"][\"shipment_value\"]=10.44&amp;[\"Order\"][\"payment_form\"]=Boleto - TrayCheckout&amp;[\"Order\"][\"Customer\"][\"type\"]=0&amp;[\"Order\"][\"Customer\"][\"name\"]=Nome do Cliente&amp;[\"Order\"][\"Customer\"][\"cpf\"]=00000000000&amp;[\"Order\"][\"Customer\"][\"email\"]=email@docliente.com&amp;[\"Order\"][\"Customer\"][\"rg\"]=00.000.000-X&amp;[\"Order\"][\"Customer\"][\"gender\"]=M&amp;[\"Order\"][\"Customer\"][\"phone\"]=1133330001&amp;[\"Order\"][\"Customer\"][\"CustomerAddress\"][0][\"address\"]=Endereço do Cliente&amp;[\"Order\"][\"Customer\"][\"CustomerAddress\"][0][\"zip_code\"]=04001001&amp;[\"Order\"][\"Customer\"][\"CustomerAddress\"][0][\"number\"]=123&amp;[\"Order\"][\"Customer\"][\"CustomerAddress\"][0][\"complement\"]=Sala 123&amp;[\"Order\"][\"Customer\"][\"CustomerAddress\"][0][\"neighborhood\"] =Bairro do Cliente&amp;[\"Order\"][\"Customer\"][\"CustomerAddress\"][0][\"city\"]=Cidade do Cliente&amp;[\"Order\"][\"Customer\"][\"CustomerAddress\"][0][\"state\"]=SP&amp;[\"Order\"][\"Customer\"][\"CustomerAddress\"][0][\"country\"]=BRASIL&amp;[\"Order\"][\"Customer\"][\"CustomerAddress\"][0][\"type\"]=1&amp;[\"Order\"][\"Customer\"][\"ProductsSold\"][0][\"product_id\"]=1&amp;[\"Order\"][\"Customer\"][\"ProductsSold\"][0][\"variant_id\"]=12&amp;[\"Order\"][\"Customer\"][\"ProductsSold\"][0][\"price\"]=42.90&amp;[\"Order\"][\"Customer\"][\"ProductsSold\"][0][\"original_price\"]=42.90&amp;[\"Order\"][\"Customer\"][\"ProductsSold\"][0][\"quantity\"]=1&amp;[\"Order\"][\"MarketplaceOrder\"\"][\"marketplace_name\"]=Mercado Livre&amp;[\"Order\"][\"MarketplaceOrder\"\"][\"marketplace_seller_name\"]=1234567890&amp;[\"Order\"][\"MarketplaceOrder\"\"][\"marketplace_seller_id\"]=273480425&amp;[\"Order\"][\"MarketplaceOrder\"\"][\"marketplace_document\"]=0000000000000&amp;[\"Order\"][\"MarketplaceOrder\"\"][\"payment_responsible_document\"]=0000000000000&amp;[\"Order\"][\"MarketplaceOrder\"\"][\"marketplace_order_id\"]=4429804558&amp;[\"Order\"][\"MarketplaceOrder\"\"][\"marketplace_shipping_id\"]=40457395268&amp;[\"Order\"][\"MarketplaceOrder\"\"][\"marketplace_shipping_type\"]=me2&amp;[\"Order\"][\"MarketplaceOrder\"\"][\"marketplace_internal_status\"]=shipping"</span><span class="o">);</span>
+<span class="nc">RequestBody</span> <span class="n">body</span> <span class="o">=</span> <span class="nc">RequestBody</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">mediaType</span><span class="o">,</span> <span class="s">"[\"Order\"][\"point_sale\"]=PARTICULAR&amp;[\"Order\"][\"session_id\"]=0BBB15A404B6BA1&amp;[\"Order\"][\"shipment\"] =Sedex&amp;[\"Order\"][\"shipment_value\"]=10.44&amp;[\"Order\"][\"payment_form\"]=Boleto - TrayCheckout&amp;[\"Order\"][\"Customer\"][\"type\"]=0&amp;[\"Order\"][\"Customer\"][\"name\"]=Nome do Cliente&amp;[\"Order\"][\"Customer\"][\"cpf\"]=00000000000&amp;[\"Order\"][\"Customer\"][\"email\"]=email@docliente.com&amp;[\"Order\"][\"Customer\"][\"rg\"]=00.000.000-X&amp;[\"Order\"][\"Customer\"][\"gender\"]=M&amp;[\"Order\"][\"Customer\"][\"phone\"]=1133330001&amp;[\"Order\"][\"Customer\"][\"CustomerAddress\"][0][\"address\"]=Endereço do Cliente&amp;[\"Order\"][\"Customer\"][\"CustomerAddress\"][0][\"zip_code\"]=04001001&amp;[\"Order\"][\"Customer\"][\"CustomerAddress\"][0][\"number\"]=123&amp;[\"Order\"][\"Customer\"][\"CustomerAddress\"][0][\"complement\"]=Sala 123&amp;[\"Order\"][\"Customer\"][\"CustomerAddress\"][0][\"neighborhood\"] =Bairro do Cliente&amp;[\"Order\"][\"Customer\"][\"CustomerAddress\"][0][\"city\"]=Cidade do Cliente&amp;[\"Order\"][\"Customer\"][\"CustomerAddress\"][0][\"state\"]=SP&amp;[\"Order\"][\"Customer\"][\"CustomerAddress\"][0][\"country\"]=BRASIL&amp;[\"Order\"][\"Customer\"][\"CustomerAddress\"][0][\"type\"]=1&amp;[\"Order\"][\"Customer\"][\"ProductsSold\"][0][\"product_id\"]=1&amp;[\"Order\"][\"Customer\"][\"ProductsSold\"][0][\"variant_id\"]=12&amp;[\"Order\"][\"Customer\"][\"ProductsSold\"][0][\"price\"]=42.90&amp;[\"Order\"][\"Customer\"][\"ProductsSold\"][0][\"original_price\"]=42.90&amp;[\"Order\"][\"Customer\"][\"ProductsSold\"][0][\"quantity\"]=1&amp;[\"Order\"][\"MarketplaceOrder\"\"][\"marketplace_name\"]=Mercado Livre&amp;[\"Order\"][\"MarketplaceOrder\"\"][\"marketplace_seller_name\"]=1234567890&amp;[\"Order\"][\"MarketplaceOrder\"\"][\"marketplace_seller_id\"]=273480425&amp;[\"Order\"][\"MarketplaceOrder\"\"][\"marketplace_document\"]=0000000000000&amp;[\"Order\"][\"MarketplaceOrder\"\"][\"payment_responsible_document\"]=0000000000000&amp;[\"Order\"][\"MarketplaceOrder\"\"][\"marketplace_order_id\"]=4429804558&amp;[\"Order\"][\"MarketplaceOrder\"\"][\"marketplace_shipping_id\"]=40457395268&amp;[\"Order\"][\"MarketplaceOrder\"\"][\"marketplace_shipping_type\"]=me2&amp;[\"Order\"][\"MarketplaceOrder\"\"][\"marketplace_internal_status\"]=shipping"</span><span class="o">);</span>
 <span class="nc">Request</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Request</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
   <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="s">"https://{api_address}/orders?access_token={{access_token}}"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">method</span><span class="o">(</span><span class="s">"POST"</span><span class="o">,</span> <span class="n">body</span><span class="o">)</span>
@@ -7368,6 +7433,7 @@ Precisamos que seja realizado do lado ERP, uma gestão no envio dessas imagens, 
 {
     "Order":{
       "point_sale":"PARTICULAR",
+      "session_id": "0BBB15A404B6BA1",
       "shipment":"Sedex",
       "shipment_value":"10.44",
       "payment_form":"Boleto - TrayCheckout",
@@ -7435,6 +7501,11 @@ Precisamos que seja realizado do lado ERP, uma gestão no envio dessas imagens, 
 <td>point_sale</td>
 <td>String (45)</td>
 <td>Local de venda</td>
+</tr>
+<tr>
+<td>session_id</td>
+<td>String</td>
+<td>Sessão do Pedido</td>
 </tr>
 <tr>
 <td>shipment</td>
@@ -17947,20 +18018,67 @@ prods=0.2;0.2;0.2;0.008;1;0.1;6;43.99/0.3;0.22;0.5;0.033;2;0.235;8;151.33
 <td>Number</td>
 <td>Altura da variação</td>
 </tr>
+<tr>
+<td>start_promotion</td>
+<td>Date</td>
+<td>Data de início da promoção da variação (Formato: aaaa-mm-dd)</td>
+</tr>
+<tr>
+<td>end_promotion</td>
+<td>Date</td>
+<td>Data de termino da promoção da variação (Formato: aaaa-mm-dd)</td>
+</tr>
+<tr>
+<td>promotional_price</td>
+<td>Decimal</td>
+<td>Preço promocional da variação</td>
+</tr>
+<tr>
+<td>type</td>
+<td>String</td>
+<td>Tipo de sku da variação</td>
+</tr>
+<tr>
+<td>value</td>
+<td>String</td>
+<td>Valor de sku da variação</td>
+</tr>
+<tr>
+<td>picture_source_1</td>
+<td>String</td>
+<td>Imagem principal do produto (URL da imagem) (Obrigatório enviar o product_id)</td>
+</tr>
+<tr>
+<td>picture_source_2</td>
+<td>String</td>
+<td>Imagem do produto - imagem 2 (URL da imagem) (Obrigatório enviar o product_id)</td>
+</tr>
+<tr>
+<td>picture_source_3</td>
+<td>String</td>
+<td>Imagem do produto - imagem 3 (URL da imagem) (Obrigatório enviar o product_id)</td>
+</tr>
+<tr>
+<td>picture_source_4</td>
+<td>String</td>
+<td>Imagem do produto - imagem 4 (URL da imagem) (Obrigatório enviar o product_id)</td>
+</tr>
+<tr>
+<td>picture_source_5</td>
+<td>String</td>
+<td>Imagem do produto - imagem 5 (URL da imagem) (Obrigatório enviar o product_id)</td>
+</tr>
+<tr>
+<td>picture_source_6</td>
+<td>String</td>
+<td>Imagem do produto - imagem 6 (URL da imagem) (Obrigatório enviar o product_id)</td>
+</tr>
+<tr>
+<td>quantity_sold</td>
+<td>Number</td>
+<td>Quantidade vendida da variação</td>
+</tr>
 </tbody></table>
-
-<p>start_promotion Date    Data de início da promoção da variação (Formato: aaaa-mm-dd)
-end_promotion   Date    Data de termino da promoção da variação (Formato: aaaa-mm-dd)
-promotional_price   |Decimal|   Preço promocional da variação
-type    |String|    Tipo de sku da variação
-value   |String|    Valor de sku da variação
-picture_source_1    |String|    Imagem principal do produto (URL da imagem) (Obrigatório enviar o product_id)
-picture_source_2    |String|    Imagem do produto - imagem 2 (URL da imagem) (Obrigatório enviar o product_id)
-picture_source_3    |String|    Imagem do produto - imagem 3 (URL da imagem) (Obrigatório enviar o product_id)
-picture_source_4    |String|    Imagem do produto - imagem 4 (URL da imagem) (Obrigatório enviar o product_id)
-picture_source_5    |String|    Imagem do produto - imagem 5 (URL da imagem) (Obrigatório enviar o product_id)
-picture_source_6    |String|    Imagem do produto - imagem 6 (URL da imagem) (Obrigatório enviar o product_id)
-quantity_sold   |Number|    Quantidade vendida da variação</p>
 <h3 id='retorno-em-caso-de-sucesso-status-code-200-ou-201-3'>Retorno em caso de sucesso (status code 200 ou 201)</h3>
 <blockquote>
 <p>Retorno de Sucesso:</p>
