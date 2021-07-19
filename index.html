@@ -5595,6 +5595,11 @@ Precisamos que seja realizado do lado ERP, uma gestão no envio dessas imagens, 
 <td>Tempo estimado de entrega</td>
 </tr>
 <tr>
+<td>external_code</td>
+<td>String</td>
+<td>codigo externo</td>
+</tr>
+<tr>
 <td>total_comission_user</td>
 <td>Decimal</td>
 <td>Comissão por usuario</td>
@@ -5945,6 +5950,11 @@ Precisamos que seja realizado do lado ERP, uma gestão no envio dessas imagens, 
 <td>external_code</td>
 <td>String</td>
 <td>codigo externo</td>
+</tr>
+<tr>
+<td>tracking_url</td>
+<td>String</td>
+<td>URL de rastreio</td>
 </tr>
 <tr>
 <td>has_payment</td>
@@ -6581,6 +6591,21 @@ Precisamos que seja realizado do lado ERP, uma gestão no envio dessas imagens, 
 <td>estimated_delivery_date</td>
 <td>Number</td>
 <td>Tempo estimado de entrega</td>
+</tr>
+<tr>
+<td>is_traceable</td>
+<td>Number</td>
+<td>É rastreavel</td>
+</tr>
+<tr>
+<td>external_code</td>
+<td>String</td>
+<td>codigo externo</td>
+</tr>
+<tr>
+<td>tracking_url</td>
+<td>String</td>
+<td>URL de rastreio</td>
 </tr>
 <tr>
 <td>has_payment</td>
@@ -7738,6 +7763,7 @@ Precisamos que seja realizado do lado ERP, uma gestão no envio dessas imagens, 
 <span class="nt">--data-urlencode</span> <span class="s1">'["Order"]["discount"]=0.01'</span> <span class="se">\</span>
 <span class="nt">--data-urlencode</span> <span class="s1">'["Order"]["sending_code"]=123456'</span> <span class="se">\</span>
 <span class="nt">--data-urlencode</span> <span class="s1">'["Order"]["sending_date"]=2015-04-20'</span> <span class="se">\</span>
+<span class="nt">--data-urlencode</span> <span class="s1">'["Order"]["tracking_url"]=www.urlderastreio.com.br'</span> <span class="se">\</span>
 <span class="nt">--data-urlencode</span> <span class="s1">'["Order"]["store_note"]=Pedido em 1 vez de R$ 51,85 através do Boleto.'</span> <span class="se">\</span>
 <span class="nt">--data-urlencode</span> <span class="s1">'["Order"]["customer_note"]='</span> <span class="se">\</span>
 <span class="nt">--data-urlencode</span> <span class="s1">'["Order"]["partner_id"]=2'</span>
@@ -7815,6 +7841,7 @@ Precisamos que seja realizado do lado ERP, uma gestão no envio dessas imagens, 
         "discount": "0.01",
         "sending_code": "123456",
         "sending_date": "2015-04-20",
+        "tracking_url": "www.urlderastreio.com.br",
         "store_note": "Pedido em 1 vez de R$ 51,85 através do Boleto.",
         "customer_note": "",
         "partner_id": "2"
@@ -7878,6 +7905,11 @@ Precisamos que seja realizado do lado ERP, uma gestão no envio dessas imagens, 
 <td>sending_date</td>
 <td>Date</td>
 <td>Data de envio</td>
+</tr>
+<tr>
+<td>tracking_url</td>
+<td>String</td>
+<td>URL de rastreio</td>
 </tr>
 <tr>
 <td>store_note</td>
