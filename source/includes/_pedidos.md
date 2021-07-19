@@ -227,6 +227,7 @@ printed	|String|	"se o retorno for 1 - o pedido já foi impresso se o retorno fo
 interest	|Decimal|	Valor do Juros do Pedido
 id_quotation	|Number|	Código externo de cotação de frete (Gateway de Frete)
 estimated_delivery_date	|Number|	Tempo estimado de entrega
+external_code	|String|	codigo externo
 total_comission_user	|Decimal|	Comissão por usuario
 total_comission	|Decimal|	Total de comissão
 is_traceable	|Number|	É rastreavel
@@ -381,6 +382,7 @@ id_quotation	|Number|	Código externo de cotação de frete (Gateway de Frete)
 estimated_delivery_date	|Number|	Tempo estimado de entrega
 is_traceable	|Number|	É rastreavel
 external_code	|String|	codigo externo
+tracking_url	|String|	URL de rastreio
 has_payment	|String|	"se o retorno for 1 - existe pagamento efetuado se o retorno for 0 - não há pagamento confirmado"
 has_shipment	|String|	"se o retorno for 1 - existe forma de envio se o retorno for 0 - não há forma de envio"
 has_invoice	|String|	"se o retorno for 1 - existe dados fiscais se o retorno for 0 - ainda não há dados fiscais"
@@ -781,6 +783,9 @@ total	|Number|	Valor total do pedido
 modified	|Number|	Data de modificação do pedido
 id_quotation	|Number|	Código externo de cotação de frete (Gateway de Frete)
 estimated_delivery_date	|Number|	Tempo estimado de entrega
+is_traceable	|Number|	É rastreavel
+external_code	|String|	codigo externo
+tracking_url	|String|	URL de rastreio
 has_payment	|String|	"se o retorno for 1 - existe pagamento efetuado se o retorno for 0 - não há pagamento confirmado"
 has_shipment	|String|	"se o retorno for 1 - existe forma de envio se o retorno for 0 - não há forma de envio"
 has_invoice	|String|	"se o retorno for 1 - existe dados fiscais se o retorno for 0 - ainda não há dados fiscais"
@@ -1212,6 +1217,7 @@ curl --location -g --request PUT 'https://{api_address}/orders/:id?access_token=
 --data-urlencode '["Order"]["discount"]=0.01' \
 --data-urlencode '["Order"]["sending_code"]=123456' \
 --data-urlencode '["Order"]["sending_date"]=2015-04-20' \
+--data-urlencode '["Order"]["tracking_url"]=www.urlderastreio.com.br' \
 --data-urlencode '["Order"]["store_note"]=Pedido em 1 vez de R$ 51,85 através do Boleto.' \
 --data-urlencode '["Order"]["customer_note"]=' \
 --data-urlencode '["Order"]["partner_id"]=2'
@@ -1297,6 +1303,7 @@ Response response = client.newCall(request).execute();
         "discount": "0.01",
         "sending_code": "123456",
         "sending_date": "2015-04-20",
+        "tracking_url": "www.urlderastreio.com.br",
         "store_note": "Pedido em 1 vez de R$ 51,85 através do Boleto.",
         "customer_note": "",
         "partner_id": "2"
@@ -1316,6 +1323,7 @@ shipment_value	|Decimal|	Valor de frete
 discount	|Decimal|	Valor de desconto
 sending_code	|String|	Código de envio
 sending_date	|Date|	Data de envio
+tracking_url	|String|	URL de rastreio
 store_note	|String|	Informações adicionais da loja
 customer_note	|String|	Informações adicionais do cliente
 partner_id	|Number|	Código do parceiro
