@@ -1,7 +1,12 @@
 # Autorização
 
 ## Gerar Chaves de Acesso#post
-> api_address: "urldaloja.com.br/web_api"
+
+<aside class="success">
+api_address é o endereço da loja + web_api, conforme exemplo:  <strong>www.urldaloja.com.br/web_api</strong>
+</aside>
+
+> api_address: "www.urldaloja.com.br/web_api"
 
 ```shell
 curl --location -g --request POST '{{api_address}}/auth' \
@@ -66,7 +71,11 @@ A Chave de Acesso é a crêdencial utilizada para acessar os recursos protegidos
 
 Essa chave representa a autorização emitida pelo cliente no servidor de autorização do Tray Commerce. 
 
-É possível gerar a Chave de Acesso utilizando as chaves disponibilizados para o aplicativo (`consumer key` e `consumer secret`) e o código de autorização (`code`), resgatado após a permissão do usuário, sendo realizada esta solicitação para a API de Gerar Chave de Acesso.
+Somente é possível gerar a Chave de Acesso utilizando as chaves disponibilizados para o aplicativo (`consumer key` e `consumer secret`) e o código de autorização (`code`) que é resgatado após a instalação do aplicativo na loja, então será realizada esta requisição para a API de Gerar Chave de Acesso.
+
+As chaves **consumer_key** e **consumer_secret**, são únicas para cada aplicativo.
+
+A chave **code** é única para cada loja.
 
 ### Método POST
 

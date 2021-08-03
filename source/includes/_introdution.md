@@ -121,21 +121,32 @@ callback | URL de Callback que será redirecionado depois da autorização
 
 Exemplo da url:
 
-`https://{dominio_da_loja}/auth.php?response_type=code&consumer_key=2r9dg7sgdb&callback=https://{url_de_callback}`
+`https://{dominio_da_loja}/auth.php?response_type=code&consumer_key={consumer_key}&callback=https://{url_de_callback}`
+
+Obs. trocar os dados que estão dentro de chaves { } para os dados da loja e do aplicativo.
 
 ### Fluxo de autorização
 
-Toda aplicação precisa passar pelo processo de autorização, onde sem essa autorização, não é possível acessar os dados da loja, senão qualquer pessoa com as chaves poderiam acessar qualquer loja de nossa plataforma sem o conhecimento do lojista, o que seria uma grande falha de segurança.
-
 O aplicativo é acessado dentro da área administrativa da loja no menu Meus aplicativos. Após o acesso a este menu, terá disponível o botão Instalar novos aplicativos, onde os clientes poderão localizar a aplicação para instalação na loja.
 
-Ao instalar uma aplicação, será realizado o redirecionamento para a URL de Callback informada no momento do cadastro do aplicativo, abrindo por exemplo a página http://{dominiodoapp}/tray/callback em um iframe, dentro da área administrativa da loja.
+Ao instalar uma aplicação, será realizado o redirecionamento para a URL de Callback informada no momento do cadastro do aplicativo, abrindo por exemplo a página `http://{dominiodoapp}/tray/callback` em um iframe, dentro da área administrativa da loja.
 
-Você deverá implementar nesta URL (http://{dominiodoapp}/tray/callback), uma Landing Page apresentando os detalhes do aplicativo e disponibilizar um botão para o cliente solicitando a integração com a aplicação. Geralmente este botão tem o titulo de Instale agora ou Inicie agora.
+Neste ponto a platforma irá enviar os seguintes parâmetros pela url:
+
+`array(3) {
+  ["url"]=>
+  string(42) "https://trayparceiros.commercesuite.com.br"
+  ["adm_user"]=>
+  string(8) "roottray"
+  ["store"]=>
+  string(6) "391250"
+}`
+
+Você deverá implementar nesta URL `http://{dominiodoapp}/tray/callback`, uma Landing Page apresentando os detalhes do aplicativo e disponibilizar um botão para o cliente solicitando a integração com a aplicação. Geralmente este botão tem o titulo de Instale agora ou Inicie agora.
 
 Neste botão você irá direcionar o cliente para a URL de autorização da loja, onde esta URL ficaria:
 
-http://{URL da loja}/auth.php?response_type=code&consumer_key=**CONSUMER_KEY**&callback=http://{dominiodoapp}/tray/callback/auth/
+`http://{URL da loja}/auth.php?response_type=code&consumer_key=**CONSUMER_KEY**&callback=http://{dominiodoapp}/tray/callback/auth/`
 
 Quando direcionado o cliente para essa pagina, irá aparecer uma tela solicitando a autorização da aplicação, conforme abaixo:
 
@@ -143,17 +154,32 @@ Quando direcionado o cliente para essa pagina, irá aparecer uma tela solicitand
 
 Uma observação importante é que, após autorizado, não será mais exibida essa tela, já passando automaticamente para o fluxo abaixo.
 
-Após a autorização, o cliente é redirecionado para URL informada no parâmetro callback passado no momento da autorização (no exemplo acima é a URL http://{dominiodoapp}/tray/callback/auth/), onde ficará da seguinte forma esta URL:
+Neste ponto a plataforma irá enviar os seguintes parâmetros na url:
 
-http://{dominiodoapp}/tray/callback/auth/?code=2132112312321313abc123edf&store=391250&api_address=http://{URL da loja}/web_api/
+`array(5) {
+  ["adm_user"]=>
+  string(8) "roottray"
+  ["code"]=>
+  string(64) "48f72c09305060f12b894193aaba2962989f00637012b8fa92b9d657e5a297f7"
+  ["api_address"]=>
+  string(50) "https://trayparceiros.commercesuite.com.br/web_api"
+  ["store"]=>
+  string(6) "391250"
+  ["store_host"]=>
+  string(42) "https://trayparceiros.commercesuite.com.br"
+}`
+
+Após a autorização, o cliente é redirecionado para URL informada no parâmetro callback passado no momento da autorização (no exemplo acima é a URL `http://{dominiodoapp}/tray/callback/auth/`), onde ficará da seguinte forma esta URL:
+
+`http://{dominiodoapp}/tray/callback/auth/?code=2132112312321313abc123edf&store=391250&api_address=http://{URL da loja}/web_api/`
 
 Neste processo deve-se capturar as informações dessa URL e utilizá-las para configurar em sua aplicação, sendo os parâmetros code e api_address mais importantes no processo de integração.
 
-Com o code e api_address é possível utilizar a [API de Gerar Chave de Acesso](#gerar-chaves-de-acesso-post), para gerar o valor do access_tokenutilizados nas outras APIs. É de extrema importância armazenar todas as informações de retorno desta API, pois serão utilizados constantemente durante a comunicação com a Tray.
+Com o **code** e **api_address** é possível utilizar a [API de Gerar Chave de Acesso](#gerar-chaves-de-acesso-post), para gerar o **access_token** utilizados nas outras APIs. É de extrema importância armazenar todas as informações de retorno desta API, pois serão utilizados constantemente durante a comunicação com a Tray.
 
-Pode-se notar que no retorno da [API de Gerar Chave de Acesso](#gerar-chaves-de-acesso-post) existe a expiração dessa chave e, quando expirado, deverá utilizar a [API de Atualizar Chave de Acesso](#atualizar-chave-de-acesso-get), onde será gerada um novo access_token para continuar realizando requisições nas APIs.
+Pode-se notar que no retorno da [API de Gerar Chave de Acesso](#gerar-chaves-de-acesso-post) existe a expiração dessas chaves e, quando expirado, deverá utilizar a [API de Atualizar Chave de Acesso](#atualizar-chave-de-acesso-get), onde será gerada um novo **access_token** para continuar realizando requisições nas APIs.
 
-Dessa forma, toda referência que encontrar na documentação de {api_address} deverá ser utilizada a URL retornada no momento da autorização da API, conforme informado acima, e utilizar o access_token gerado para não ocorrer problema de permissão de acesso aos dados.
+Dessa forma, toda referência que encontrar na documentação de **api_address** deverá ser utilizada a URL retornada no momento da autorização da API, conforme informado acima, e utilizar o **access_token** gerado para não ocorrer problema de permissão de acesso aos dados.
 
 ## Dúvidas e Suporte
 

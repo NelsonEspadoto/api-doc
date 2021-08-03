@@ -577,7 +577,7 @@ catch(HTTP_Request2_Exception $e) {
 }
 ```
 ```csharp
-var client = new RestClient("https://{api_address}/categories/?access_token={{access_token}}");
+var client = new RestClient("https://{api_address}/categories/:id?access_token={{access_token}}");
 client.Timeout = -1;
 var request = new RestRequest(Method.PUT);
 request.AddHeader("Content-Type", "application/x-www-form-urlencoded");

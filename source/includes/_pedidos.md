@@ -275,7 +275,7 @@ access_token	|String|Chave de acesso
       "shipment_date": "",
       "delivered": "",
       "shipping_cancelled": "",
-      "store_note": "10/02/2021 11:28:28 Pedido em 1 vez de R$ 62,935.86 através do Boleto - Yapay - Boleto Link da transação: https://intermediador.yapay.com.br/orders/billet/17471d7cd90f7d3ee4643e1da0f15",
+      "store_note": "10/02/2021 11:28:28 Pedido em 1 vez de R$ 62,935.86 através do Boleto - Yapay - Boleto Link da transação: https://intermediador.yapay.com.br/orders/billet/17471d7cd90f7d3jk54643e1da0f15",
       "customer_note": "",
       "partner_id": "0",
       "discount_coupon": "",
@@ -327,20 +327,24 @@ access_token	|String|Chave de acesso
       "OrderInvoice": [],
       "MlOrder": [],
       "OrderTransactions": [
-          {
-              "url_payment": "https://intermediador.yapay.com.br/orders/billet/17471d7cd3ee4643e1da0f15"
-          }
-      ],
-      "MarketplaceOrder": [],
-      "Extensions": [],
-      "CustomerAddress": {
-          "id": "7"
-      },
-      "payments_notification": {
-          "notification": "https://trayparceiros.commercesuite.com.br/loja/retorno_pagamento.php?loja=391250&gateway=5&codigoAcesso=38D071AEFEF4960&notification=true"
-      },
-      "partner_name": ""
-  }
+            {
+                "url_payment": "https://intermediador.yapay.com.br/orders/billet/8eb117cdada159753468efe9cd45157c7"
+            }
+        ],
+        "MarketplaceOrder": [],
+        "Extensions": [],
+        "CustomerAddress": {
+            "id": "15"
+        },
+        "ShippingLabel": {
+            "application": "Nome do Aplictivo",
+            "url": "https://trayparceiros.commercesuite.com.br?store_id=391250&id=25"
+        },
+        "payments_notification": {
+            "notification": "https://trayparceiros.commercesuite.com.br/loja/retorno_pagamento.php?loja=391250&gateway=5&codigoAcesso=F32QFG02A185CFF&notification=true"
+        },
+        "partner_name": ""
+    }
 }
 </pre>
 
@@ -400,6 +404,7 @@ id	|Number|	Código da nota fiscal do pedido
 CustomerAddress	|Object|	Informações de endereço do cliente
 id	|Number|	Código de endereço do cliente
 payments_notification	|Object|	Informações de notificação do pedido
+ShippingLabel	|String|	URL de Impressão da Etiqueta
 notification	|String|	URL de notificação do pedido
 
 ## Dados Completo do Pedido#get
@@ -720,25 +725,31 @@ access_token	|String|Chave de acesso
             }
         ],
       "OrderTransactions": [
-          {
-            "url_payment": "https://intermediador.yapay.com.br/orders/billet/17471d7cd90f3ee4643e1da0f15"
-          }
-      ],
-      "OrderInvoiceAmount": [],
-      "PaymentMethodMessage": {
-        "text": "",
-        "text_pag": "",
-        "text_confirm": "",
-        "confirmation": "0"
-      },
-      "payments_notification": {
-        "notification": "https://trayparceiros.commercesuite.com.br/loja/retorno_pagamento.php?loja=391250&gateway=5&codigoAcesso=38D071AEFEF4960&notification=true"
-      },
-      "partner_name": ""
-  },
-  "Extensions": [],
-  "User": [],
-  "Confirmation": []
+            {
+                "url_payment": "https://intermediador.yapay.com.br/orders/billet/8eb117cdada15975368efe9cd45157c7",
+                "bank_slip": ""
+            }
+        ],
+        "OrderInvoiceAmount": [],
+        "ExtraTabs": [],
+        "ShippingLabel": {
+            "application": "Nome do Aplicativo",
+            "url": "https://trayparceiros.commercesuite.com.br?store_id=391250&id=25"
+        },
+        "PaymentMethodMessage": {
+            "text": "",
+            "text_pag": "",
+            "text_confirm": "",
+            "confirmation": "0"
+        },
+        "payments_notification": {
+            "notification": "https://trayparceiros.commercesuite.com.br/loja/retorno_pagamento.php?loja=391250&gateway=5&codigoAcesso=F32GTQ92A185CFF&notification=true"
+        },
+        "partner_name": ""
+    },
+    "Extensions": [],
+    "User": [],
+    "Confirmation": []
 }
 </pre>
 
@@ -922,6 +933,7 @@ service_id	|Number|	Código do serviço
 order_id	|Number|	Código interno do pedido
 ml_collect	|Number|	Coletado pelo Mercado Livre
 shipping_mode	|String|	Modo de envio
+ShippingLabel	|String|	URL de Impressão da Etiqueta
 payments_notification	|Object|	Informações de notificação do pedido
 notification	|String|	URL de notificação do pedido
 
